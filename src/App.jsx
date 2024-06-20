@@ -1,20 +1,33 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useState,Suspense, lazy } from 'react'; // Import useState hook for managing authentication state
-import Navbar from './components/navbar/Navbar';
-import Home from './pages/home/Home';
-import HowItWorks from './pages/howItWorks/HowItWorks';
-import Borrowers from './pages/borrowers/Borrowers';
-import Blogs from './pages/blogs/Blogs';
-import Investors from './pages/investors/Investors';
-import Login from './pages/login/Login';
-import Signup from './pages/signup/Signup';
-import AboutUs from './pages/aboutUs/AboutUs';
-import './App.css';
-import Dashboard from './pages/dashboard/Dashboard';
-import LoadingIndicator from './components/Loading/LoadingIndicator';
-import ChatRoom from './pages/chatRoom/ChatRoom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { useState, Suspense, lazy } from "react"; // Import useState hook for managing authentication state
+import Navbar from "./components/navbar/Navbar";
+import Home from "./pages/home/Home";
+import HowItWorks from "./pages/howItWorks/HowItWorks";
 
-const Footer = lazy(() => import(`./components/footer/Footer`))
+import Blogs from "./pages/blogs/Blogs";
+
+import AboutUs from "./pages/aboutUs/AboutUs";
+import "./App.css";
+import Dashboard from "./pages/dashboard/Dashboard";
+import LoadingIndicator from "./components/Loading/LoadingIndicator";
+// import ChatRoom from "./pages/chatRoom/ChatRoom";
+
+import { Toaster } from "react-hot-toast";
+
+import BorrowerSignupPage from "./pages/signup/BorrowerPage";
+import LenderSingupPage from "./pages/signup/LenderPage";
+import SignUpHome from "./pages/signup/SignupHome";
+import LenderLogin from "./pages/login/LenderLogin";
+import BorrowerLogin from "./pages/login/BorrowerLogin";
+import LoginHome from "./pages/login/LoginHome";
+import { useAuthContext } from "./context/AuthContextUpdated";
+import NewFooter from "./components/footer/NewFooter";
+
 function App() {
   // Example state to manage authentication
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,48 +42,60 @@ function App() {
     setIsLoggedIn(false);
   };
 
+  const { authUser } = useAuthContext();
+
   return (
-    <Router>
-      <div>
-        <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/HowItWorks" element={<HowItWorks />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/login" element={<Login handleLogin={handleLogin} />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/AboutUs" element={<AboutUs />} />
+    <>
+      <Router>
+        <div>
+          <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/HowItWorks" element={<HowItWorks />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route
+              path="/login"
+              element={authUser ? <Navigate to="/" /> : <LoginHome />}
+            />
+            <Route
+              path="/login/lender"
+              element={authUser ? <Navigate to="/" /> : <LenderLogin />}
+            />
+            <Route
+              path="/login/borrower"
+              element={authUser ? <Navigate to="/" /> : <BorrowerLogin />}
+            />
+            <Route
+              path="/signup"
+              element={authUser ? <Navigate to="/login" /> : <SignUpHome />}
+            />
+            <Route
+              path="/signup/borrower"
+              element={
+                authUser ? <Navigate to="/login" /> : <BorrowerSignupPage />
+              }
+            />
+            <Route
+              path="/signup/lender"
+              element={
+                authUser ? <Navigate to="/login" /> : <LenderSingupPage />
+              }
+            />
+            <Route path="/AboutUs" element={<AboutUs />} />
 
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="chatroom" element={<ChatRoom />} />
-          {/* Protected routes */}
-          {/* {isLoggedIn && (
-            <>
-              <Route path="/borrowers" element={<Borrowers />} />
-              <Route path="/investors" element={<Investors />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="chatroom" element={<ChatRoom />} />
-
-            </>
-          )} */}
-
-          {/* Redirect to login if not authenticated */}
-          {/* {!isLoggedIn && (
-            <>
-              <Route path="/borrowers" element={<Navigate to="/login" />} />
-              <Route path="/investors" element={<Navigate to="/login" />} />
-              <Route path="/dashboard" element={<Navigate to="/login" />} />
-              
-            </>
-          )} */}
-          {/* <Route path="/signup/borrower" element={<SignupBorrower />} />
-          <Route path="/signup/lender" element={<SignupLender />} /> */}
-        </Routes>
-        <Suspense fallback={<LoadingIndicator />}>
-        <Footer />
-        </Suspense>
-      </div>
-    </Router>
+            <Route
+              path="/dashboard"
+              element={authUser ? <Navigate to="/login" /> : <Dashboard />}
+            />
+            
+          </Routes>
+          <Suspense fallback={<LoadingIndicator />}>
+            <NewFooter />
+          </Suspense>
+        </div>
+      </Router>
+      <Toaster />
+    </>
   );
 }
 
