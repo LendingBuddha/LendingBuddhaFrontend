@@ -1,16 +1,15 @@
-
+import '../signup/signup.css'
 
 
 function Signup() {
-    return (
-      <div>
-        <h2>Signup Page</h2>
-        {/* <Link to="/signup/borrower">Signup as Borrower</Link>
-        <br />
-        <Link to="/signup/lender">Signup as Lender</Link> */}
-      </div>
-    );
-  }
+  return (
+
+    <div className='root'>
+        Signup
+    </div>
+
+  );
+}
   
 export default Signup;
   

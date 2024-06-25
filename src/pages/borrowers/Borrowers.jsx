@@ -1,7 +1,12 @@
 
 
-function Borrowers() {
-  return <div>Borrowers Page</div>;
+const Borrowers = () => {
+  return (
+    
+    <div className='root'>
+          Borrowers
+      </div>
+  )
 }
 
-export default Borrowers;
+export default Borrowers

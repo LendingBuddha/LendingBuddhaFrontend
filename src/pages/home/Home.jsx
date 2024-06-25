@@ -1,7 +1,13 @@
+import '../home/home.css'
 
 
 function Home() {
-  return <div>Home Page</div>;
-}
+  return (
 
+    <div className='root'>
+        Home
+    </div>
+
+  );
+}
 export default Home;
