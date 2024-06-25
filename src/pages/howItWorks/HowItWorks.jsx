@@ -1,7 +1,12 @@
-
+import '../howItWorks/howitworks.css'
 
 function HowItWorks() {
-  return <div>How It Works Page</div>;
-}
+  return (
 
+    <div className='root'>
+        HowItWorks
+    </div>
+
+  );
+}
 export default HowItWorks;

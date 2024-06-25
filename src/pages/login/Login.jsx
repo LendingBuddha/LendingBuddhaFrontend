@@ -1,7 +1,13 @@
-
+import '../login/login.css'
 
 function Login() {
-  return <div>Login Page</div>;
+  return (
+
+    <div className='root'>
+        Login
+    </div>
+
+  );
 }
 
 export default Login;

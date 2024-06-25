@@ -1,7 +1,13 @@
-
+import '../blogs/blogs.css'
 
 function Blogs() {
-  return <div>Blogs Page</div>;
+  return (
+
+    <div className='root'>
+        Blogs
+    </div>
+
+  );
 }
 
 export default Blogs;

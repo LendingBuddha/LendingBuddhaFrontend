@@ -1,7 +1,16 @@
-
+import '../signupLender/signuplender.css'
 
 function SignupLender() {
-  return <div>Signup as Lender</div>;
+
+  return (
+
+    <div className='root'>
+
+    Signup  
+    
+  </div>
+  )
+  ;
 }
 
 export default SignupLender;

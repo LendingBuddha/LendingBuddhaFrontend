@@ -1,7 +1,13 @@
-
+import '../signupBorrower/signupborrower.css'
 
 function SignupBorrower() {
-  return <div>Signup as Borrower</div>;
+  return (
+
+    <div className='root'>
+        SignupBorrower
+    </div>
+
+  );
 }
 
 export default SignupBorrower;
