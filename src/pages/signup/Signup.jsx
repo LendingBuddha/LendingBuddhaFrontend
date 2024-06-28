@@ -4,6 +4,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext.jsx";
 
+
 const Signup = () => {
   const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState({

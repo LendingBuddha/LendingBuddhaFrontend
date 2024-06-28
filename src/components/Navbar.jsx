@@ -1,26 +1,34 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import '../styles/index.css';
 
-function Navbar() {
-  return (
-    <nav className="bg-white shadow-md p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center">
-          <Link to="/" className="text-xl font-bold">
-            <img src="/path/to/logo.png" alt="Logo" className="h-8 w-8 mr-2 inline-block" />
-            Home
-          </Link>
-        </div>
-        <div className="flex space-x-4">
-          <Link to="/howitworks" className="text-gray-600 hover:text-gray-900">How It Works</Link>
-          <Link to="/borrowers" className="text-gray-600 hover:text-gray-900">Borrowers</Link>
-          <Link to="/blogs" className="text-gray-600 hover:text-gray-900">Blogs</Link>
-          <Link to="/investors" className="text-gray-600 hover:text-gray-900">Investors</Link>
-          <Link to="/login" className="text-gray-600 hover:text-gray-900">Login</Link>
-          <Link to="/signup" className="text-gray-600 hover:text-gray-900">Signup</Link>
-        </div>
-      </div>
-    </nav>
-  );
-}
+const Navbar = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
+    return (
+        <nav className="navbar">
+            <Link to="/" className="navbar-logo">Lending Buddha</Link>
+            <div className="menu-icon" onClick={toggleMenu}>
+                {menuOpen ? <CloseIcon /> : <MenuIcon />}
+            </div>
+            <ul className={menuOpen ? "navbar-links active" : "navbar-links"}>
+                <li><Link to="/Home">Home</Link></li>
+                <li><Link to="/HowItWorks">How it works</Link></li>
+                <li><Link to="/Investors">Investors</Link></li>
+                <li><Link to="/Borrowers">Borrowers</Link></li>
+                <li><Link to="/Blogs">Blog</Link></li>
+                <li><Link to="/about-us">About us</Link></li>
+                <li><Link to="/Login">Login</Link></li>
+                <li><Link to="/Signup">Signup</Link></li>
+            </ul>
+        </nav>
+    );
+};
 
 export default Navbar;
