@@ -1,9 +1,18 @@
-.root-container {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 
 /* .logo {
   height: 6em;
