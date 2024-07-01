@@ -1,3 +1,4 @@
+
 import '../investors/investors.css'
 
 
@@ -6,6 +7,7 @@ function Investors() {
 
     <div className='root'>
         Investors
+       
     </div>
 
   );

@@ -1,3 +1,4 @@
+
 import '../blogs/blogs.css'
 
 function Blogs() {
@@ -5,6 +6,7 @@ function Blogs() {
 
     <div className='root'>
         Blogs
+     
     </div>
 
   );

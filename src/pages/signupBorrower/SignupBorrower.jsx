@@ -1,3 +1,4 @@
+
 import '../signupBorrower/signupborrower.css'
 
 function SignupBorrower() {
@@ -5,6 +6,7 @@ function SignupBorrower() {
 
     <div className='root'>
         SignupBorrower
+       
     </div>
 
   );
