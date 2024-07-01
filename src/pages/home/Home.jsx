@@ -1,3 +1,4 @@
+
 import '../home/home.css'
 
 
@@ -6,6 +7,7 @@ function Home() {
 
     <div className='root'>
         Home
+
     </div>
 
   );

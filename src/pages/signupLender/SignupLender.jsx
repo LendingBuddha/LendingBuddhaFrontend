@@ -1,3 +1,4 @@
+
 import '../signupLender/signuplender.css'
 
 function SignupLender() {
@@ -7,7 +8,7 @@ function SignupLender() {
     <div className='root'>
 
     Signup  
-    
+
   </div>
   )
   ;

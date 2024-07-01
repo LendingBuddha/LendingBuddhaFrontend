@@ -1,3 +1,4 @@
+
 import '../howItWorks/howitworks.css'
 
 function HowItWorks() {
@@ -5,6 +6,7 @@ function HowItWorks() {
 
     <div className='root'>
         HowItWorks
+  
     </div>
 
   );
