@@ -1,10 +1,12 @@
+// src/components/Signup.js
 import "../signup/signup.css";
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "../../context/AuthContext.jsx";
+import { AuthContext } from "../../authContext/AuthContext";
+import { loginStart, loginSuccess, loginFailure } from "../../authContext/AuthActions";
 
 const Signup = () => {
-  const { login } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     email: "",
     name: "",
@@ -12,9 +14,7 @@ const Signup = () => {
     aadhar: "",
     pancard: "",
     dob: "",
-    role: "Lendor",
-    profilePicture: "",
-    profilePictureName: ""
+    role: "Lender",
   });
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -23,14 +23,6 @@ const Signup = () => {
     setFormData({
       ...formData,
       [name]: value,
-    });
-  };
-
-  const handleFileChange = (e) => {
-    setFormData({
-      ...formData,
-      profilePicture: e.target.files[0],
-      profilePictureName: e.target.files[0].name,
     });
   };
 
@@ -43,21 +35,19 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formDataToSubmit = new FormData();
-    Object.keys(formData).forEach((key) => {
-      formDataToSubmit.append(key, formData[key]);
-    });
+    dispatch(loginStart());
     try {
       const response = await axios.post(
         `/api/signup/${formData.role}`,
-        formDataToSubmit,
+        formData,
         { withCredentials: true }
       );
       console.log(response.data);
       setShowSuccess(true);
-      login();
+      dispatch(loginSuccess(response.data));
     } catch (error) {
       console.error("There was an error creating the account!", error);
+      dispatch(loginFailure(error.message));
     }
   };
 
@@ -69,13 +59,13 @@ const Signup = () => {
           <button
             type="button"
             className={
-              formData.role === "Lendor"
+              formData.role === "Lender"
                 ? "toggle-button active"
                 : "toggle-button"
             }
-            onClick={() => handleRoleChange("Lendor")}
+            onClick={() => handleRoleChange("Lender")}
           >
-            Lendor
+            Lender
           </button>
           <button
             type="button"
@@ -89,7 +79,7 @@ const Signup = () => {
             Borrower
           </button>
         </div>
-        <p>Enter the details below to create Account</p>
+        <p>Enter the details below to create an account</p>
         <form onSubmit={handleSubmit} className="account-form">
           <input
             type="email"
@@ -152,27 +142,24 @@ const Signup = () => {
           />
           <div className="file-input-container">
             <input
-              type="text"
-              className="file-input-text"
-              value={formData.profilePictureName}
-              placeholder="Choose Profile Picture"
-              readOnly
+              type="file"
+              name="profileImage"
+              onChange={handleChange}
+              className="file-input"
+              id="profileImage"
             />
-            <label htmlFor="file-input" className="file-input-label">
+            <label htmlFor="profileImage" className="file-input-label">
               Choose Image
             </label>
-            <input
-              type="file"
-              id="file-input"
-              className="file-input"
-              onChange={handleFileChange}
-            />
+            <div className="file-input-text">
+              {formData.profileImage ? formData.profileImage.name : "No file chosen"}
+            </div>
           </div>
           <button type="submit" className="create-account-btn">
             Create Account
           </button>
           <p className="login-link">
-            Already have an Account? <a href="/login">Login Here</a>
+            Already have an account? <a href="/login">Login Here</a>
           </p>
         </form>
         <p className="terms">

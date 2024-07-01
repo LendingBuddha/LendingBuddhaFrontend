@@ -1,4 +1,4 @@
-import AuthReducer from ".authContext/AuthReducer";
+import AuthReducer from "./AuthReducer";
 import { createContext, useEffect, useReducer } from "react";
 
 const INITIAL_STATE = {
