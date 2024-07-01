@@ -1,9 +1,7 @@
-// src/components/Signup.js
 import "../signup/signup.css";
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext.jsx";
-
 
 const Signup = () => {
   const { login } = useContext(AuthContext);
@@ -15,6 +13,8 @@ const Signup = () => {
     pancard: "",
     dob: "",
     role: "Lendor",
+    profilePicture: "",
+    profilePictureName: ""
   });
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -23,6 +23,14 @@ const Signup = () => {
     setFormData({
       ...formData,
       [name]: value,
+    });
+  };
+
+  const handleFileChange = (e) => {
+    setFormData({
+      ...formData,
+      profilePicture: e.target.files[0],
+      profilePictureName: e.target.files[0].name,
     });
   };
 
@@ -35,10 +43,14 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formDataToSubmit = new FormData();
+    Object.keys(formData).forEach((key) => {
+      formDataToSubmit.append(key, formData[key]);
+    });
     try {
       const response = await axios.post(
         `/api/signup/${formData.role}`,
-        formData,
+        formDataToSubmit,
         { withCredentials: true }
       );
       console.log(response.data);
@@ -103,7 +115,6 @@ const Signup = () => {
             onChange={handleChange}
             required
           />
-          {/* add logic to see password */}
           <input
             type="text"
             name="aadhar"
@@ -139,6 +150,24 @@ const Signup = () => {
                 .split("T")[0]
             }
           />
+          <div className="file-input-container">
+            <input
+              type="text"
+              className="file-input-text"
+              value={formData.profilePictureName}
+              placeholder="Choose Profile Picture"
+              readOnly
+            />
+            <label htmlFor="file-input" className="file-input-label">
+              Choose Image
+            </label>
+            <input
+              type="file"
+              id="file-input"
+              className="file-input"
+              onChange={handleFileChange}
+            />
+          </div>
           <button type="submit" className="create-account-btn">
             Create Account
           </button>
@@ -147,7 +176,7 @@ const Signup = () => {
           </p>
         </form>
         <p className="terms">
-          By clicking Continue you are agree to our{" "}
+          By clicking Continue you agree to our{" "}
           <a href="/terms">terms of services</a> and{" "}
           <a href="/privacy">Privacy policy</a>
         </p>
