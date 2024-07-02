@@ -136,18 +136,20 @@
 }
 
 .file-input-container {
-    width: 100%; /* Ensure the container takes full width */
+    width: 80%; /* Ensure the container takes full width */
     margin-bottom: 20px;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the items horizontally */
+    justify-content: center;
+    flex-direction: row-reverse; /* Center the items horizontally */
 }
 
 .file-input-label {
     width: auto; /* Let it adjust based on content */
-    padding: 15px;
+    padding: 10px;
     border: none;
     border-radius: 5px;
+    font-size: small;
     text-align: center;
     background-color: #222;
     color: #fff;
@@ -166,7 +168,7 @@
 
 .file-input-text {
     flex-grow: 1; /* Allow the text input to take available space */
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 0;
     border: none;
     border-radius: 5px;
