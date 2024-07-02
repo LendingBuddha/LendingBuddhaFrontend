@@ -165,7 +165,7 @@
     margin: 0 auto;
 }
 
-.cards {
+.container .cards {
     margin-top: 2rem;
     display: flex;
     flex-direction: row;
@@ -174,28 +174,28 @@
     flex-wrap: wrap;
 }
 
-.card:first-child {
+.contaier .card:first-child {
     border-right: 1px solid #000;
 }
 
-.card {
+.container .card {
     padding: 2rem;
 }
 
-.card ul {
+.container .card ul {
     list-style: none;
 }
 
-.card ul li {
+.container .card ul li {
     margin-bottom: 1rem;
 }
 
-.card button {
+.container .card button {
     margin-top: 1rem;
     background-color: #209797;
 }
 
-.card a {
+.container .card a {
     display: block;
     color: #209797;
 }
