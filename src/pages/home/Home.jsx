@@ -1,8 +1,62 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import '../home/home.css'
 
 
 function Home() {
+    const [p, setValue4] = useState(25000);
+    let [r, setValue5] = useState(12);
+    const [n, setValue6] = useState(6);
+  
+    const handleChange = (event) => {
+      switch(event.target.name) {
+        case 'amt':
+          document.getElementById('amtText').value = event.target.value;
+          document.getElementById('monthly_emi').innerHTML = '&#8377;' + monthly_amt;
+          document.getElementById('total_interest').innerHTML = '&#8377;' + interest;
+          document.getElementById('total_amt').innerHTML = '&#8377;' + total;
+          setValue4(event.target.value);
+        break;
+        case 'roi':
+          document.getElementById('roiText').value = event.target.value;
+          document.getElementById('monthly_emi').innerHTML = '&#8377;' + monthly_amt;
+          document.getElementById('total_interest').innerHTML = '&#8377;' + interest;
+          document.getElementById('total_amt').innerHTML = '&#8377;' + total;
+          setValue5(event.target.value);
+        break;
+        case 'tenure':
+          document.getElementById('tenureText').value = event.target.value;
+          document.getElementById('monthly_emi').innerHTML = '&#8377;' + monthly_amt;
+          document.getElementById('total_interest').innerHTML = '&#8377;' + interest;
+          document.getElementById('total_amt').innerHTML = '&#8377;' + total;
+          setValue6(event.target.value);
+        break;
+        case 'amtText':
+          document.getElementById('monthly_emi').innerHTML = '&#8377;' + monthly_amt;
+          document.getElementById('total_interest').innerHTML = '&#8377;' + interest;
+          document.getElementById('total_amt').innerHTML = '&#8377;' + total;
+          setValue4(event.target.value);
+        break;
+        case 'roiText':
+          document.getElementById('monthly_emi').innerHTML = '&#8377;' + monthly_amt;
+          document.getElementById('total_interest').innerHTML = '&#8377;' + interest;
+          document.getElementById('total_amt').innerHTML = '&#8377;' + total;
+          setValue5(event.target.value);
+        break;
+        case 'tenureText':
+          document.getElementById('monthly_emi').innerHTML = '&#8377;' + monthly_amt;
+          document.getElementById('total_interest').innerHTML = '&#8377;' + interest;
+          document.getElementById('total_amt').innerHTML = '&#8377;' + total;
+          setValue6(event.target.value);
+        break;
+      }
+    };
+
+    r = r/12/100;
+    const monthly_amt = Math.floor((p*r*(1+r)**n)/(((1+r)**n)-1));
+    const total = monthly_amt*n;
+    const interest = total - p;
+
   return (
 
     <div className='root'>
@@ -20,6 +74,23 @@ function Home() {
 
         <div id="emi">
           <h2>EMI Calculator</h2>
+          <div className="input">
+            <div id="amt" className='elementWrapper'>
+              <label htmlFor="amtText">Amount (Rs)</label>
+              <input type="number" name="amtText" id="amtText" onChange={handleChange}/>
+              <input type="range" name="amt" id="amt" min={25000} max={500000} step={5000} onChange={handleChange}/>
+            </div>
+            <div id="roi" className='elementWrapper'>
+              <label htmlFor="roiText">ROI(%)</label>
+              <input type="number" name="roiText" id="roiText" onChange={handleChange}/>
+              <input type="range" name="roi" id="roi" min={12} max={36} onChange={handleChange}/>
+            </div>
+            <div id="tenure" className='elementWrapper'>
+              <label htmlFor="tenureText">Tenure (Months)</label>
+              <input type="number" name="tenureText" id="tenureText" onChange={handleChange}/>
+              <input type="range" name="tenure" id="tenure" min={6} max={36} step={6} onChange={handleChange}/>
+            </div>
+          </div>
           <div id="result">
             <div className="emi_component">
               <span className="emi_heading">
@@ -31,7 +102,7 @@ function Home() {
             </div>
             <div className="emi_component">
               <span className="emi_heading">
-                Total Interest Payable
+                Interest Payable
               </span>
               <span className="emi_body" id="total_interest">
                 &#8377;40
