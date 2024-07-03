@@ -18,12 +18,12 @@ const Navbar = () => {
                 {menuOpen ? <CloseIcon /> : <MenuIcon />}
             </div>
             <ul className={menuOpen ? "navbar-links active" : "navbar-links"}>
-                <li><Link to="/Home">Home</Link></li>
+                <li><Link to="/">Home</Link></li>
                 <li><Link to="/HowItWorks">How it works</Link></li>
                 <li><Link to="/Investors">Investors</Link></li>
                 <li><Link to="/Borrowers">Borrowers</Link></li>
                 <li><Link to="/Blogs">Blog</Link></li>
-                <li><Link to="/about-us">About us</Link></li>
+                <li><Link to="/AboutUs">About us</Link></li>
                 <li><Link to="/Login">Login</Link></li>
                 <li><Link to="/Signup">Signup</Link></li>
             </ul>

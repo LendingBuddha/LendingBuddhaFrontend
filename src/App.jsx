@@ -9,6 +9,7 @@ import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import SignupBorrower from './pages/signupBorrower/SignupBorrower';
 import SignupLender from './pages/signupLender/SignupLender';
+import AboutUs from './pages/aboutUs/AboutUs';
 import './App.css';
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/signup/borrower" element={<SignupBorrower />} />
           <Route path="/signup/lender" element={<SignupLender />} />
+          <Route path="/AboutUs" element={<AboutUs/>} />
+
         </Routes>
       </div>
     </Router>
