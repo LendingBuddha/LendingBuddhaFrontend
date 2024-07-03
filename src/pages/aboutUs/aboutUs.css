@@ -1,0 +1,59 @@
+.about-us-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .intro-text {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .about-us-section {
+    border-top: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .section-header h2 {
+    margin: 0;
+  }
+  
+  .section-content {
+    margin-top: 10px;
+  }
+  
+  .expanded {
+    transform: rotate(180deg);
+  }
+  
+  @media (max-width: 768px) {
+    .about-us-container {
+      width: 95%;
+    }
+  
+    h1 {
+      font-size: 24px;
+    }
+  
+    .intro-text {
+      font-size: 14px;
+    }
+  
+    .section-header h2 {
+      font-size: 18px;
+    }
+  }
+  
