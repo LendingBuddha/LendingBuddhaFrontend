@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import io from "socket.io-client";
 import "../styles/index.css";
 const socket = io("http://localhost:3000");
@@ -6,20 +6,27 @@ const socket = io("http://localhost:3000");
 const ChatRoom = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+const user=useRef();
   useEffect(() => {
     socket.on("receiveMessage", (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
+      user.current=socket.id;
     });
+
     return () => {
       socket.off("receiveMessage");
     };
   }, []);
   const sendMessage = () => {
     if (message.trim()) {
-      socket.emit("sendMessage", {
-        message: message,
-        senderId: localStorage.getItem("socket.id"),
-      });
+      socket.emit(
+        "sendMessage",
+        {
+          message: message,
+          senderId: user,
+        },
+      );
+      console.log(messages);
       setMessage("");
     }
   };
@@ -30,11 +37,7 @@ const ChatRoom = () => {
         {messages.map((msg, index) => (
           <div
             key={index}
-            className={`message ${
-              localStorage.getItem("socket.id") === msg.senderId
-                ? "sender"
-                : "receiver"
-            }`}
+            className="message"
           >
             {msg.message}
           </div>

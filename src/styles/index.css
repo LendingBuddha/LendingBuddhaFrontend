@@ -366,15 +366,9 @@ body {
   margin-top: 9px;
   width: max-content;
   padding: 8px;
-}
-.sender{
   background-color: rgb(8, 80, 174);
   color: white;
   align-self: flex-end;
-}
-.receiver{
-  background-color: white;
-  color: black;
 }
 /* Responsive Styles */
 .menu-icon {
