@@ -1,0 +1,25 @@
+/* src/components/Dashboard.css */
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .card {
+    background-color: #1f1f1f;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .overview {
+    flex: 2;
+  }
+  
+  .recent-sales {
+    flex: 1;
+    min-width: 300px;
+  }
+  

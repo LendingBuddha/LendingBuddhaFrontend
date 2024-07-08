@@ -1,0 +1,82 @@
+/* src/components/Layout.css */
+.layout {
+    display: flex;
+  }
+  
+  .appbar {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background-color: #6c4cdf;
+    color: white;
+    height: 64px;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+  }
+  
+  .menu-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .app-title {
+    margin-left: 16px;
+  }
+  
+  .sidebar {
+    width: 240px;
+    height: 100vh;
+    background-color: #1f1f1f;
+    color: white;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-240px);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar nav ul li {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar nav ul li svg {
+    margin-right: 16px;
+  }
+  
+  .main-content {
+    margin-left: 240px;
+    padding: 80px 16px 16px 16px;
+    width: calc(100% - 240px);
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-240px);
+    }
+  
+    .sidebar.open {
+      transform: translateX(0);
+    }
+  
+    .main-content {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+  
