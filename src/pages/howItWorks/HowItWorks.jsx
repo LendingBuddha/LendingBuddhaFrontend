@@ -5,11 +5,10 @@ function HowItWorks() {
   return (
 
     <div className='root'>
-        HowItWorks
-        <div className="breadCrumbMenu">
+        {/* <div className="breadCrumbMenu">
           <Link to={'/'}>Home</Link>/
           <Link to={'/howitworks'}>How It Works</Link>
-        </div>
+        </div> */}
 
         <div className="howItWorks">
 

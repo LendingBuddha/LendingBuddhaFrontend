@@ -5,11 +5,11 @@ function Blogs() {
   return (
 
     <div className='root'>
-        Blogs
+        {/* Blogs
         <div className="breadCrumbMenu">
           <Link to={'/'}>Home</Link>/
           <Link to={'/howitworks'}>How It Works</Link>
-        </div>
+        </div> */}
 
         <h2 id='blogHeading'>Blogs</h2>
         <div className="postContainer">
