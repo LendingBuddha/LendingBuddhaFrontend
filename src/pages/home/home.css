@@ -9,6 +9,8 @@
     padding: 0!important;
     margin: 0!important;
     max-width: 100%!important;
+    width: 100%;
+    overflow: hidden;
 }
 
 .root{
@@ -19,7 +21,7 @@
 
 .container {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     padding: 0 3rem;
     background-color: #166993;
     display: flex;
@@ -27,14 +29,22 @@
     justify-content: center;
     align-items: center;
     padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.container p {
+    color: #fff;
 }
 
 .container h2 {
     margin-bottom: 2rem;
+    font-size: 2.5rem;
 }
 
 .container p {
     padding: 0 8rem;
+    max-width: 50rem;
+    min-width: 30rem;
 }
 
 .container .btns {
@@ -53,8 +63,7 @@
 #emi {
     padding: 2rem 0;
     padding-top: 0;
-    background-color: #fff;
-    
+    background-color: #dddddd;
 }
 
 #emi h2 {
@@ -62,11 +71,52 @@
     margin-bottom: 2rem;
 }
 
+#emi .input {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.input .elementWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.elementWrapper input {
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 0.5rem 1rem;
+    color: #000;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-right: 1rem;
+    width: 100%;
+}
+
+.elementWrapper input:focus {
+    outline: 1px solid #000;
+}
+
+.elementWrapper label {
+    min-width: max-content;
+    color: #000;
+    font-weight: bold;
+    margin-right: 2rem;
+}
+
 #result {
     color: #000;
-    background-color: #dddddd;
     display: flex;
+    justify-content: center;
     padding-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
 #result .emi_component {
@@ -115,7 +165,7 @@
     margin: 0 auto;
 }
 
-.cards {
+.container .cards {
     margin-top: 2rem;
     display: flex;
     flex-direction: row;
@@ -124,28 +174,28 @@
     flex-wrap: wrap;
 }
 
-.card:first-child {
+.contaier .card:first-child {
     border-right: 1px solid #000;
 }
 
-.card {
+.container .card {
     padding: 2rem;
 }
 
-.card ul {
+.container .card ul {
     list-style: none;
 }
 
-.card ul li {
+.container .card ul li {
     margin-bottom: 1rem;
 }
 
-.card button {
+.container .card button {
     margin-top: 1rem;
     background-color: #209797;
 }
 
-.card a {
+.container .card a {
     display: block;
     color: #209797;
 }
@@ -179,6 +229,7 @@
 
 #image_link p {
     font-weight: bold;
+    color: #fff;
     text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -280,6 +331,7 @@
 
 #image_link2 p {
     font-weight: bold;
+    color: #fff;
     text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
