@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(65vh); /* Adjust based on the height of your navbar */
+  height: 100vh; /* Adjust based on the height of your navbar */
   flex-direction: column;
   margin-top: 60px; /* Adjust based on the height of your navbar */
 }
@@ -36,12 +36,12 @@
 }
 
 .active {
-  background-color: #444;
-  color: #fff;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
 }
 
 .loginForm {
-  background-color: #000;
+  background-color: var(--third-color);
   padding: 30px;
   border-radius: 10px;
   width: 100%;
@@ -60,20 +60,20 @@
   border: none;
   border-radius: 5px;
   text-align: center;
-  background-color: #222;
+  background-color: var(--accent-color);
   color: #fff;
   transition: background-color 0.3s;
 }
 
 .loginForm input:hover {
-  background-color: #333;
+  background-color: var(--button-color);
 }
 
 .loginBtn {
   width: 80%;
   padding: 10px;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--button-color);
+  color: var(--text-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -81,8 +81,8 @@
 }
 
 .loginBtn:hover {
-  background-color: #444;
-  color: #fff;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
 }
 
 .signupLink {
@@ -90,7 +90,7 @@
 }
 
 .signupLink a {
-  color: #fff;
+  color: var(--primary-color);
   text-decoration: underline;
 }
 

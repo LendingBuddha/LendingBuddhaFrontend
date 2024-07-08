@@ -63,7 +63,7 @@ function Home() {
         <div className='container'>
           <h2>Discover a smarter way to Borrow and Lend with our platform</h2>
           <p>
-            Gone are the days of complex and cumbersome lending processes. At Lending Buddha, we&apos;ve streamlined the entire experience to make borrowing and lending as simple as possible. Our user-friendly interface guides you through each step of the process, ensuring a seamless experience from start to finish. Whether you're a borrower in need of funds or a lender looking to invest, our platform makes it easy to achieve your financial goals.
+            Gone are the days of complex and cumbersome lending processes. At Lending Buddha, we&apos;ve streamlined the entire experience to make borrowing and lending as simple as possible. Our user-friendly interface guides you through each step of the process, ensuring a seamless experience from start to finish. Whether you&aposre a borrower in need of funds or a lender looking to invest, our platform makes it easy to achieve your financial goals.
           </p>
           <div className='btns'>
             <button className='btn'>Borrow</button>
@@ -71,6 +71,7 @@ function Home() {
           </div>
           <a href="#">Contact Us</a>
         </div>
+        
 
         <div id="emi">
           <h2>EMI Calculator</h2>

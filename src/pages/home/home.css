@@ -2,7 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* outline: 1px solid red; */
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
 }
 
 #root {
@@ -11,29 +16,32 @@
     max-width: 100%!important;
     width: 100%;
     overflow: hidden;
+    
 }
 
-.root{
+.root {
     width: 100%;
     margin: 0;
     padding: 0;
+    
 }
 
 .container {
     width: 100%;
     min-height: 100vh;
     padding: 0 3rem;
-    background-color: #166993;
+    background-color: var(--secondary-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    
 }
 
 .container p {
-    color: #fff;
+    color: var(--text-color);
 }
 
 .container h2 {
@@ -53,30 +61,30 @@
 
 .btns .btn {
     margin: 1rem;
-    background-color: #209797;
+    background-color: var(--button-color);
 }
 
 .container a {
-    color: #fff;
+    color: var(--text-color);
 }
 
 #emi {
     padding: 2rem 0;
     padding-top: 0;
-    background-color: #dddddd;
+    background-color:var(--third-color);
 }
 
 #emi h2 {
-    background-color: #000;
+    background-color: var(--text-color);
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 #emi .input {
-    display: flex;
-    width: 100%;
+    display: flex; 
     align-items: center;
-    justify-content: center;
     flex-direction: column;
+    
 }
 
 .input .elementWrapper {
@@ -87,32 +95,28 @@
 }
 
 .elementWrapper input {
-    background-color: #fff;
-    border: 1px solid #000;
+    background-color: var(--primary-color);
+    border: 1px solid var(--text-color);
     padding: 0.5rem 1rem;
-    color: #000;
+    color: var(--text-color);
     border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
     margin-right: 1rem;
     width: 100%;
+    
 }
-
 .elementWrapper input:focus {
     outline: 1px solid #000;
 }
 
 .elementWrapper label {
     min-width: max-content;
-    color: #000;
+    color: var(--primary-color);
     font-weight: bold;
     margin-right: 2rem;
 }
 
 #result {
-    color: #000;
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     padding-bottom: 2rem;
@@ -122,7 +126,7 @@
 #result .emi_component {
     width: 30%;
     margin: 0 0.5rem;
-    background-color: #fff;
+    background-color: var(--primary-color);
 }
 
 #result .emi_component:first-child {
@@ -134,10 +138,9 @@
 }
 
 .emi_component .emi_heading {
-    background-color: #209797;
+    background-color: var(--secondary-color);
     display: block;
     padding: 0.5rem;
-    color: #fff;
     font-weight: bold;
 }
 
@@ -145,27 +148,28 @@
     padding: 0.5rem;
     display: block;
     font-weight: bold;
-
 }
 
 #help_you {
-    background-color: #fff;
-    color: #000;
+    background-color: var(--primary-color);
+    color:var(--text-color);
     padding: 4rem 1rem;
 }
 
-.heading {
+#help_you .heading {
+    text-align: center;
     font-size: 1.5rem;
     margin-bottom: 1rem;
     padding: 0 4rem;
 }
 
-.body {
+#help_you .body {
+    text-align: center;
     max-width: 30rem;
     margin: 0 auto;
 }
 
-.container .cards {
+#help_you .cards {
     margin-top: 2rem;
     display: flex;
     flex-direction: row;
@@ -174,35 +178,45 @@
     flex-wrap: wrap;
 }
 
-.contaier .card:first-child {
-    border-right: 1px solid #000;
-}
-
-.container .card {
+#help_you .card {
+    text-align: center;
     padding: 2rem;
+    width: 45%;
+    box-sizing: border-box;
+    margin: 1rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    justify-content: center;
 }
 
-.container .card ul {
+#help_you .card:first-child {
+    margin-right: 1rem;
+}
+
+#help_you .card ul {
     list-style: none;
 }
 
-.container .card ul li {
+#help_you .card ul li {
     margin-bottom: 1rem;
 }
 
-.container .card button {
+#help_you .card button {
     margin-top: 1rem;
     background-color: #209797;
 }
 
-.container .card a {
+#help_you .card a {
     display: block;
     color: #209797;
+    margin-top: 1rem;
 }
 
 #need_loan {
-    background-color: #fff;
-    color: #000;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }
 
 #need_loan .heading {
@@ -210,8 +224,28 @@
     padding: 0 1rem;
 }
 
-#need_loan .card:first-child {
-    border: 0;
+#need_loan .cards {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+#need_loan .card {
+    padding: 2rem;
+    width: 30%;
+    box-sizing: border-box;
+    margin: 1rem;
+    background-color: var(--secondary-color);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+#need_loan .card img {
+    width: 50%;
+    height: auto;
 }
 
 #image_link {
@@ -229,7 +263,7 @@
 
 #image_link p {
     font-weight: bold;
-    color: #fff;
+    color: #000000;
     text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -242,50 +276,59 @@
 }
 
 .section {
-    background-color: #fff;
-    color: #000;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     padding: 3rem 0;
 }
 
-.section .card:first-child {
-    border: 0;
+.section .card {
+    padding: 2rem;
+    width: 20%;
+    box-sizing: border-box;
+    margin: 1rem;
+    background-color: var(--third-color);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
 }
+
 
 #ai_powered img {
     width: 25rem;
 }
 
 #customer img {
-    width: 5rem;
+    display: inline-block;
+    align-items: left;
+    width: 7rem;
     border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
     border: 5px solid #adadad;
 }
 
 #customer p {
-    width: 70%;
-    background-color: #dddddd;
+    display: inline-block;
+    align-items: right;
+    width: 100%;
+    background-color: var(--accent-color);
     border-left: 5px solid #adadad;
     padding: 0.5rem 1.5rem;
-    text-align: left;
     font-style: italic;
     margin-left: 0.5rem;
+    
 }
 
 #customer p span {
     display: block;
     margin-top: 1rem;
-    color: #727272;
+    color: var(--text-color);
 }
 
 #customer_review {
-    background-color: #dddddd;
+    background-color: var(--primary-color);
+    text-align: center;
 }
 
 #customer_review .heading {
+    
     width: 100%!important;
     text-align: center;
     padding-left: 0;
@@ -314,6 +357,7 @@
 #ai_powered .body {
     padding: 0;
     text-align: left;
+    display: flex;
 }
 
 #image_link2 {
@@ -331,10 +375,46 @@
 
 #image_link2 p {
     font-weight: bold;
-    color: #fff;
+    color: #000000;
     text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
 #image_link2 button {
     background-color: #209797;
+}
+
+#quick_links {
+    background-color: #f5f5f5;
+    padding: 3rem 0;
+}
+
+#quick_links .heading {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#quick_links .cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#quick_links .card {
+    width: 20%;
+    margin: 1rem;
+}
+
+#quick_links .card .heading {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#quick_links .card .body {
+    display: flex;
+    flex-direction: column;
+}
+
+#quick_links .card .body a {
+    color: #209797;
+    margin-bottom: 0.5rem;
 }

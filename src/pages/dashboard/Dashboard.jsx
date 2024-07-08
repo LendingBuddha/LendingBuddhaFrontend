@@ -1,8 +1,6 @@
-// src/components/Dashboard.js
-// import RecentSales from './RecentSales';
 import React from 'react';
 import './dashboard.css';
-import BorrowerList from "../BorrowersList/BorrowerList"
+import BorrowerList from '../BorrowersList/BorrowerList';
 import OverviewChart from '../overviewChart/overviewChart';
 
 const Dashboard = () => {
@@ -20,7 +18,7 @@ const Dashboard = () => {
       </div>
       <div className="card">
         <h3>Sales</h3>
-        <h2>+12,234</h2>
+        <h2>+12,234</h2> {/* Corrected closing tag */}
         <p>+19% from last month</p>
       </div>
       <div className="card">
@@ -30,10 +28,10 @@ const Dashboard = () => {
       </div>
       <div className="overview">
         <h3>Overview</h3>
-       <OverviewChart/>
+        <OverviewChart />
       </div>
       <div className="recent-sales">
-       <BorrowerList/>
+        <BorrowerList />
       </div>
     </div>
   );
