@@ -6,11 +6,13 @@ import "../styles/index.css";
 const socket = io("https://vigilant-space-meme-x9xgp66j7492vx56-3000.app.github.dev/");
 
 const ChatRoom = () => {
+
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const user = useRef(socket.id); // Initialize useRef with socket.id
 
   useEffect(() => {
+    socket.emit("join-room","123")
     socket.on("receiveMessage", (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
       user.current = socket.id; // Update user.current with socket.id
