@@ -1,15 +1,69 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import '../home/home.css'
 
 
 function Home() {
+    const [p, setValue4] = useState(25000);
+    let [r, setValue5] = useState(12);
+    const [n, setValue6] = useState(6);
+  
+    const handleChange = (event) => {
+      switch(event.target.name) {
+        case 'amt':
+          document.getElementById('amtText').value = event.target.value;
+          document.getElementById('monthly_emi').innerHTML = '&#8377;' + monthly_amt;
+          document.getElementById('total_interest').innerHTML = '&#8377;' + interest;
+          document.getElementById('total_amt').innerHTML = '&#8377;' + total;
+          setValue4(event.target.value);
+        break;
+        case 'roi':
+          document.getElementById('roiText').value = event.target.value;
+          document.getElementById('monthly_emi').innerHTML = '&#8377;' + monthly_amt;
+          document.getElementById('total_interest').innerHTML = '&#8377;' + interest;
+          document.getElementById('total_amt').innerHTML = '&#8377;' + total;
+          setValue5(event.target.value);
+        break;
+        case 'tenure':
+          document.getElementById('tenureText').value = event.target.value;
+          document.getElementById('monthly_emi').innerHTML = '&#8377;' + monthly_amt;
+          document.getElementById('total_interest').innerHTML = '&#8377;' + interest;
+          document.getElementById('total_amt').innerHTML = '&#8377;' + total;
+          setValue6(event.target.value);
+        break;
+        case 'amtText':
+          document.getElementById('monthly_emi').innerHTML = '&#8377;' + monthly_amt;
+          document.getElementById('total_interest').innerHTML = '&#8377;' + interest;
+          document.getElementById('total_amt').innerHTML = '&#8377;' + total;
+          setValue4(event.target.value);
+        break;
+        case 'roiText':
+          document.getElementById('monthly_emi').innerHTML = '&#8377;' + monthly_amt;
+          document.getElementById('total_interest').innerHTML = '&#8377;' + interest;
+          document.getElementById('total_amt').innerHTML = '&#8377;' + total;
+          setValue5(event.target.value);
+        break;
+        case 'tenureText':
+          document.getElementById('monthly_emi').innerHTML = '&#8377;' + monthly_amt;
+          document.getElementById('total_interest').innerHTML = '&#8377;' + interest;
+          document.getElementById('total_amt').innerHTML = '&#8377;' + total;
+          setValue6(event.target.value);
+        break;
+      }
+    };
+
+    r = r/12/100;
+    const monthly_amt = Math.floor((p*r*(1+r)**n)/(((1+r)**n)-1));
+    const total = monthly_amt*n;
+    const interest = total - p;
+
   return (
 
     <div className='root'>
         <div className='container'>
           <h2>Discover a smarter way to Borrow and Lend with our platform</h2>
           <p>
-            Gone are the days of complex and cumbersome lending processes. At Lending Buddha, we've streamlined the entire experience to make borrowing and lending as simple as possible. Our user-friendly interface guides you through each step of the process, ensuring a seamless experience from start to finish. Whether you're a borrower in need of funds or a lender looking to invest, our platform makes it easy to achieve your financial goals.
+            Gone are the days of complex and cumbersome lending processes. At Lending Buddha, we&apos;ve streamlined the entire experience to make borrowing and lending as simple as possible. Our user-friendly interface guides you through each step of the process, ensuring a seamless experience from start to finish. Whether you're a borrower in need of funds or a lender looking to invest, our platform makes it easy to achieve your financial goals.
           </p>
           <div className='btns'>
             <button className='btn'>Borrow</button>
@@ -20,6 +74,23 @@ function Home() {
 
         <div id="emi">
           <h2>EMI Calculator</h2>
+          <div className="input">
+            <div id="amt" className='elementWrapper'>
+              <label htmlFor="amtText">Amount (Rs)</label>
+              <input type="number" name="amtText" id="amtText" onChange={handleChange}/>
+              <input type="range" name="amt" id="amt" min={25000} max={500000} step={5000} onChange={handleChange}/>
+            </div>
+            <div id="roi" className='elementWrapper'>
+              <label htmlFor="roiText">ROI(%)</label>
+              <input type="number" name="roiText" id="roiText" onChange={handleChange}/>
+              <input type="range" name="roi" id="roi" min={12} max={36} onChange={handleChange}/>
+            </div>
+            <div id="tenure" className='elementWrapper'>
+              <label htmlFor="tenureText">Tenure (Months)</label>
+              <input type="number" name="tenureText" id="tenureText" onChange={handleChange}/>
+              <input type="range" name="tenure" id="tenure" min={6} max={36} step={6} onChange={handleChange}/>
+            </div>
+          </div>
           <div id="result">
             <div className="emi_component">
               <span className="emi_heading">
@@ -31,7 +102,7 @@ function Home() {
             </div>
             <div className="emi_component">
               <span className="emi_heading">
-                Total Interest Payable
+                Interest Payable
               </span>
               <span className="emi_body" id="total_interest">
                 &#8377;40
@@ -53,7 +124,7 @@ function Home() {
             How can Lending Buddha Help You?
           </p>
           <p className="body">
-            Lending Buddha, India's leading peer to peer Lending Marketplace, is trusted by doctors, engineers, businessmen and many more for their investing and financing needs.
+          Lending Buddha, India&apos;s leading peer to peer Lending Marketplace, is trusted by doctors, engineers, businessmen and many more for their investing and financing needs.
           </p>
           <div className="cards">
             <div className="card">
@@ -183,7 +254,7 @@ function Home() {
               <div className="cards" id='customer'>
                 <img src="https://getlendingbuddha.online/static/images/people/profile-s-4.png" alt="" />
                 <p>
-                  As an investor using Lending Buddha, I've been thoroughly impressed with the platform's AI matchmaking capabilities. It has allowed me to find suitable borrowers effortlessly, resulting in a diversified and profitable investment portfolio. The transparency and control offered by Lending Buddha make it a standout choice.
+                  As an investor using Lending Buddha, I&apos;ve been thoroughly impressed with the platform&apos;s AI matchmaking capabilities. It has allowed me to find suitable borrowers effortlessly, resulting in a diversified and profitable investment portfolio. The transparency and control offered by Lending Buddha make it a standout choice.
                   <span>@Y. Agarwal, New Delhi</span>
                 </p>
               </div>
@@ -198,7 +269,7 @@ function Home() {
           <div className="cards">
             <img src="https://getlendingbuddha.online/static/images/people/imranCheulkar.png" alt="" />
             <p>
-              Lending Buddha is India's one of the best loan platform and top peer to peer club. My best business partner for all my business loan solution. Always Applied for the business loan got the loan in super fast process. Lending Buddha is everything they said, quick response, best customer service and quick loan disbursement. If you are in need of a loan then Lending Buddha is the place to go. I highly recommended. My five star rating to Lending Buddha Team. Thank you for always supporting me and making my business life easy.
+              Lending Buddha is India&apos;s one of the best loan platform and top peer to peer club. My best business partner for all my business loan solution. Always Applied for the business loan got the loan in super fast process. Lending Buddha is everything they said, quick response, best customer service and quick loan disbursement. If you are in need of a loan then Lending Buddha is the place to go. I highly recommended. My five star rating to Lending Buddha Team. Thank you for always supporting me and making my business life easy.
               <span>Imran Cheulkar</span>
             </p>
           </div>
