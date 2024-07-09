@@ -17,7 +17,7 @@
 
 .howItWorks {
     width: 100%;
-    background-color: #166993;
+    background-color: var(--primary-color);
     margin-top: 2rem;
     color: #000;
     display: flex;
@@ -58,7 +58,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     text-decoration: underline;
-    background-color: #f0ffff;
+    background-color: var(--accent-color);
     margin: 1rem 0;
     padding: 0.5rem 1rem;
 }
@@ -76,12 +76,12 @@
 }
 
 .footBanner p {
-    background-color: #dedede;
-    border-left: 5px solid #878787;
+    background-color: var(--accent-color);
+    border-left: 5px solid var(--third-color);
     width: 70%;
     padding: 2rem 2.5rem;
     text-align: left;
-    color: #000;
+    color: var(--text-color);
     font-size: 1.1rem;
     font-style: italic;
 }

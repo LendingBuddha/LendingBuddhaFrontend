@@ -4,6 +4,7 @@
     padding: 20px;
     font-family: Arial, sans-serif;
     margin-bottom: 15px;
+    color: var(--text-color);
   }
   
   h1 {
@@ -17,7 +18,7 @@
   }
   
   .about-us-section {
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--accent-color);
     padding: 10px 0;
   }
   
