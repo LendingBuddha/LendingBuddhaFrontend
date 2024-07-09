@@ -4,6 +4,7 @@ import './footer.css';
 
 const Footer = () => {
     return (
+        <>
         <footer className="footer">
             <div className="footer-container">
                 <div className="footer-sections">
@@ -74,10 +75,12 @@ const Footer = () => {
                     <p><Room /> Address: Lending Buddha, H-183, Sector 63 Noida, 201301</p>
                 </div>
             </div>
-            <div className="footer-bottom">
+            
+        </footer>
+        <div className="footer-bottom">
                 <p>Copyright @ getLendingBuddha 2024</p>
             </div>
-        </footer>
+            </>
     );
 };
 

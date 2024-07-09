@@ -71,15 +71,17 @@
     display: flex;
     padding-top: 2rem;
     
+    
 }
 
 .btns .btn {
     margin: 1rem;
+    border-radius: 2px;
     background-color: var(--button-color);
     padding: 10px;
     min-width: 100px; 
     max-width: 300px; 
-    width: 80%; 
+    width: 90%; 
 }
 
 

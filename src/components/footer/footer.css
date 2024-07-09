@@ -1,5 +1,5 @@
 .footer {
-    background-color: var(--third-color);
+    background-color: var(--footer-color);
     color: #fff;
     padding: 20px;
     font-family: Arial, sans-serif;
@@ -90,16 +90,18 @@
   }
   
   .subscribe-form input {
+    text-align: center;
     padding: 5px;
     border-radius: 5px;
     border: none;
     height: 35px;
+    width: 50%;
   }
   
   .subscribe-form button {
-    padding: 5px 10px;
-    background-color: #6200ea;
-    color: #fff;
+    padding: 15px 10px;
+    background-color: var(--button-color);
+    color: --primary-color;
     border: none;
     border-radius: 5px;
     margin-left: 10px;
@@ -107,9 +109,10 @@
   }
   
   .footer-bottom {
+    background-color: var(--third-color);
     text-align: center;
-    margin-top: 20px;
-    width: 100%;
+    width: 100vw;
+    padding: 20px;
   }
   
   /* Media Queries */
