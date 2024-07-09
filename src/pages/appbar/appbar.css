@@ -1,0 +1,51 @@
+/* src/components/appbar.css */
+.appbar {
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #08080B;
+    border: 1px solid white;
+  }
+  
+  .appbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .appbar-left .user-name {
+    margin-left: 10px;
+  }
+  
+  .appbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .appbar-right input {
+    text-align: center;
+    background-color: #08080B;
+    border: none;
+    padding: 10px;
+    color: white;
+    margin-right: 20px;
+    border: 1px solid;
+    border-radius: 10px;
+  }
+
+  .appbar-center{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    flex-direction: row;
+  }
+
+ .appbar-center .app-link{
+    color : white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-right: 20px;
+  }
+  

@@ -1,36 +1,33 @@
-// src/components/Layout.js
-import React from 'react';
-import { Menu, Home, Person, ShoppingCart, Settings } from '@mui/icons-material';
+// src/pages/Layout.js
+import React, {useState,useEffect} from 'react';
+// import appbar from '../appbar/Appbar.jsx';
+import Dashboard from '../dashboard/Dashboard';
+import Appbar from '../appbar/Appbar';
 import './layout.css';
+import axios from 'axios'
 
-const Layout = ({ children }) => {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+const Layout = () => {
+  const [lenderData, setLenderData] = useState(null);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/lender/data');
+       setLenderData(response.data);
+        console.log(response.data)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="layout">
-      <div className="appbar">
-        <button className="menu-button" onClick={handleDrawerToggle}>
-          <Menu />
-        </button>
-        <div className="app-title"><h2>Dashboard</h2></div>
-      </div>
-      <div className={`sidebar ${mobileOpen ? 'open' : ''}`}>
-        <nav>
-          <ul>
-            <li><Home /> Overview</li>
-            <li><Person /> Borrowers</li>
-            <li><ShoppingCart /> Products</li>
-            <li><Settings /> Settings</li>
-          </ul>
-        </nav>
-      </div>
-      <div className="main-content">
-        {children}
-      </div>
+      <Appbar lenderName={lenderData?.dashboardOverview?.lendorsName} />
+      {/* <Sidebar /> */}
+      <Dashboard lenderData={lenderData} />
     </div>
   );
 };

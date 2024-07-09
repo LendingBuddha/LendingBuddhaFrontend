@@ -1,27 +1,104 @@
-/* Ensure .dashboard takes full height */
+/* src/components/Dashboard.css */
 .dashboard {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 16px;
-  height: 100%; /* Ensure .dashboard takes full viewport height */
-  box-sizing: border-box;
-}
-
-.card {
-  background-color: #1f1f1f;
-  color: white;
-  padding: 16px;
-  border-radius: 8px;
   flex: 1;
-  min-width: 200px;
+  padding: 20px;
 }
 
-.overview {
-  flex: 2;
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.tabs {
+  display: flex;
+}
+
+.tab {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #08080B;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: #555;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background-color: #08080B;
+  padding: 20px;
+  border-radius: 10px;
+  width: 21%;
+  border: 1px solid;
+}
+
+.stat-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.stat-change {
+  margin-top: 10px;
+  color: #4caf50; /* Change color to red if negative */
+}
+
+.charts {
+  display: flex;
+  justify-content: space-between;
 }
 
 .recent-sales {
-  flex: 1;
-  min-width: 300px;
+  background-color: #08080B;
+  padding: 20px;
+  border-radius: 10px;
+  border: 0.1px solid;
+  width: 45%;
+}
+
+.recent-sales h2{
+  color: var(--dashText-color);
+}
+
+.sales-list {
+  margin-top: 10px;
+}
+
+.sale-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
+}
+
+.sale-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sale-name {
+  font-weight: bold;
+}
+
+.sale-email {
+  font-size: 12px;
+  color: #999;
+}
+
+.sale-amount {
+  font-weight: bold;
 }
