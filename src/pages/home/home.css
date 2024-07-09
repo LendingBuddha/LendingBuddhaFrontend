@@ -60,16 +60,18 @@
 #emi {
     padding: 2rem 0;
     padding-top: 0;
-    background-color:var(--third-color);
+    background-color:var(--primary-color);
+    color: var(--text-color);
 }
 
 #emi h2 {
-    background-color: var(--text-color);
+    background-color: var(--primary-color);
     margin-bottom: 2rem;
     text-align: center;
 }
 
 #emi .input {
+    
     display: flex; 
     align-items: center;
     flex-direction: column;
@@ -77,6 +79,7 @@
 }
 
 .input .elementWrapper {
+    color: var(--text-color);
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -99,9 +102,10 @@
 
 .elementWrapper label {
     min-width: max-content;
-    color: var(--primary-color);
+    color: var(--text-color);
     font-weight: bold;
     margin-right: 2rem;
+    border-color: var(--secondary-color);
 }
 
 #result {
@@ -169,6 +173,8 @@
 
 #help_you .card {
     text-align: center;
+    display: flex;
+    flex-direction: column;
     padding: 2rem;
     width: 45%;
     box-sizing: border-box;
@@ -276,8 +282,12 @@
     width: 20%;
     box-sizing: border-box;
     margin: 1rem;
-    background-color: var(--third-color);
+    background-color: var(--primary-color);
+    color: var(--text-color);
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -285,68 +295,30 @@
     width: 25rem;
 }
 
-#customer img {
-    display: inline-block;
-    align-items: left;
-    width: 7rem;
-    border-radius: 50%;
-    border: 5px solid #adadad;
-}
-
-#customer p {
-    display: inline-block;
-    align-items: right;
-    width: 100%;
-    background-color: var(--accent-color);
-    border-left: 5px solid #adadad;
-    padding: 0.5rem 1.5rem;
-    font-style: italic;
-    margin-left: 0.5rem;
-    
-}
-
-#customer p span {
-    display: block;
-    margin-top: 1rem;
-    color: var(--text-color);
-}
-
-#customer_review {
-    background-color: var(--primary-color);
-    text-align: center;
-}
-
-#customer_review .heading {
-    
-    width: 100%!important;
-    text-align: center;
-    padding-left: 0;
-}
-
-#customer_review img {
-    width: 8rem;
-}
-
-#customer_review p {
-    width: 60%;
-    padding-left: 3rem;
-    text-align: left;
-}
-
-#customer_review p span {
-    display: block;
-    margin-top: 1.5rem;
-    color: #209797;
-}
 
 #press a {
     color: #209797;
 }
 
+#proven_process .body{
+    text-align: center;
+    
+}
+
+#proven_process .cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 #ai_powered .body {
     padding: 0;
-    text-align: left;
-    display: flex;
+    text-align: center;
+}
+
+#ai_powered .cards {
+    text-align: center;
+    margin-left: 50px;
 }
 
 #image_link2 {
@@ -384,6 +356,7 @@
 
 #quick_links .cards {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
 }

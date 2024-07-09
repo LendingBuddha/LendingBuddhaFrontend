@@ -33,7 +33,10 @@
 }
 
 .howItWorks .card {
+    display: flex;
+    flex-direction: column;
     margin-top: 2rem;
+    text-align: center;
     border: 0.15rem solid #000;
     background-color: #fff;
     width: 80%;
@@ -46,6 +49,7 @@
 }
 
 .howItWorks .card .cardHeading {
+
     background-color: #2f2f2f;
     color: #fff;
     padding: 0.5rem 1rem;

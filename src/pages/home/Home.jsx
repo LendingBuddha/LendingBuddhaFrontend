@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import '../home/home.css'
+import CustomerReview from '../../components/reviews/CustomerReviews';
 
 
 function Home() {
@@ -252,29 +253,18 @@ function Home() {
               <p className="body">
                 At Lending Buddha, we leverage the latest in AI technology to facilitate seamless matchmaking between borrowers and lenders. Our AI algorithms analyze borrower profiles and lender preferences to create optimal matches, ensuring that each party finds the perfect lending or investment opportunity.
               </p>
-              <div className="cards" id='customer'>
+              {/* <div className="cards" id='customer'>
                 <img src="https://getlendingbuddha.online/static/images/people/profile-s-4.png" alt="" />
                 <p>
                   As an investor using Lending Buddha, I&apos;ve been thoroughly impressed with the platform&apos;s AI matchmaking capabilities. It has allowed me to find suitable borrowers effortlessly, resulting in a diversified and profitable investment portfolio. The transparency and control offered by Lending Buddha make it a standout choice.
                   <span>@Y. Agarwal, New Delhi</span>
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
 
-        <section className="section" id="customer_review">
-          <p className="heading">
-            What our Customers say about us?
-          </p>
-          <div className="cards">
-            <img src="https://getlendingbuddha.online/static/images/people/imranCheulkar.png" alt="" />
-            <p>
-              Lending Buddha is India&apos;s one of the best loan platform and top peer to peer club. My best business partner for all my business loan solution. Always Applied for the business loan got the loan in super fast process. Lending Buddha is everything they said, quick response, best customer service and quick loan disbursement. If you are in need of a loan then Lending Buddha is the place to go. I highly recommended. My five star rating to Lending Buddha Team. Thank you for always supporting me and making my business life easy.
-              <span>Imran Cheulkar</span>
-            </p>
-          </div>
-        </section>
+        
 
         <section className="section" id="press">
           <p className="heading">
@@ -290,6 +280,9 @@ function Home() {
           <p className='body'>
             Lending Buddha encourages users to exercise caution and prudence when participating in lending and borrowing activities.
           </p>
+        </section>
+        <section>
+          <CustomerReview />
         </section>
 
         <div id="image_link">

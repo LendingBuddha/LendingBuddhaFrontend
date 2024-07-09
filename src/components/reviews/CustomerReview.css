@@ -1,0 +1,50 @@
+.section {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .heading {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .card {
+    display: flex !important;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--third-color);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .card img {
+    max-width: 150px;
+    margin-right: 20px;
+    border-radius: 10px;
+  }
+  
+  .review-text {
+    max-width: 600px;
+    text-align: left;
+  }
+  
+  .review-text p {
+    font-size: 1em;
+
+  }
+  
+  .review-text span {
+    display: block;
+    font-weight: bold;
+
+  }
+  
+  .review-text .role {
+    font-size: 0.9em;
+    color: var(--secondary-color)
+  }
+  

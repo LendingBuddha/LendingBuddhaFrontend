@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useState } from 'react'; // Import useState hook for managing authentication state
+import { useState,Suspense, lazy } from 'react'; // Import useState hook for managing authentication state
 import Navbar from './components/navbar/Navbar';
-import Footer from './components/footer/Footer';
 import Home from './pages/home/Home';
 import HowItWorks from './pages/howItWorks/HowItWorks';
 import Borrowers from './pages/borrowers/Borrowers';
@@ -11,10 +10,10 @@ import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import AboutUs from './pages/aboutUs/AboutUs';
 import './App.css';
-
-import Layout from './pages/layout/Layout';
 import Dashboard from './pages/dashboard/Dashboard';
+import LoadingIndicator from './components/Loading/LoadingIndicator';
 
+const Footer = lazy(() => import(`./components/footer/Footer`))
 function App() {
   // Example state to manage authentication
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -59,7 +58,9 @@ function App() {
             </>
           )}
         </Routes>
+        <Suspense fallback={<LoadingIndicator />}>
         <Footer />
+        </Suspense>
       </div>
     </Router>
   );
