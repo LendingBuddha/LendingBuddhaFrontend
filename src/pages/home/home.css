@@ -3,21 +3,27 @@
     margin: 0!important;
     max-width: 100%!important;
     width: 100%;
-    overflow: hidden;   
+    overflow: hidden;  
+    font-size: 0.8rem; 
 }
 
 .root {
     width: 100%;
     margin: 0;
-    padding: 0;
-    
+    padding: 0; 
+}
+.root .h2{
+    color: var(--primary-color);
 }
 
 .container {
     width: 100%;
     min-height: 100vh;
     padding: 0 3rem;
-    background-color: var(--secondary-color);
+    background-color: var(--home-color);
+    background-image: "/public/buddha";
+    background-size: stretch;
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,12 +31,29 @@
     padding-top: 2rem;
     padding-bottom: 2rem;
     min-width: 320px;
-     overflow: hidden;
+    overflow: hidden;
+    position: relative;
+}
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    z-index: 1; /* Ensure the overlay is above the background */
+}
+
+.container > * {
+    
+    position: relative;
+    z-index: 2; /* Ensure the content is above the overlay */
 }
     
 
 .container p {
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 
 .container h2 {
@@ -45,13 +68,20 @@
 }
 
 .container .btns {
+    display: flex;
     padding-top: 2rem;
+    
 }
 
 .btns .btn {
     margin: 1rem;
     background-color: var(--button-color);
+    padding: 10px;
+    min-width: 100px; 
+    max-width: 300px; 
+    width: 80%; 
 }
+
 
 .container a {
     color: var(--text-color);
@@ -62,12 +92,15 @@
     padding-top: 0;
     background-color:var(--primary-color);
     color: var(--text-color);
+    
+    
 }
 
 #emi h2 {
     background-color: var(--primary-color);
     margin-bottom: 2rem;
     text-align: center;
+    
 }
 
 #emi .input {
@@ -84,11 +117,12 @@
     align-items: center;
     flex-direction: row;
     margin-bottom: 1rem;
+    align-items: center;
 }
 
 .elementWrapper input {
     background-color: var(--primary-color);
-    border: 1px solid var(--text-color);
+    border: 1px solid var(--secondary-color);
     padding: 0.5rem 1rem;
     color: var(--text-color);
     border-radius: 5px;

@@ -75,51 +75,92 @@ function Home() {
         
 
         <div id="emi">
-          <h2>EMI Calculator</h2>
-          <div className="input">
-            <div id="amt" className='elementWrapper'>
-              <label htmlFor="amtText">Amount (Rs)</label>
-              <input type="number" name="amtText" id="amtText" onChange={handleChange}/>
-              <input type="range" name="amt" id="amt" min={25000} max={500000} step={5000} onChange={handleChange}/>
-            </div>
-            <div id="roi" className='elementWrapper'>
-              <label htmlFor="roiText">ROI(%)</label>
-              <input type="number" name="roiText" id="roiText" onChange={handleChange}/>
-              <input type="range" name="roi" id="roi" min={12} max={36} onChange={handleChange}/>
-            </div>
-            <div id="tenure" className='elementWrapper'>
-              <label htmlFor="tenureText">Tenure (Months)</label>
-              <input type="number" name="tenureText" id="tenureText" onChange={handleChange}/>
-              <input type="range" name="tenure" id="tenure" min={6} max={36} step={6} onChange={handleChange}/>
-            </div>
-          </div>
-          <div id="result">
-            <div className="emi_component">
-              <span className="emi_heading">
-                Monthly EMI
-              </span>
-              <span className="emi_body" id="monthly_emi">
-                &#8377;23
-              </span>
-            </div>
-            <div className="emi_component">
-              <span className="emi_heading">
-                Interest Payable
-              </span>
-              <span className="emi_body" id="total_interest">
-                &#8377;40
-              </span>
-            </div>
-            <div className="emi_component">
-              <span className="emi_heading">
-                Total Payment
-              </span>
-              <span className="emi_body" id="total_amt">
-                &#8377;10
-              </span>
-            </div>
-          </div>
-        </div>
+  <h2>EMI Calculator</h2>
+  <div className="input">
+    <div id="amt" className='elementWrapper'>
+      <label htmlFor="amtText">Amount (Rs)</label>
+      <input 
+        type="number" 
+        name="amtText" 
+        id="amtText" 
+        placeholder="Enter amount" 
+        onChange={handleChange} 
+      />
+      <input 
+        type="range" 
+        name="amt" 
+        id="amt" 
+        min={25000} 
+        max={500000} 
+        step={5000} 
+        onChange={handleChange} 
+      />
+    </div>
+    <div id="roi" className='elementWrapper'>
+      <label htmlFor="roiText">ROI(%)</label>
+      <input 
+        type="number" 
+        name="roiText" 
+        id="roiText" 
+        placeholder="Enter rate of interest" 
+        onChange={handleChange} 
+      />
+      <input 
+        type="range" 
+        name="roi" 
+        id="roi" 
+        min={12} 
+        max={36} 
+        onChange={handleChange} 
+      />
+    </div>
+    <div id="tenure" className='elementWrapper'>
+      <label htmlFor="tenureText">Tenure (Months)</label>
+      <input 
+        type="number" 
+        name="tenureText" 
+        id="tenureText" 
+        placeholder="Enter tenure in months" 
+        onChange={handleChange} 
+      />
+      <input 
+        type="range" 
+        name="tenure" 
+        id="tenure" 
+        min={6} 
+        max={36} 
+        step={6} 
+        onChange={handleChange} 
+      />
+    </div>
+  </div>
+  <div id="result">
+    <div className="emi_component">
+      <span className="emi_heading">
+        Monthly EMI
+      </span>
+      <span className="emi_body" id="monthly_emi">
+        &#8377;23
+      </span>
+    </div>
+    <div className="emi_component">
+      <span className="emi_heading">
+        Interest Payable
+      </span>
+      <span className="emi_body" id="total_interest">
+        &#8377;40
+      </span>
+    </div>
+    <div className="emi_component">
+      <span className="emi_heading">
+        Total Payment
+      </span>
+      <span className="emi_body" id="total_amt">
+        &#8377;10
+      </span>
+    </div>
+  </div>
+</div>
 
         <section id="help_you">
           <p className="heading">

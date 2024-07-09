@@ -31,7 +31,7 @@ const Login = () => {
     try {
       console.log('Sending login request:', { role, credentials });
       const response = await axios.post(
-        `http://localhost:3000/api/auth/login/${role}`,
+        `https://relaxed-sorbet-6cbb69.netlify.app/api/auth/login/${role}`,
         credentials,
         { withCredentials: true }
       );
@@ -84,7 +84,7 @@ const Login = () => {
         </button>
       </form>
       <p className="signupLink">
-        Don't have an account? <Link to="/signup">Sign Up Here</Link>
+        Don&apos;t have an account? <Link to="/signup">Sign Up Here</Link>
       </p>
     </div>
   );
