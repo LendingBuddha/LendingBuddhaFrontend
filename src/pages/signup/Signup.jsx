@@ -1,5 +1,5 @@
 import "../signup/signup.css";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../../authContext/AuthContext";
 import { loginStart, loginSuccess, loginFailure } from "../../authContext/AuthActions";
@@ -19,6 +19,10 @@ const Signup = () => {
     cibilscore: "", 
   });
   const [showSuccess, setShowSuccess] = useState(false);
+
+  useEffect(() => {
+    document.title = "Signup - Create an Account";
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -56,6 +60,7 @@ const Signup = () => {
     try {
       const response = await axios.post(
         `http://localhost:3000/api/auth/signup/${formData.role}`, 
+        `/api/auth/signup/${formData.role}`, 
         signupFormData,
         {
           headers: {
@@ -79,28 +84,16 @@ const Signup = () => {
       <div className="account-form-container">
         <h2>Create an Account as</h2>
         <div className="role-selector">
-          <button
-            type="button"
-            className={
-              formData.role === "Lender"
-                ? "toggle-button active"
-                : "toggle-button"
-            }
-            onClick={() => handleRoleChange("lender")}
-          >
-            Lender
-          </button>
-          <button
-            type="button"
-            className={
-              formData.role === "Borrower"
-                ? "toggle-button active"
-                : "toggle-button"
-            }
-            onClick={() => handleRoleChange("borrower")}
-          >
-            Borrower
-          </button>
+          {["lender", "borrower"].map((role) => (
+            <button
+              key={role}
+              type="button"
+              className={`toggle-button ${formData.role === role ? "active" : ""}`}
+              onClick={() => handleRoleChange(role)}
+            >
+              {role.charAt(0).toUpperCase() + role.slice(1)}
+            </button>
+          ))}
         </div>
         <p>Enter the details below to create an account</p>
         <form onSubmit={handleSubmit} className="account-form">
@@ -111,6 +104,7 @@ const Signup = () => {
             value={formData.email}
             onChange={handleChange}
             required
+            aria-label="Email"
           />
           <input
             type="text"
@@ -119,6 +113,7 @@ const Signup = () => {
             value={formData.fullname}
             onChange={handleChange}
             required
+            aria-label="Full Name"
           />
           <input
             type="password"
@@ -127,6 +122,7 @@ const Signup = () => {
             value={formData.password}
             onChange={handleChange}
             required
+            aria-label="Password"
           />
           <input
             type="text"
@@ -138,6 +134,7 @@ const Signup = () => {
             maxLength="12"
             pattern="\d{12}"
             title="Aadhar must be 12 digits"
+            aria-label="Aadhar Card Number"
           />
           <input
             type="text"
@@ -149,6 +146,7 @@ const Signup = () => {
             maxLength="10"
             pattern="[A-Z0-9]{10}"
             title="Pancard must be 10 characters"
+            aria-label="Pancard Number"
           />
           <input
             type="date"
@@ -162,6 +160,7 @@ const Signup = () => {
                 .toISOString()
                 .split("T")[0]
             }
+            aria-label="Date of Birth"
           />
           <input
             type="text"
@@ -170,6 +169,9 @@ const Signup = () => {
             value={formData.phonenumber}
             onChange={handleChange}
             required
+            pattern="\d{10}"
+            title="Phone number must be 10 digits"
+            aria-label="Phone Number"
           />
           {formData.role === "borrower" && ( // Conditional rendering for CIBIL score
             <input
@@ -181,6 +183,7 @@ const Signup = () => {
               required
               pattern="\d+"
               title="CIBIL score must be a number"
+              aria-label="CIBIL Score"
             />
           )}
           <div className="file-input-container">
@@ -191,6 +194,7 @@ const Signup = () => {
               className="file-input"
               id="profilePic"
               required
+              aria-label="Profile Picture"
             />
             <label htmlFor="profilePic" className="file-input-label">
               Choose Image

@@ -23,3 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 LendingBuddhaFrontend.code-workspace
+
+package-lock.json
