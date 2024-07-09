@@ -4,13 +4,13 @@ import "../styles/index.css";
 const socket = io("http://localhost:3000");
 
 const ChatRoom = () => {
-
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+const user=useRef();
   useEffect(() => {
-    socket.emit("join-room","123")
     socket.on("receiveMessage", (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
+      user.current=socket.id;
     });
 
     return () => {
@@ -23,7 +23,7 @@ const ChatRoom = () => {
         "sendMessage",
         {
           message: message,
-          room_id: "123"
+          senderId: user,
         },
       );
       console.log(messages);
