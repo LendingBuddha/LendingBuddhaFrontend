@@ -1,8 +1,11 @@
 /* src/components/OverviewChart.css */
-.chart-container {
-    background-color: #1f1f1f;
-    color: white;
-    padding: 16px;
-    border-radius: 8px;
-  }
-  
+.overview-chart-container {
+  width: 51%;
+    /* max-width: 642px; */
+    margin-right: 10px;
+    /* margin: 0 auto; */
+    border: 0.1px solid;
+    background-color: #08080B;
+    padding: 15px;
+    border-radius: 10px;
+}

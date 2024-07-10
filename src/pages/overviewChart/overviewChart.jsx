@@ -1,10 +1,10 @@
-// src/components/OverviewChart.js
+// src/components/overviewChart/OverviewChart.js
 import React from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import './overviewChart.css';
 
-// Register Chart.js components
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -14,27 +14,44 @@ ChartJS.register(
   Legend
 );
 
-const data = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  datasets: [
-    {
-      label: 'Revenue',
-      data: [5000, 3000, 6000, 4500, 5500, 3000, 4000, 3500, 5000, 6000, 5500, 4500],
-      backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    },
-  ],
-};
+const OverviewChart = ({ loanIssuanceData, paymentCollectionData }) => {
+  if (!loanIssuanceData || !paymentCollectionData) {
+    return <div>Loading chart...</div>;
+  }
 
-const options = {
-  scales: {
-    y: {
-      beginAtZero: true,
-    },
-  },
-};
+  const data = {
+    labels: Object.keys(loanIssuanceData),
+    datasets: [
+      {
+        label: 'Loan Issuance Trends',
+        data: Object.values(loanIssuanceData),
+        backgroundColor: 'rgba(255, 99, 132, 0.6)', 
+        borderColor: 'rgba(255, 99, 132, 1)', 
+        borderWidth: 1,
+      },
+      {
+        label: 'Payment Collection Trends',
+        data: Object.values(paymentCollectionData),
+        backgroundColor: 'rgba(54, 162, 235, 0.6)', 
+        borderColor: 'rgba(54, 162, 235, 1)', 
+        borderWidth: 1,
+      },
+    ],
+  };
 
-const OverviewChart = () => {
-  return <Bar data={data} options={options} />;
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
+
+  return (
+    <div className="overview-chart-container">
+      <Bar data={data} options={options} />
+    </div>
+  );
 };
 
 export default OverviewChart;

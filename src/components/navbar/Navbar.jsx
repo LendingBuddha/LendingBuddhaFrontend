@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import { AuthContext } from '../../authContext/AuthContext';
+
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { user } = useContext(AuthContext); // Get the user from AuthContext
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -24,8 +26,17 @@ const Navbar = () => {
                 <li><Link to="/Borrowers">Borrowers</Link></li>
                 <li><Link to="/Blogs">Blog</Link></li>
                 <li><Link to="/AboutUs">About us</Link></li>
-                <li><Link to="/Login">Login</Link></li>
-                <li><Link to="/Signup">Signup</Link></li>
+                {user ? (
+                    <>
+                        <li><Link to="/FindLenders">Find Lenders</Link></li>
+                        <li><Link to="/Profile">Profile</Link></li> {/* Example additional link */}
+                    </>
+                ) : (
+                    <>
+                        <li><Link to="/Login">Login</Link></li>
+                        <li><Link to="/Signup">Signup</Link></li>
+                    </>
+                )}
             </ul>
         </nav>
     );
