@@ -12,6 +12,7 @@ import AboutUs from './pages/aboutUs/AboutUs';
 import './App.css';
 import Dashboard from './pages/dashboard/Dashboard';
 import LoadingIndicator from './components/Loading/LoadingIndicator';
+import FindLender from './pages/findLenders/FindLender';
 
 const Footer = lazy(() => import(`./components/footer/Footer`))
 function App() {
@@ -39,6 +40,8 @@ function App() {
           <Route path="/login" element={<Login handleLogin={handleLogin} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/FindLenders" element={<FindLender/>} />
+          
 
           {/* Protected routes */}
           {isLoggedIn && (
@@ -46,6 +49,7 @@ function App() {
               <Route path="/borrowers" element={<Borrowers />} />
               <Route path="/investors" element={<Investors />} />
               <Route path="/dashboard" element={<Dashboard />} />
+           
             </>
           )}
 
