@@ -15,20 +15,27 @@
   }
   
   .chat-header {
-    background-color: #007bff;
-    color: #ffffff;
-    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+margin-bottom: 5px;
+
+  }
+  .chat-header-container{
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 5px;
+    display: flex;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    flex-direction: column;
   }
-  
   .chat-header h3 {
     margin: 0;
   }
-  
+  .chat-header-container h4{
+    margin:0
+  }
   .close-button {
     background: none;
     border: none;
