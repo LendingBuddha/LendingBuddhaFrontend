@@ -4,10 +4,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { AuthContext } from '../../authContext/AuthContext';
 
-
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const { user } = useContext(AuthContext); // Get the user from AuthContext
+    const { user } = useContext(AuthContext);
+
+    console.log('User from AuthContext:', user);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -28,8 +29,10 @@ const Navbar = () => {
                 <li><Link to="/AboutUs">About us</Link></li>
                 {user ? (
                     <>
-                        <li><Link to="/FindLenders">Find Lenders</Link></li>
-                        <li><Link to="/Profile">Profile</Link></li> {/* Example additional link */}
+                        {user.role === 'borrower' && (
+                            <li><Link to="/FindLenders">Find Lenders</Link></li>
+                        )}
+                        <li><Link to="/Profile">Profile</Link></li>
                     </>
                 ) : (
                     <>
