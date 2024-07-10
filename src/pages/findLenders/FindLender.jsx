@@ -74,7 +74,7 @@ const [roomData, setRoomData] = useState();
   //   };
   //   fetchBorrowers();
   // }, []);
-  const onBeginChat = async () => {
+  const onBeginChat = async (lender) => {
     try {
       const res = await axios.get(
         `http://localhost:3000/chatroom/create/${lender.uid}`,
@@ -109,7 +109,7 @@ const [roomData, setRoomData] = useState();
               <td>{lender.name}</td>
               <td>{lender.email}</td>
               <td>
-                <button className="chatButton" onClick={()=>{setChatPopUp(true), setLender(lender), onBeginChat()}}>Chat</button>
+                <button className="chatButton" onClick={()=>{setChatPopUp(true), setLender(lender), onBeginChat(lender)}}>Chat</button>
               </td>
             </tr>
           ))}

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState,useContext } from "react";
 import "../home/home.css";
 import CustomerReview from "../../components/reviews/CustomerReviews";
@@ -14,11 +14,11 @@ function Home() {
   const [chatPopUp, setChatPopUp]=useState(false);
   const [lender, setLender]=useState();
   const [roomData, setRoomData] = useState();
-
+const navigate=useNavigate();
   const toggleChat = () => {
-    setChatPopUp(!chatPopUp);
+    // setChatPopUp(!chatPopUp);
+    navigate('/FindLenders')
   };
-  console.log(user.role)
   const handleChange = (event) => {
     switch (event.target.name) {
       case "amt":
@@ -458,8 +458,8 @@ function Home() {
                 <Link to={""}>Personal Loan Ahmedabad</Link>
               </p>
               {/* To be developed */}
-              {/* {chatPopUp && <ChatBox setChatPopUp={setChatPopUp} lender={lender} roomData={roomData} />}
-            <FloatingChatButton onClick={toggleChat} /> */}
+              {/* {chatPopUp && <ChatBox setChatPopUp={setChatPopUp} lender={lender} roomData={roomData} />}*/}
+            <FloatingChatButton onClick={toggleChat} /> 
             </div>
           </div>
         </section>
