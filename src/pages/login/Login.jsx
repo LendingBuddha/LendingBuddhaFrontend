@@ -1,71 +1,93 @@
-import '../login/login.css'
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { AuthContext } from "../../authContext/AuthContext";
+import { loginStart, loginSuccess, loginFailure } from "../../authContext/AuthActions";
+import "../login/login.css"; 
+import { Link } from "react-router-dom";
 
-function Login() {
+const Login = () => {
+  const { dispatch } = useContext(AuthContext);
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+  });
+  const [role, setRole] = useState("lender");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCredentials((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleRoleChange = (role) => {
+    setRole(role);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(loginStart());
+    try {
+      console.log('Sending login request:', { role, credentials });
+      const response = await axios.post(
+        `http://localhost:3000/api/auth/login/${role}`,
+        credentials,
+        { withCredentials: true }
+      );
+      console.log('Login response:', response.data);
+      dispatch(loginSuccess(response.data));
+    } catch (error) {
+      console.error('Login error:', error);
+      dispatch(loginFailure());
+    }
+  };
+
   return (
-
-    <div className="limiter">
-    <div className="container-login100">
-        <div className="wrap-login100">
-            <div className="login100-pic js-tilt" data-tilt>
-                <img src="{{ url_for('static',filename='#') }}" alt="image" />
-            </div>
-
-            <form className="login100-form validate-form" method="POST">
-                <span className="login100-form-title">
-					LOG IN
-				</span>
-              
-
-
-{/* Email Address */}
-                
-                <div className="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                    <input className="input100" type="email" name="email" id="email" placeholder="Email" />
-                    <span className="focus-input100"></span>
-                    <span className="symbol-input100">
-						<i class="fa fa-envelope" aria-hidden="true"></i>
-					</span>
-                </div>
-
-{/* password */}
-
-                <div className="wrap-input100 validate-input" data-validate="Password is required">
-                    <input className="input100" type="password" name="passw" id="passw" placeholder="Password" />
-                    <span className="focus-input100"></span>
-                    <span className="symbol-input100">
-						<i class="fa fa-lock" aria-hidden="true"></i>
-					</span>
-                </div>
-
-{/* login button */}
-                
-                <div className="container-login100-form-btn">
-                    <button type="submit" className="login100-form-btn">
-						Login
-					</button>
-                </div>
-
-{/* forget password */}
-<div class="container-forget100-form-btn">
-                    <button type="submit" className="forget100-form-btn">
-						Forget Password
-					</button>
-                </div>
-
-{/* Register account */}
-
-                <div className="text-center p-t-90">
-                    Don't have an account?
-                    <a className="txt3" href="#">
-						Register now.
-					</a>
-                </div>
-            </form>
-        </div>
+    <div className="loginContainer">
+      <h2>Login as</h2>
+      <div className="roleSelector">
+        <button
+          type="button"
+          className={role === "lender" ? "toggleButton active" : "toggleButton"}
+          onClick={() => handleRoleChange("lender")}
+        >
+          Lender
+        </button>
+        <button
+          type="button"
+          className={role === "borrower" ? "toggleButton active" : "toggleButton"}
+          onClick={() => handleRoleChange("borrower")}
+        >
+          Borrower
+        </button>
+      </div>
+      <form onSubmit={handleSubmit} className="loginForm">
+        <input
+          type="email"
+          name="email"
+          placeholder="name@example.com"
+          value={credentials.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter Password"
+          value={credentials.password}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit" className="loginBtn">
+          Login
+        </button>
+      </form>
+      <p className="signupLink">
+        Don&apos;t have an account? <Link to="/signup">Sign Up Here</Link>
+      </p>
     </div>
-</div>
-
   );
-}
+};
 
 export default Login;

@@ -1,3 +1,416 @@
-.root{
-    margin: auto;
+#root {
+    padding: 0!important;
+    margin: 0!important;
+    max-width: 100%!important;
+    width: 100%;
+    overflow: hidden;  
+    font-size: 0.8rem; 
+}
+
+.root {
+    width: 100%;
+    margin: 0;
+    padding: 0; 
+}
+.root .h2{
+    color: var(--primary-color);
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 3rem;
+    background-color: var(--home-color);
+    background-image: "/public/buddha";
+    background-size: stretch;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    min-width: 320px;
+    overflow: hidden;
+    position: relative;
+}
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+    z-index: 1; /* Ensure the overlay is above the background */
+}
+
+.container > * {
+    
+    position: relative;
+    z-index: 2; /* Ensure the content is above the overlay */
+}
+    
+
+.container p {
+    color: var(--primary-color);
+}
+
+.container h2 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.container p {
+    padding: 0 8rem;
+    max-width: 50rem;
+    min-width: 30rem;
+}
+
+.container .btns {
+    display: flex;
+    padding-top: 2rem;
+    
+}
+
+.btns .btn {
+    margin: 1rem;
+    background-color: var(--button-color);
+    padding: 10px;
+    min-width: 100px; 
+    max-width: 300px; 
+    width: 80%; 
+}
+
+
+.container a {
+    color: var(--text-color);
+}
+
+#emi {
+    padding: 2rem 0;
+    padding-top: 0;
+    background-color:var(--primary-color);
+    color: var(--text-color);
+    
+    
+}
+
+#emi h2 {
+    background-color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+    
+}
+
+#emi .input {
+    
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.input .elementWrapper {
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.elementWrapper input {
+    background-color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    border-radius: 5px;
+    margin-right: 1rem;
+    width: 100%;
+    
+}
+.elementWrapper input:focus {
+    outline: 1px solid #000;
+}
+
+.elementWrapper label {
+    min-width: max-content;
+    color: var(--text-color);
+    font-weight: bold;
+    margin-right: 2rem;
+    border-color: var(--secondary-color);
+}
+
+#result {
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+#result .emi_component {
+    width: 30%;
+    margin: 0 0.5rem;
+    background-color: var(--primary-color);
+}
+
+#result .emi_component:first-child {
+    margin-left: 1rem;
+}
+
+#result .emi_component:last-child {
+    margin-right: 1rem;
+}
+
+.emi_component .emi_heading {
+    background-color: var(--secondary-color);
+    display: block;
+    padding: 0.5rem;
+    font-weight: bold;
+}
+
+.emi_component .emi_body {
+    padding: 0.5rem;
+    display: block;
+    font-weight: bold;
+}
+
+#help_you {
+    background-color: var(--primary-color);
+    color:var(--text-color);
+    padding: 4rem 1rem;
+}
+
+#help_you .heading {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 0 4rem;
+}
+
+#help_you .body {
+    text-align: center;
+    max-width: 30rem;
+    margin: 0 auto;
+}
+
+#help_you .cards {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#help_you .card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 45%;
+    box-sizing: border-box;
+    margin: 1rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    justify-content: center;
+}
+
+#help_you .card:first-child {
+    margin-right: 1rem;
+}
+
+#help_you .card ul {
+    list-style: none;
+}
+
+#help_you .card ul li {
+    margin-bottom: 1rem;
+}
+
+#help_you .card button {
+    margin-top: 1rem;
+    background-color: #209797;
+}
+
+#help_you .card a {
+    display: block;
+    color: #209797;
+    margin-top: 1rem;
+}
+
+#need_loan {
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+#need_loan .heading {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+}
+
+#need_loan .cards {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+#need_loan .card {
+    padding: 2rem;
+    width: 30%;
+    box-sizing: border-box;
+    margin: 1rem;
+    background-color: var(--secondary-color);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+#need_loan .card img {
+    width: 50%;
+    height: auto;
+}
+
+#image_link {
+    background-image: url("https://getlendingbuddha.online/static/images/background/footer1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 20rem;
+    backdrop-filter: brightness(0.3);
+}
+
+#image_link p {
+    font-weight: bold;
+    color: #000000;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+#image_link button {
+    background-color: #209797;
+}
+
+#image_link span {
+    color: #209797;
+}
+
+.section {
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 3rem 0;
+}
+
+.section .card {
+    padding: 2rem;
+    width: 20%;
+    box-sizing: border-box;
+    margin: 1rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#ai_powered img {
+    width: 25rem;
+}
+
+
+#press a {
+    color: #209797;
+}
+
+#proven_process .body{
+    text-align: center;
+    
+}
+
+#proven_process .cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#ai_powered .body {
+    padding: 0;
+    text-align: center;
+}
+
+#ai_powered .cards {
+    text-align: center;
+    margin-left: 50px;
+}
+
+#image_link2 {
+    background-image: url("https://getlendingbuddha.online/static/images/background/footer2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 20rem;
+    backdrop-filter: brightness(0.3);
+}
+
+#image_link2 p {
+    font-weight: bold;
+    color: #000000;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+#image_link2 button {
+    background-color: #209797;
+}
+
+#quick_links {
+    background-color: #f5f5f5;
+    padding: 3rem 0;
+}
+
+#quick_links .heading {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#quick_links .cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#quick_links .card {
+    width: 20%;
+    margin: 1rem;
+}
+
+#quick_links .card .heading {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#quick_links .card .body {
+    display: flex;
+    flex-direction: column;
+}
+
+#quick_links .card .body a {
+    color: #209797;
+    margin-bottom: 0.5rem;
 }

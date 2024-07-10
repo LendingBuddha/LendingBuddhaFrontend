@@ -1,20 +1,22 @@
-// src/components/Signup.js
 import "../signup/signup.css";
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "../../context/AuthContext.jsx";
-
+import { AuthContext } from "../../authContext/AuthContext";
+import { loginStart, loginSuccess, loginFailure } from "../../authContext/AuthActions";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
-  const { login } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     email: "",
-    name: "",
+    fullname: "",
     password: "",
-    aadhar: "",
+    aadharcard: "",
     pancard: "",
     dob: "",
-    role: "Lendor",
+    phonenumber: "",
+    profilePic: null,
+    cibilscore: "", 
   });
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -26,26 +28,49 @@ const Signup = () => {
     });
   };
 
+  const handleFileChange = (e) => {
+    setFormData({
+      ...formData,
+      profilePic: e.target.files[0],
+    });
+  };
+
   const handleRoleChange = (role) => {
     setFormData({
       ...formData,
-      role,
+      role : role.toLowerCase(),
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(loginStart());
+
+    const signupFormData = new FormData();
+    for (const key in formData) {
+      if (key !== "cibilscore" || formData.role === "borrower") {
+        signupFormData.append(key, formData[key]);
+      }
+    }
+
     try {
       const response = await axios.post(
-        `/api/signup/${formData.role}`,
-        formData,
-        { withCredentials: true }
+        `http://localhost:3000/api/auth/signup/${formData.role}`, 
+        signupFormData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
       );
+
       console.log(response.data);
       setShowSuccess(true);
-      login();
+      dispatch(loginSuccess(response.data));
     } catch (error) {
       console.error("There was an error creating the account!", error);
+      dispatch(loginFailure(error.message));
     }
   };
 
@@ -57,13 +82,13 @@ const Signup = () => {
           <button
             type="button"
             className={
-              formData.role === "Lendor"
+              formData.role === "Lender"
                 ? "toggle-button active"
                 : "toggle-button"
             }
-            onClick={() => handleRoleChange("Lendor")}
+            onClick={() => handleRoleChange("lender")}
           >
-            Lendor
+            Lender
           </button>
           <button
             type="button"
@@ -72,12 +97,12 @@ const Signup = () => {
                 ? "toggle-button active"
                 : "toggle-button"
             }
-            onClick={() => handleRoleChange("Borrower")}
+            onClick={() => handleRoleChange("borrower")}
           >
             Borrower
           </button>
         </div>
-        <p>Enter the details below to create Account</p>
+        <p>Enter the details below to create an account</p>
         <form onSubmit={handleSubmit} className="account-form">
           <input
             type="email"
@@ -89,9 +114,9 @@ const Signup = () => {
           />
           <input
             type="text"
-            name="name"
+            name="fullname"
             placeholder="Your name"
-            value={formData.name}
+            value={formData.fullname}
             onChange={handleChange}
             required
           />
@@ -103,12 +128,11 @@ const Signup = () => {
             onChange={handleChange}
             required
           />
-          {/* add logic to see password */}
           <input
             type="text"
-            name="aadhar"
+            name="aadharcard"
             placeholder="Enter Aadhar Card Number"
-            value={formData.aadhar}
+            value={formData.aadharcard}
             onChange={handleChange}
             required
             maxLength="12"
@@ -139,15 +163,51 @@ const Signup = () => {
                 .split("T")[0]
             }
           />
+          <input
+            type="text"
+            name="phonenumber"
+            placeholder="Enter Phone Number"
+            value={formData.phonenumber}
+            onChange={handleChange}
+            required
+          />
+          {formData.role === "borrower" && ( // Conditional rendering for CIBIL score
+            <input
+              type="text"
+              name="cibilscore"
+              placeholder="Enter CIBIL Score"
+              value={formData.cibilscore}
+              onChange={handleChange}
+              required
+              pattern="\d+"
+              title="CIBIL score must be a number"
+            />
+          )}
+          <div className="file-input-container">
+            <input
+              type="file"
+              name="profilePic"
+              onChange={handleFileChange}
+              className="file-input"
+              id="profilePic"
+              required
+            />
+            <label htmlFor="profilePic" className="file-input-label">
+              Choose Image
+            </label>
+            <div className="file-input-text">
+              {formData.profilePic ? formData.profilePic.name : "No file chosen"}
+            </div>
+          </div>
           <button type="submit" className="create-account-btn">
             Create Account
           </button>
           <p className="login-link">
-            Already have an Account? <a href="/login">Login Here</a>
+            Already have an account? <Link to="/login">Login Here</Link>
           </p>
         </form>
         <p className="terms">
-          By clicking Continue you are agree to our{" "}
+          By clicking Continue you agree to our{" "}
           <a href="/terms">terms of services</a> and{" "}
           <a href="/privacy">Privacy policy</a>
         </p>

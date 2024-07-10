@@ -1,0 +1,8 @@
+/* src/components/OverviewChart.css */
+.chart-container {
+    background-color: #1f1f1f;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  

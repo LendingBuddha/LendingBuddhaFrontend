@@ -1,0 +1,27 @@
+/* Ensure .dashboard takes full height */
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  height: 100%; /* Ensure .dashboard takes full viewport height */
+  box-sizing: border-box;
+}
+
+.card {
+  background-color: #1f1f1f;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.overview {
+  flex: 2;
+}
+
+.recent-sales {
+  flex: 1;
+  min-width: 300px;
+}
