@@ -7,7 +7,7 @@ export default defineConfig({
   server : {
     "proxy" :  {
       "/api" : {
-        target : "https://vigilant-space-meme-x9xgp66j7492vx56-3000.app.github.dev/" 
+        target : "https://relaxed-sorbet-6cbb69.netlify.app/" 
       }
     }
   }

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authContext/AuthContext";
 import { loginStart, loginSuccess, loginFailure } from "../../authContext/AuthActions";
 import "../login/login.css"; 
@@ -12,6 +13,7 @@ const Login = () => {
     password: "",
   });
   const [role, setRole] = useState("lender");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,6 +39,11 @@ const Login = () => {
       );
       console.log('Login response:', response.data);
       dispatch(loginSuccess(response.data));
+      
+      // Navigate to Find Lenders component if the role is borrower
+      if (role === "borrower") {
+        navigate("/");
+      }
     } catch (error) {
       console.error('Login error:', error);
       dispatch(loginFailure());
