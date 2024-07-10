@@ -55,7 +55,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        `https://vigilant-space-meme-x9xgp66j7492vx56-3000.app.github.dev/api/auth/signup/${formData.role}`, 
+        `http://localhost:3000/api/auth/signup/${formData.role}`, 
         signupFormData,
         {
           headers: {

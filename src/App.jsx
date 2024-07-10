@@ -12,6 +12,7 @@ import AboutUs from './pages/aboutUs/AboutUs';
 import './App.css';
 import Dashboard from './pages/dashboard/Dashboard';
 import LoadingIndicator from './components/Loading/LoadingIndicator';
+import ChatRoom from './pages/chatRoom/ChatRoom';
 
 const Footer = lazy(() => import(`./components/footer/Footer`))
 function App() {
@@ -40,23 +41,30 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/AboutUs" element={<AboutUs />} />
 
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="chatroom" element={<ChatRoom />} />
           {/* Protected routes */}
-          {isLoggedIn && (
+          {/* {isLoggedIn && (
             <>
               <Route path="/borrowers" element={<Borrowers />} />
               <Route path="/investors" element={<Investors />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="chatroom" element={<ChatRoom />} />
+
             </>
-          )}
+          )} */}
 
           {/* Redirect to login if not authenticated */}
-          {!isLoggedIn && (
+          {/* {!isLoggedIn && (
             <>
               <Route path="/borrowers" element={<Navigate to="/login" />} />
               <Route path="/investors" element={<Navigate to="/login" />} />
               <Route path="/dashboard" element={<Navigate to="/login" />} />
+              
             </>
-          )}
+          )} */}
+          {/* <Route path="/signup/borrower" element={<SignupBorrower />} />
+          <Route path="/signup/lender" element={<SignupLender />} /> */}
         </Routes>
         <Suspense fallback={<LoadingIndicator />}>
         <Footer />

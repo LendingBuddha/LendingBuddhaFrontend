@@ -31,7 +31,7 @@ const Login = () => {
     try {
       console.log('Sending login request:', { role, credentials });
       const response = await axios.post(
-        `https://vigilant-space-meme-x9xgp66j7492vx56-3000.app.github.dev/api/auth/login/${role}`,
+        `http://localhost:3000/api/auth/login/${role}`,
         credentials,
         { withCredentials: true }
       );

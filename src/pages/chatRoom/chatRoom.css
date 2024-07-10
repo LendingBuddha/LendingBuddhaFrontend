@@ -1,0 +1,30 @@
+.chatroom-container{
+    display: flex;
+    flex: 1;
+    background-color: rgba(0, 0, 255, 0);
+    height:auto;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    /* background-color: brown; */
+}
+.message-container{
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    /* background-color: antiquewhite; */
+}
+.message{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    align-self: flex-end;
+    background-color: rgb(16, 14, 124);
+    border-width: 1;
+    border-radius: 5px;
+}
+.input-container{
+    bottom: 0;
+    position:relative;
+}
