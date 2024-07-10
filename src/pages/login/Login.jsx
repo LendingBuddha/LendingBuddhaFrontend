@@ -31,7 +31,7 @@ const Login = () => {
     try {
       console.log('Sending login request:', { role, credentials });
       const response = await axios.post(
-        `https://relaxed-sorbet-6cbb69.netlify.app/api/auth/login/${role}`,
+        `https://vigilant-space-meme-x9xgp66j7492vx56-3000.app.github.dev/api/auth/login/${role}`,
         credentials,
         { withCredentials: true }
       );
