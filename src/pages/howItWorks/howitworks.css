@@ -17,7 +17,7 @@
 
 .howItWorks {
     width: 100%;
-    background-color: #166993;
+    background-color: var(--primary-color);
     margin-top: 2rem;
     color: #000;
     display: flex;
@@ -33,7 +33,10 @@
 }
 
 .howItWorks .card {
+    display: flex;
+    flex-direction: column;
     margin-top: 2rem;
+    text-align: center;
     border: 0.15rem solid #000;
     background-color: #fff;
     width: 80%;
@@ -46,6 +49,7 @@
 }
 
 .howItWorks .card .cardHeading {
+
     background-color: #2f2f2f;
     color: #fff;
     padding: 0.5rem 1rem;
@@ -58,7 +62,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     text-decoration: underline;
-    background-color: #f0ffff;
+    background-color: var(--accent-color);
     margin: 1rem 0;
     padding: 0.5rem 1rem;
 }
@@ -76,12 +80,12 @@
 }
 
 .footBanner p {
-    background-color: #dedede;
-    border-left: 5px solid #878787;
+    background-color: var(--accent-color);
+    border-left: 5px solid var(--third-color);
     width: 70%;
     padding: 2rem 2.5rem;
     text-align: left;
-    color: #000;
+    color: var(--text-color);
     font-size: 1.1rem;
     font-style: italic;
 }

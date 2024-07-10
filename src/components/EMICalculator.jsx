@@ -94,7 +94,7 @@ const EmiCalculator = () => {
 
   return (
     <>
-      <button className="collapse-button" onClick={toggleCollapse}>
+      <button className="collapse-button" onClick={toggleCollapse} id="#emi-calculator">
         {isCollapsed ? <h3>Calculate EMI &#709;</h3> : <h3>Hide EMI Calculator &#708;</h3>}
       </button>
       {!isCollapsed && (

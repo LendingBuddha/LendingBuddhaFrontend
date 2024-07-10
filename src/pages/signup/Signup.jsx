@@ -55,7 +55,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/auth/signup/${formData.role}`, 
+        `https://relaxed-sorbet-6cbb69.netlify.app/api/auth/signup/${formData.role}`, 
         signupFormData,
         {
           headers: {

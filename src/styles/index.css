@@ -1,282 +1,64 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    --home-color:#2ab4be ;
+    --primary-color: #ffffff; 
+    --secondary-color: #055e64;
+    --third-color: #444444;
+    --text-color: #000000;
+    --button-color: #8e2cb2;
+    --accent-color: #bbbbbb;
+    --footer-color: #252e3f;
+}
+
+body, html {
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+:root {
   line-height: 1.5;
-  font-weight: 400;
-
+  font-weight: 100;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
 a {
-  font-weight: 500;
-  color: #646cff;
+  font-weight: 200;
+  color: var(--text-color);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--secondary-color);
 }
 
-body {
-  margin: 0;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
- h1 {
-  font-size: 3.2em;
+h1 {
+  font-size: 2.2em;
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}  */
-
-
-
-/* Styling for Footer Section Starts From Here */
-.footer {
-  background-color: #000;
-  color: #fff;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.footer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.footer-sections {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  flex-wrap: wrap;
-  margin-left: 35px;
-}
-
-.footer-section {
-  flex: 1;
-  min-width: 180px;
-  margin-bottom: 20px;
-}
-
-.footer-section h4 {
-  margin-bottom: 10px;
-}
-
-.footer-section ul {
-  list-style-type: none;
-  text-align: left;
-}
-
-.footer-section ul li {
-  margin-bottom: 8px;
-}
-
-.footer-section ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer-contact {
-  width: 100%;
-  text-align: center;
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.footer-contact p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.footer-contact p svg {
-  margin-right: 10px;
-}
-
-.footer-subscribe {
-  flex: 1;
-  min-width: 250px;
-  padding: 30px;
-  text-align: right;
-}
-
-.footer-subscribe .social-icons {
-  margin-bottom: 20px;
-  text-align: right;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-
-.footer-subscribe .social-icons a {
-  color: #fff;
-  margin: 0 5px;
-}
-
-.subscribe-form {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.subscribe-form input {
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-  height: 35px;
-}
-
-.subscribe-form button {
-  padding: 5px 10px;
-  background-color: #6200ea;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 20px;
-  width: 100%;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-  .footer-sections {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-  }
-
-  .footer-section {
-      width: 100%;
-      padding: 10px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .footer-section ul {
-      text-align: center;
-  }
-
-  .footer-subscribe {
-      width: 100%;
-      text-align: center;
-      padding: 10px 0;
-  }
-
-  .footer-subscribe .social-icons {
-      justify-content: center;
-  }
-
-  .subscribe-form {
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .subscribe-form input,
-  .subscribe-form button {
-      width: 80%;
-      margin: 5px auto;
-  }
-
-  .footer-contact {
-      margin-left: 0;
-      align-items: center;
-  }
-
-  .footer-bottom {
-      margin-top: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-container {
-      padding: 10px;
-  }
-
-  .footer-sections {
-      margin-left: 0;
-  }
-
-  .footer-section {
-      padding: 10px 0;
-  }
-
-  .footer-subscribe .social-icons {
-      flex-wrap: wrap;
-      justify-content: center;
-  }
-
-  .subscribe-form input,
-  .subscribe-form button {
-      width: 100%;
-      margin-bottom: 10px;
-  }
-}
-/* Footer Styling Ends Here */
-
-/* NavBar Styling Starts From Here */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
+/* navar css */
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #000;
+  background-color: var(--primary-color);
   padding: 1rem;
+  color: var(--text-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-color: var(--accent-color);
 }
 
 .navbar-logo {
-  color: #fff;
   font-size: 1.5rem;
 }
 
@@ -292,39 +74,12 @@ body {
 }
 
 .navbar-links a, .dropbtn {
-  color: #fff;
+  color: var(--text-color);
   text-decoration: none;
   font-size: 1rem;
   background: none;
   border: none;
   cursor: pointer;
-}
-
-/* Dropdown Styles */
-.dropdown {
-  position: relative;
-}
-
-.dropdown-content {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  right: 0;
-  background-color: #000;
-  min-width: 160px;
-  z-index: 1;
-  border: 1px solid #ccc;
-}
-
-.dropdown-content a {
-  color: #fff;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #333;
 }
 
 /* Responsive Styles */
@@ -343,7 +98,7 @@ body {
       right: 0;
       width: 100%;
       height: calc(100vh - 80px);
-      background-color: #000;
+      background-color: var(--primary-color);
       justify-content: space-around;
       transform: translateX(100%);
       transition: transform 0.3s ease-in-out;
@@ -360,4 +115,6 @@ body {
   .menu-icon {
       display: block;
   }
+
+}
 }

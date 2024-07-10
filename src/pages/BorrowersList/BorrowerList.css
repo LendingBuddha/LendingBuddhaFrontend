@@ -1,0 +1,46 @@
+/* src/components/RecentSales.css */
+.recent-sales {
+    background-color: #1f1f1f;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  .recent-sales ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .recent-sales li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .recent-sales .avatar {
+    background-color: #3a3a3a;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+  }
+  
+  .recent-sales .details {
+    flex: 1;
+  }
+  
+  .recent-sales .name {
+    font-weight: bold;
+  }
+  
+  .recent-sales .email {
+    color: #ccc;
+  }
+  
+  .recent-sales .amount {
+    font-weight: bold;
+  }
+  

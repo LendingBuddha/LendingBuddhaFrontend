@@ -1,17 +1,18 @@
 /* src/components/login.module.css */
 
 .loginContainer {
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(65vh); /* Adjust based on the height of your navbar */
+  height: 100vh; /* Adjust based on the height of your navbar */
   flex-direction: column;
-  margin-top: 60px; /* Adjust based on the height of your navbar */
+  margin-top: 20px; /* Adjust based on the height of your navbar */
 }
 
 .loginContainer h2 {
   margin-bottom: 20px;
-  color: #ffffff; /* Ensure the text color contrasts with the background */
+  color: var(--text-color); /* Ensure the text color contrasts with the background */
 }
 
 .roleSelector {
@@ -27,7 +28,7 @@
   border-radius: 5px;
   cursor: pointer;
   background-color: #222;
-  color: #fff;
+  color: var(--secondary-color);
   transition: background-color 0.3s;
 }
 
@@ -36,18 +37,18 @@
 }
 
 .active {
-  background-color: #444;
-  color: #fff;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
 }
 
 .loginForm {
-  background-color: #000;
-  padding: 30px;
+  background-color: var(--third-color);
+  padding: 100px;
   border-radius: 10px;
   width: 100%;
   max-width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  color: #fff;
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,20 +61,20 @@
   border: none;
   border-radius: 5px;
   text-align: center;
-  background-color: #222;
-  color: #fff;
+  background-color: var(--accent-color);
+  color: var(--text-color);
   transition: background-color 0.3s;
 }
 
 .loginForm input:hover {
-  background-color: #333;
+  background-color: var(--button-color);
 }
 
 .loginBtn {
   width: 80%;
   padding: 10px;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--button-color);
+  color: var(--text-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -81,8 +82,8 @@
 }
 
 .loginBtn:hover {
-  background-color: #444;
-  color: #fff;
+  background-color: var(--accent-color);
+  color: var(--third-color);
 }
 
 .signupLink {
@@ -90,7 +91,7 @@
 }
 
 .signupLink a {
-  color: #fff;
+  color: var(--text-color);
   text-decoration: underline;
 }
 
@@ -101,7 +102,7 @@
 }
 
 .terms a {
-  color: #fff;
+  color: var(--secondary-color);
   text-decoration: underline;
 }
 

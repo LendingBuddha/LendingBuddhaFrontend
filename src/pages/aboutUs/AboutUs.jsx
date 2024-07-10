@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './aboutUs.css';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Footer from '../../components/Footer';
 
 const AboutUs = () => {
   const [expandedSection, setExpandedSection] = useState(null);
@@ -15,7 +14,7 @@ const AboutUs = () => {
     <div className="about-us-container">
       <h1>About Us</h1>
       <p className="intro-text">
-        Welcome to Lending Buddha, India's premier peer-to-peer e-Lending Marketplace. We are committed to creating a transparent, efficient, and conducive environment for both borrowers and lenders to interact and explore business opportunities together. Our platform serves as a bridge, enabling direct communication and negotiation between parties, thereby eliminating the need for intermediaries and reducing the overall cost of transactions.
+        Welcome to Lending Buddha, India&apos;s premier peer-to-peer e-Lending Marketplace. We are committed to creating a transparent, efficient, and conducive environment for both borrowers and lenders to interact and explore business opportunities together. Our platform serves as a bridge, enabling direct communication and negotiation between parties, thereby eliminating the need for intermediaries and reducing the overall cost of transactions.
       </p>
 
       {[
@@ -34,7 +33,6 @@ const AboutUs = () => {
         </div>
       ))}
     </div>
-    <Footer/>
    </> 
   );
 };
