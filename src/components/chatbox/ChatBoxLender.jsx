@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useContext } from 'react';
 import { FiSend } from 'react-icons/fi';
 import './ChatBox.css';
 import io from "socket.io-client";
@@ -6,16 +6,17 @@ import axios from "axios";
 const socket = io("http://localhost:3000");
 
 import Message from './Message';
-const user = JSON.parse(localStorage.getItem("user"));
+import { AuthContext } from '../../authContext/AuthContext';
 
-const ChatBox = ({ setChatPopUp, lender,roomData }) => {
+
+const ChatBoxLender = ({ setChatPopUp,roomData }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-
+const {user}=useContext(AuthContext);
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
   };
-
+console.log("user: ",user)
   useEffect(() => {
     if (user) {
       socket.emit("join-room", user.data.uid);
@@ -30,7 +31,7 @@ const ChatBox = ({ setChatPopUp, lender,roomData }) => {
     return () => {
       socket.off("receiveMessage");
     };
-  }, [user, roomData]);
+  }, []);
 
   const sendMessagesToDb = async (roomData, message) => {
     try {
@@ -88,7 +89,7 @@ const ChatBox = ({ setChatPopUp, lender,roomData }) => {
         </button>
         </div>
       
-      <h4> Chat with: {lender.name}</h4>
+      {/* <h4> Chat with: {lender.name}</h4> */}
       </div>
       <div className="messages">
       {messages.map((msg, index) => (
@@ -110,4 +111,4 @@ const ChatBox = ({ setChatPopUp, lender,roomData }) => {
   );
 };
 
-export default ChatBox;
+export default ChatBoxLender;

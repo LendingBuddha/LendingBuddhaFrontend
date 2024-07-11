@@ -36,7 +36,8 @@ const Login = () => {
         credentials,
         { withCredentials: true }
       );
-      const user = { ...response.data.user, role };
+      const user = { ...response.data, role };
+      console.log(response.data)
       localStorage.setItem("user", JSON.stringify(user));
       dispatch(loginSuccess(user));
       navigate("/");

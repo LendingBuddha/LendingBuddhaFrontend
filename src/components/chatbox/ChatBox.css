@@ -11,6 +11,8 @@
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
+    z-index: 3;
+
     transition: bottom 0.3s ease;
   }
   

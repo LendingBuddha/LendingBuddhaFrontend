@@ -1,6 +1,6 @@
 // src/components/dashboard/Dashboard.js
 import React from 'react';
-import OverviewChart from '../overviewChart/overviewChart';
+import OverviewChart from '../overviewChart/overviewChart.jsx';
 import './dashboard.css';
 
 const Dashboard = ({ lenderData }) => {

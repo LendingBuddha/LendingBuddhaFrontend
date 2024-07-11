@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import axios from 'axios';
 import './findLenders.css';
-import ChatBox from '../../components/chatbox/ChatBox';
+import ChatBox from '../../components/chatbox/ChatBoxBorrower';
+import { AuthContext } from '../../authContext/AuthContext';
 const lenders=[
   {
     name: "John Doe",
@@ -19,13 +20,13 @@ const lenders=[
     uid: "aQjnqjiBAEd0ZgZSAciaZpIlRGz1",
   }
 ]
-const user = JSON.parse(localStorage.getItem("user"));
+
 
 const FindLender = () => {
 const [chatPopUp, setChatPopUp]=useState(false);
 const [lender, setLender]=useState();
 const [roomData, setRoomData] = useState();
-
+const {user}=useContext(AuthContext);
 // Currently no route for fetching lenders, this code is not usable 
   // useEffect(() => {
   // Fetching data from the provided JSON structure
@@ -85,12 +86,13 @@ const [roomData, setRoomData] = useState();
           withCredentials: true,
         }
       );
-      // console.log(res.data);
+      console.log(res.data);
       setRoomData(res.data);
     } catch (error) {
       console.log(error);
     }
   };
+  console.log(user)
   return (
     <>
     <div className="findLenderContainer">
