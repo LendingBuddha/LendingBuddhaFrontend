@@ -31,21 +31,16 @@ const Login = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      console.log('Sending login request:', { role, credentials });
       const response = await axios.post(
         `http://localhost:3000/api/auth/login/${role}`,
         credentials,
         { withCredentials: true }
       );
-      console.log('Login response:', response.data);
-      dispatch(loginSuccess(response.data));
-      
-      // Navigate to Find Lenders component if the role is borrower
-      if (role === "borrower") {
-        navigate("/");
-      }
+      const user = { ...response.data.user, role };
+      localStorage.setItem("user", JSON.stringify(user));
+      dispatch(loginSuccess(user));
+      navigate("/");
     } catch (error) {
-      console.error('Login error:', error);
       dispatch(loginFailure());
     }
   };
