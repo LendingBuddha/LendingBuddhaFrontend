@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authContext/AuthContext";
-import { loginStart, loginSuccess, loginFailure } from "../../authContext/AuthActions";
+import { login } from "../../authContext/apiCalls";
 import "../login/login.css"; 
 import { Link } from "react-router-dom";
 
@@ -29,20 +28,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginStart());
-    try {
-      const response = await axios.post(
-        `http://localhost:3000/api/auth/login/${role}`,
-        credentials,
-        { withCredentials: true }
-      );
-      const user = { ...response.data.user, role };
-      localStorage.setItem("user", JSON.stringify(user));
-      dispatch(loginSuccess(user));
-      navigate("/");
-    } catch (error) {
-      dispatch(loginFailure());
-    }
+    await login(credentials, role, dispatch);
+    navigate("/");
   };
 
   return (

@@ -1,12 +1,12 @@
 import "../signup/signup.css";
 import React, { useState, useContext } from "react";
-import axios from "axios";
 import { AuthContext } from "../../authContext/AuthContext";
-import { loginStart, loginSuccess, loginFailure } from "../../authContext/AuthActions";
-import { Link } from "react-router-dom";
+import { signup } from "../../authContext/apiCalls"; // Assuming you place the login and signup functions in api/auth.js
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     fullname: "",
@@ -16,7 +16,8 @@ const Signup = () => {
     dob: "",
     phonenumber: "",
     profilePic: null,
-    cibilscore: "", 
+    cibilscore: "",
+    role: "lender",
   });
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -35,42 +36,12 @@ const Signup = () => {
     });
   };
 
-  const handleRoleChange = (role) => {
-    setFormData({
-      ...formData,
-      role : role.toLowerCase(),
-    });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginStart());
-
-    const signupFormData = new FormData();
-    for (const key in formData) {
-      if (key !== "cibilscore" || formData.role === "borrower") {
-        signupFormData.append(key, formData[key]);
-      }
-    }
-
-    try {
-      const response = await axios.post(
-        `https://relaxed-sorbet-6cbb69.netlify.app/api/auth/signup/${formData.role}`, 
-        signupFormData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials: true,
-        }
-      );
-
-      console.log(response.data);
+    const success = await signup(formData, dispatch);
+    if (success) {
       setShowSuccess(true);
-      dispatch(loginSuccess(response.data));
-    } catch (error) {
-      console.error("There was an error creating the account!", error);
-      dispatch(loginFailure(error.message));
+      navigate("/");
     }
   };
 
@@ -82,22 +53,22 @@ const Signup = () => {
           <button
             type="button"
             className={
-              formData.role === "Lender"
+              formData.role === "lender"
                 ? "toggle-button active"
                 : "toggle-button"
             }
-            onClick={() => handleRoleChange("lender")}
+            onClick={() => setFormData({ ...formData, role: "lender" })}
           >
             Lender
           </button>
           <button
             type="button"
             className={
-              formData.role === "Borrower"
+              formData.role === "borrower"
                 ? "toggle-button active"
                 : "toggle-button"
             }
-            onClick={() => handleRoleChange("borrower")}
+            onClick={() => setFormData({ ...formData, role: "borrower" })}
           >
             Borrower
           </button>
@@ -171,7 +142,7 @@ const Signup = () => {
             onChange={handleChange}
             required
           />
-          {formData.role === "borrower" && ( // Conditional rendering for CIBIL score
+          {formData.role === "borrower" && (
             <input
               type="text"
               name="cibilscore"
