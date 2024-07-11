@@ -1,0 +1,64 @@
+/* PersonalLoansPune.css */
+
+.personal-loans-pune {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .personal-loans-pune p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .personal-loans-pune h2, .personal-loans-pune h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .personal-loans-pune ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 30px;
+  }
+  
+  .personal-loans-pune ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .personal-loans-pune ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #2ab4be; /* Use the accent color */
+  }
+  
+  .apply-now-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #2ab4be; /* Use the accent color */
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    text-decoration: none;
+  }
+  
+  .apply-now-btn:hover {
+    background-color: #228f99; /* Darker shade of the accent color */
+  }
+  

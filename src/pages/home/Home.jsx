@@ -348,28 +348,28 @@ function Home() {
           <div className="card">
             <p className="heading">Product</p>
             <p className="body">
-              <Link to={''}>Personal Loan</Link>
-              <Link to={''}>Invest Money Online</Link>
-              <Link to={''}>Short Term Loan</Link><br />
-              <Link to={''}>Debt Consolidation Loan</Link>
-              <Link to={''}>Bad Credit Loan</Link>
-              <Link to={''}>Credit Card Consolidation</Link><br />
-              <Link to={''}>Wedding Loan</Link>
-              <Link to={''}>Travel Loan</Link>
-              <Link to={''}>Medical Loan</Link><br />
-              <Link to={''}>Home Renovation Loan</Link>
+              <Link to='/personal-loan'>Personal Loan</Link>
+              <Link to='/invest-money'>Invest Money Online</Link>
+              <Link to='/short-term'>Short Term Loan</Link><br />
+              <Link to='/debt-loan'>Debt Consolidation Loan</Link>
+              <Link to='/bad-credit'>Bad Credit Loan</Link>
+              <Link to='/credit'>Credit Card Consolidation</Link><br />
+              <Link to='/wedding'>Wedding Loan</Link>
+              <Link to='/travel'>Travel Loan</Link>
+              <Link to='/medical'>Medical Loan</Link><br />
+              <Link to='/home-renovation'>Home Renovation Loan</Link>
             </p>
           </div>
           <div className="card">
             <p className="heading">Cities</p>
             <p className="body">
-              <Link to={''}>Personal Loan Delhi NCR</Link>
-              <Link to={''}>Personal Loan Bangalore</Link><br />
-              <Link to={''}>Personal Loan Mumbai</Link>
-              <Link to={''}>Personal Loan Hyderabad</Link><br />
-              <Link to={''}>Personal Loan Chennai</Link>
-              <Link to={''}>Personal Loan Pune</Link><br />
-              <Link to={''}>Personal Loan Ahmedabad</Link>
+              <Link to='/loan-delhi'>Personal Loan Delhi NCR</Link>
+              <Link to='/loan-bangalore'>Personal Loan Bangalore</Link><br />
+              <Link to='/loan-mumbai'>Personal Loan Mumbai</Link>
+              <Link to='/loan-hydrabad'>Personal Loan Hyderabad</Link><br />
+              <Link to='/loan-chennai'>Personal Loan Chennai</Link>
+              <Link to='/loan-pune'>Personal Loan Pune</Link><br />
+              <Link to='/loan-ahmedabad'>Personal Loan Ahmedabad</Link>
             </p>
               {/* for chat box */}
             {isChatOpen && <ChatBox onClose={toggleChat} />}
