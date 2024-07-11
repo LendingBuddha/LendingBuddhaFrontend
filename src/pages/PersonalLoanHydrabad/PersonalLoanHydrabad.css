@@ -1,0 +1,128 @@
+/* PersonalLoansInMumbai.css */
+
+.personal-loans-mumbai {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    padding: 30px;
+    background-color: #f4f4f9;
+    max-width: 1200px;
+    margin: 0 auto; 
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .header .heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--home-color); 
+    margin-bottom: 20px;
+  }
+  
+  .header-image {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .intro, .purpose, .benefits, .criteria, .documents {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 50px; 
+    text-align: center;
+  }
+  
+  .intro p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+  
+  /* Section Title */
+  .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2a9d8f;
+    margin-bottom: 30px;
+  }
+  
+  /* Custom List Styling */
+  .purpose ul, .benefits ul, .documents ul {
+    padding: 0;
+    margin: 0;
+    list-style: none; 
+  }
+  
+  .purpose li, .benefits li, .documents li {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.3s ease, background-color 0.3s ease; 
+  }
+  
+  .purpose li:hover, .benefits li:hover, .documents li:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* List Item Icon */
+  .purpose li::before, .benefits li::before, .documents li::before {
+    content: '✔'; 
+    font-size: 1.5rem;
+    color: #2a9d8f; 
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
+  
+  /* Table Styling */
+  .criteria table, .documents table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  thead {
+    background-color: #2a9d8f;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Documents Section */
+  .documents-section {
+    margin-bottom: 40px;
+  }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 1rem;
+    color: #555;
+    border-top: 1px solid #ddd;
+    margin-top: 50px;
+  }
+  

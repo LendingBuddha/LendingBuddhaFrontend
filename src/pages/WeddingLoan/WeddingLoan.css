@@ -1,0 +1,82 @@
+.personal-loan {
+    font-family: 'Roboto', sans-serif; /* Use a modern font for a professional look */
+    padding: 20px;
+    max-width:1500px; /* Center the content and limit the width */
+    margin: 0 auto; /* Center the container horizontally */
+    background-color: #f9f9f9; /* Light background color for better readability */
+    border-radius: 8px; /* Rounded corners for a smoother look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .heading {
+    font-size: 28px; /* Larger font size for the heading */
+    font-weight: 700; /* Bold font weight */
+    color: var(--secondary-color); /* Primary color for emphasis */
+    margin-bottom: 20px;
+    text-align: center; /* Center the heading text */
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: space-around; /* Distribute tabs evenly */
+    border-bottom: 2px solid var(--third-color); /* Underline the tabs */
+    margin-bottom: 20px;
+  }
+  
+  .tab-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 18px; /* Slightly larger font size for readability */
+    color: var(--third-color); /* Default color for tabs */
+    display: flex;
+    align-items: center;
+    transition: color 0.3s, border-bottom 0.3s; /* Smooth transitions */
+    border-bottom: 2px solid transparent; /* Transparent border for smooth underline effect */
+  }
+  
+  .tab-button .tab-icon {
+    margin-right: 8px;
+  }
+  
+  .tab-button.active {
+    color: var(--secondary-color);; /* Highlight active tab */
+    font-weight: 700; /* Bold font weight for active tab */
+    border-bottom: 2px solid var(--primary-color); /* Underline the active tab */
+  }
+  
+  .tab-content {
+    padding: 20px;
+    background-color: #ffffff; /* White background for the content area */
+    border-radius: 8px; /* Match the container's border radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Light shadow for content */
+  }
+  
+  .tab-content .content {
+    font-size: 16px;
+    line-height: 1.6; /* Improved line spacing for readability */
+    color: var(--text-color); /* Main text color */
+  }
+  
+  .tab-content ul {
+    list-style: disc; /* Disc style for list items */
+    padding-left: 20px; /* Indent list items */
+  }
+  
+  .tab-content li {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    .tabs {
+      flex-direction: column; /* Stack tabs vertically on smaller screens */
+    }
+  
+    .tab-button {
+      font-size: 16px; /* Slightly smaller font size on small screens */
+      padding: 8px 16px;
+    }
+  }
+  
