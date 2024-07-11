@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import '../home/home.css'
 import CustomerReview from '../../components/reviews/CustomerReviews';
 import FloatingChatButton from '../../components/chatbox/FloatingChatButton';
 import ChatBox from '../../components/chatbox/ChatBox';
 
 
+
 function Home() {
   const [p, setValue4] = useState(25000);
   let [r, setValue5] = useState(12);
   const [n, setValue6] = useState(6);
+  
+
 
   // floating  chat box
   const [isChatOpen, setIsChatOpen] = useState(false);

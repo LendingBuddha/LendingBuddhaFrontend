@@ -13,6 +13,8 @@ import './App.css';
 import Dashboard from './pages/dashboard/Dashboard';
 import LoadingIndicator from './components/Loading/LoadingIndicator';
 import FindLender from './pages/findLenders/FindLender';
+import Layout from './pages/layout/Layout'
+
 
 const Footer = lazy(() => import(`./components/footer/Footer`))
 function App() {
@@ -70,6 +72,7 @@ function App() {
         </Suspense>
       </div>
     </Router>
+    // <Layout/>
   );
 }
 

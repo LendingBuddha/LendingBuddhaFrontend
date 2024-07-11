@@ -2,6 +2,7 @@
 import React from 'react';
 import OverviewChart from '../overviewChart/overviewChart.jsx';
 import './dashboard.css';
+import ChatBox from '../../components/chatbox/ChatBox.jsx';
 
 const Dashboard = ({ lenderData }) => {
   if (!lenderData || !lenderData.dashboardOverview) {
@@ -56,6 +57,7 @@ const Dashboard = ({ lenderData }) => {
           loanIssuanceData={loanIssuanceData}
           paymentCollectionData={paymentCollectionData}
         />
+        {/* <ChatBox/> */}
         <div className="recent-sales">
           <h2>Total Borrowers</h2>
           <div className="sales-list">
