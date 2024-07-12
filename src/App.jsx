@@ -30,6 +30,7 @@ import PersonalLoanDelhiNCR from './pages/PersonalLoanDelhiNCR/PersonalLoanDelhi
 import PersonalLoanHydrabad from './pages/PersonalLoanHydrabad/PersonalLoanHydrabad'
 import PersonalLoanBangalore from './pages/PersonalLoanBangalore/PersonalLoanBangalore'
 import PersonalLoanAhamadabad from './pages/PersonalLoanAhamadabad/PersonalLoanAhamadabad';
+import Layout from "./pages/layout/Layout"
 
 const Footer = lazy(() => import(`./components/footer/Footer`))
 function App() {
@@ -75,10 +76,7 @@ function App() {
           <Route path='/loan-hydrabad' element={<PersonalLoanHydrabad/>}/>
           <Route path='/loan-bangalore' element={<PersonalLoanBangalore/>}/>
           <Route path='/loan-ahmedabad' element={<PersonalLoanAhamadabad/>}/>
-
-
-
-
+          <Route path='/dashboard' element={<Layout/>}/>
 
           {/* <Route path='/debt' element={</>}/> */}
 
