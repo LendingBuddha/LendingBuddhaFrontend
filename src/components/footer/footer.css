@@ -1,6 +1,6 @@
 .footer {
     background-color: var(--footer-color);
-    color: #fff;
+    color: var(--accent-color);
     padding: 20px;
     font-family: Arial, sans-serif;
   }
@@ -17,30 +17,36 @@
     width: 100%;
     flex-wrap: wrap;
     margin-left: 35px;
+
   }
   
   .footer-section {
     flex: 1;
     min-width: 180px;
     margin-bottom: 20px;
+    
   }
   
   .footer-section h4 {
     margin-bottom: 10px;
+    --textlink : #6bb6ca;
   }
   
   .footer-section ul {
     list-style-type: none;
     text-align: left;
+    
   }
   
   .footer-section ul li {
     margin-bottom: 8px;
+    
   }
   
   .footer-section ul li a {
     color: #fff;
     text-decoration: none;
+    color: var(--textlink-color);
   }
   
   .footer-contact {
@@ -79,7 +85,7 @@
   }
   
   .footer-subscribe .social-icons a {
-    color: #fff;
+    color: var(--accent-color);
     margin: 0 5px;
   }
   

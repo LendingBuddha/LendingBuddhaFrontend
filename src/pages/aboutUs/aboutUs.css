@@ -5,6 +5,7 @@
     font-family: Arial, sans-serif;
     margin-bottom: 15px;
     color: var(--text-color);
+    background-color: var(--primary-color);
   }
   
   h1 {

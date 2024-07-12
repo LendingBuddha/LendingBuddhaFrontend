@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import '../home/home.css'
 import CustomerReview from '../../components/reviews/CustomerReviews';
@@ -12,7 +12,11 @@ function Home() {
   let [r, setValue5] = useState(12);
   const [n, setValue6] = useState(6);
   
+  const navigate = useNavigate();
 
+  const AboutUs = () => {
+    navigate('/AboutUs');
+  };
 
   // floating  chat box
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -82,7 +86,7 @@ function Home() {
           <button className='btn'>Borrow</button>
           <button className='btn'>Lend</button>
         </div>
-        <a href="#">Contact Us</a>
+        <button className='btn'onClick={AboutUs}>Contact Us</button>
       </div>
 
 
