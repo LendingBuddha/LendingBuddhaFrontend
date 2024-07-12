@@ -1,37 +1,60 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import "../home/home.css";
 import CustomerReview from "../../components/reviews/CustomerReviews";
 import FloatingChatButton from "../../components/chatbox/FloatingChatButton";
 import { AuthContext } from "../../authContext/AuthContext";
 import ChatBoxBorrower from "../../components/chatbox/ChatBoxBorrower";
 import ChatBoxLender from "../../components/chatbox/ChatBoxLender";
-const roomData = {
-  _id: "668e356407edda33a7dda4c6",
-  participants: [
-    {
-      userId: "cZo4ItsT0gfk4lMOqiAgDfmM7e72",
-      userType: "Borrower",
-      _id: "668e356407edda33a7dda4c7",
-    },
-    {
-      userId: "aQjnqjiBAEd0ZgZSAciaZpIlRGz1",
-      userType: "Lender",
-      _id: "668e356407edda33a7dda4c8",
-    },
-  ],
-};
-const lender={uid: "aQjnqjiBAEd0ZgZSAciaZpIlRGz1",name:"John Doe"};
+import axios from "axios";
+import ChatRooms from "../../components/chatRooms/ChatRooms";
+// const roomData = {
+//   _id: "668e356407edda33a7dda4c6",
+//   participants: [
+//     {
+//       userId: "cZo4ItsT0gfk4lMOqiAgDfmM7e72",
+//       userType: "Borrower",
+//       _id: "668e356407edda33a7dda4c7",
+//     },
+//     {
+//       userId: "aQjnqjiBAEd0ZgZSAciaZpIlRGz1",
+//       userType: "Lender",
+//       _id: "668e356407edda33a7dda4c8",
+//     },
+//   ],
+// };
+const lender = { uid: "aQjnqjiBAEd0ZgZSAciaZpIlRGz1", name: "John Doe" };
 function Home() {
   const [p, setValue4] = useState(25000);
   let [r, setValue5] = useState(12);
   const [n, setValue6] = useState(6);
   const { user } = useContext(AuthContext);
   const [chatPopUp, setChatPopUp] = useState(false);
+  const [showChatRooms, setShowChatRooms] = useState(false);
+  const [chatRooms, setChatRooms] = useState([]);
+  const [roomData, setRoomData] = useState();
+  const [lender, setLender] = useState();
   const navigate = useNavigate();
   const toggleChat = () => {
-    setChatPopUp(!chatPopUp);
+    // setChatPopUp(!chatPopUp);
+    onGetRooms(user.data.uid);
+    setShowChatRooms(true);
     // navigate("/FindLenders");
+  };
+  const onSelectRoom = async (roomData) => {
+    setShowChatRooms(false);
+    setRoomData(roomData);
+    setChatPopUp(true);
+  };
+  const onGetRooms = async (userId) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:3000/api/chatrooms/${userId}`
+      );
+      setChatRooms(res.data);
+    } catch (error) {
+      console.log({ "get rooms error": error });
+    }
   };
   const handleChange = (event) => {
     switch (event.target.name) {
@@ -93,24 +116,14 @@ function Home() {
   const monthly_amt = Math.floor((p * r * (1 + r) ** n) / ((1 + r) ** n - 1));
   const total = monthly_amt * n;
   const interest = total - p;
-  // const onBeginChat = async (lender) => {
-  //   try {
-  //     const res = await axios.get(
-  //       `http://localhost:3000/chatroom/create/${lender.uid}`,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${user.refreshToken}`,
-  //         },
-  //         withCredentials: true,
-  //       }
-  //     );
-  //     console.log(res.data);
-  //     setRoomData(res.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  console.log("user role: ",user?.role)
+ 
+  useEffect(() => {
+    if (roomData) {
+      roomData.participants.map((participant) =>
+        participant.userType === "Lender" ? setLender(participant.userId) : null
+      );
+    }
+  }, [roomData]);
   return (
     <>
       <div className="root">
@@ -488,7 +501,25 @@ function Home() {
                 <br />
                 <Link to={""}>Personal Loan Ahmedabad</Link>
               </p>
-               {chatPopUp? user?.role==='borrower'? <ChatBoxBorrower setChatPopUp={setChatPopUp} lender={lender} roomData={roomData} />:<ChatBoxLender setChatPopUp={setChatPopUp} roomData={roomData} />:null}
+              {showChatRooms ? (
+                <ChatRooms chatRooms={chatRooms} onSelectRoom={onSelectRoom} />
+              ) : null}
+              {chatPopUp ? (
+                user?.role === "borrower" ? (
+                  <>
+                    <ChatBoxBorrower
+                      setChatPopUp={setChatPopUp}
+                      lender={lender}
+                      roomData={roomData}
+                    />
+                  </>
+                ) : (
+                  <ChatBoxLender
+                    setChatPopUp={setChatPopUp}
+                    roomData={roomData}
+                  />
+                )
+              ) : null}
               <FloatingChatButton onClick={toggleChat} />
             </div>
           </div>

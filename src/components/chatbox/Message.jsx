@@ -1,11 +1,13 @@
 import React from 'react';
 import './Message.css';
-
-const Message = ({ message}) => {
-  // const messageClass = sender === 'user' ? 'user' : 'receiver';
+import { useContext } from 'react';
+import { AuthContext } from '../../authContext/AuthContext';
+const Message = ({ message,senderType}) => {
+  const {user}=useContext(AuthContext);
+  // const messageClass = user.role === senderType?.toLowerCase() ? 'user' : 'receiver';
 //   const formattedDate = date ? new Date(date).toLocaleDateString() : '';
   // const formattedTime = timestamp ? new Date(timestamp).toLocaleTimeString() : '';
-
+  console.log(senderType)
   return (
     <div className={`message user`}>
       <p className="text">{message}</p>

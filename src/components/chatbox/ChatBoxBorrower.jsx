@@ -15,7 +15,6 @@ const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
   };
-
   useEffect(() => {
     if (user) {
       socket.emit("join-room", user.data.uid);
@@ -26,7 +25,6 @@ const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
     socket.on("receiveMessage", (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
     });
-    console.log(messages);
     return () => {
       socket.off("receiveMessage");
     };
@@ -45,7 +43,6 @@ const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
           withCredentials: true,
         }
       );
-      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -61,15 +58,12 @@ const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
     }
   };
 
-  // console.log(roomData);
   const onGetMessages = async () => {
     try {
       const res = await axios.get(
         `http://localhost:3000/chatroom/message/${roomData._id}`
       );
-      console.log({
-        messageReceived: res.data.map((message) => message.message),
-      });
+      
       res.data.map((message) =>
         setMessages((prevMessages) => [...prevMessages, message])
       );
@@ -77,22 +71,21 @@ const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
       console.log(error);
     }
   };
-
   return (
     <div className="chat-box">
       <div className="chat-header-container">
         <div className="chat-header">
           <h3>Messages</h3>
-          <button className="close-button" onClick={() => setChatPopUp(false)}>
+          <button className="close-button" onClick={() => {setChatPopUp(false),setMessages([])}}>
             X
           </button>
         </div>
 
-        <h4> Chat with: {lender.name}</h4>
+        {/* <h4> Chat with: {lender.fullname}</h4> */}
       </div>
       <div className="messages">
         {messages.map((msg, index) => (
-          <Message key={index} message={msg.message} />
+          <Message key={index} message={msg.message} senderType={msg.senderType}/>
         ))}
       </div>
       <div className="chat-input">

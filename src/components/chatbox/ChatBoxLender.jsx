@@ -11,28 +11,32 @@ import { AuthContext } from '../../authContext/AuthContext';
 
 const ChatBoxLender = ({ setChatPopUp,roomData }) => {
   const [message, setMessage] = useState("");
+  const [senderType, setSenderType] = useState();
   const [messages, setMessages] = useState([]);
 const {user}=useContext(AuthContext);
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
+    setSenderType(user.role);
   };
-console.log("user: ",user)
   useEffect(() => {
     if (user) {
       socket.emit("join-room", user.data.uid);
     }
-    if (roomData) {
-      onGetMessages();
-    }
+    
     socket.on("receiveMessage", (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
     });
-    console.log(messages);
+    
     return () => {
       socket.off("receiveMessage");
     };
+    
   }, []);
-
+useEffect(()=>{
+  if (roomData) {
+    onGetMessages();
+  }
+},[])
   const sendMessagesToDb = async (roomData, message) => {
     try {
       const res = await axios.post(
@@ -46,7 +50,6 @@ console.log("user: ",user)
           withCredentials: true,
         }
       );
-      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -62,15 +65,11 @@ console.log("user: ",user)
     }
   };
   
-  // console.log(roomData);
   const onGetMessages = async () => {
     try {
       const res = await axios.get(
         `http://localhost:3000/chatroom/message/${roomData._id}`
       );
-      console.log({
-        messageReceived: res.data.map((message) => message.message),
-      });
       res.data.map((message) =>
         setMessages((prevMessages) => [...prevMessages, message])
       );
@@ -79,12 +78,13 @@ console.log("user: ",user)
     }
   };
 
+
   return (
     <div className="chat-box">
       <div className="chat-header-container">
         <div className='chat-header'>
         <h3>Messages</h3>
-        <button className="close-button" onClick={()=>setChatPopUp(false)}>
+        <button className="close-button" onClick={()=>{setChatPopUp(false),setMessages([])}}>
           X
         </button>
         </div>
@@ -93,7 +93,7 @@ console.log("user: ",user)
       </div>
       <div className="messages">
       {messages.map((msg, index) => (
-           <Message key={index} message={msg.message}/>
+           <Message key={index} message={msg.message} senderType={msg.senderType}/>
           ))}
       </div>
       <div className="chat-input">

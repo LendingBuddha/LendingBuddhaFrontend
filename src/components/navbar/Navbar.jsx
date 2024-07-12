@@ -8,7 +8,6 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { user } = useContext(AuthContext);
 
-  console.log("User from AuthContext:", user);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
