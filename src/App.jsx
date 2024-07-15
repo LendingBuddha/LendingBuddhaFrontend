@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState,Suspense, lazy } from 'react'; // Import useState hook for managing authentication state
+import { useAuthContext } from './context/AuthContextUpdated';
 import Navbar from './components/navbar/Navbar';
 import Home from './pages/home/Home';
 import HowItWorks from './pages/howItWorks/HowItWorks';
@@ -30,6 +31,7 @@ import PersonalLoanDelhiNCR from './pages/PersonalLoanDelhiNCR/PersonalLoanDelhi
 import PersonalLoanHydrabad from './pages/PersonalLoanHydrabad/PersonalLoanHydrabad'
 import PersonalLoanBangalore from './pages/PersonalLoanBangalore/PersonalLoanBangalore'
 import PersonalLoanAhamadabad from './pages/PersonalLoanAhamadabad/PersonalLoanAhamadabad';
+import Layout from "./pages/layout/Layout"
 
 const Footer = lazy(() => import(`./components/footer/Footer`))
 function App() {
@@ -45,6 +47,8 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
   };
+
+  const { authUser } = useAuthContext();
 
   return (
     <Router>
@@ -75,10 +79,7 @@ function App() {
           <Route path='/loan-hydrabad' element={<PersonalLoanHydrabad/>}/>
           <Route path='/loan-bangalore' element={<PersonalLoanBangalore/>}/>
           <Route path='/loan-ahmedabad' element={<PersonalLoanAhamadabad/>}/>
-
-
-
-
+          <Route path='/dashboard' element={<Layout/>}/>
 
           {/* <Route path='/debt' element={</>}/> */}
 

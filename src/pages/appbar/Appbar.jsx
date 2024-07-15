@@ -18,7 +18,7 @@ const Appbar = ({ lenderName }) => {
       <div className="appbar-center"></div>
       <div className="appbar-right">
         <input type="text" placeholder="Search..." />
-        <AccountCircleIcon onClick={handleIconClick} />
+        {/* <AccountCircleIcon onClick={handleIconClick} /> */}
         {showCard && (
           <div className="user-card">
             <div className="user-info">

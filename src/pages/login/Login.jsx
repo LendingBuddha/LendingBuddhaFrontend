@@ -2,16 +2,17 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../authContext/AuthContext";
 import { login } from "../../authContext/apiCalls";
-import "../login/login.css"; 
+import "../login/login.css";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const { dispatch } = useContext(AuthContext);
+  const { dispatch,error } = useContext(AuthContext);
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
   const [role, setRole] = useState("lender");
+  const [showSuccess, setShowSuccess] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -28,8 +29,10 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(credentials, role, dispatch);
-    navigate("/");
+    const success = await login(credentials, role, dispatch);
+    if (!error) {
+      navigate("/");
+    }
   };
 
   return (

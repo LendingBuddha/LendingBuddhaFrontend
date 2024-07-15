@@ -1,10 +1,8 @@
-// src/components/dashboard/Dashboard.js
 import React from 'react';
 import OverviewChart from '../overviewChart/overviewChart.jsx';
 import './dashboard.css';
-import ChatBox from '../../components/chatbox/ChatBox.jsx';
 
-const Dashboard = ({ lenderData }) => {
+const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
   if (!lenderData || !lenderData.dashboardOverview) {
     return <div>Loading...</div>;
   }
@@ -57,22 +55,19 @@ const Dashboard = ({ lenderData }) => {
           loanIssuanceData={loanIssuanceData}
           paymentCollectionData={paymentCollectionData}
         />
-        {/* <ChatBox/> */}
         <div className="recent-sales">
-          <h2>Total Borrowers</h2>
+          <h2>{user.role === 'lender' ? 'Total Borrowers' : 'Total Lenders'}</h2>
           <div className="sales-list">
-            {/* Render list of recent borrowers */}
-            {lenderData.dashboardOverview.recentActivity.recentBorrowerRegistrations.map(
-              (borrower, index) => (
-                <div key={index} className="sale-item">
-                  <div className="sale-info">
-                    <span className="sale-name">{borrower.name}</span>
-                    <span className="sale-email">{borrower.date}</span>
-                  </div>
-                  <div className="sale-amount">💬</div>
+            {/* Render list of recent borrowers or lenders */}
+            {(user.role === 'lender' ? borrowersData : lendersData)?.map((person, index) => (
+              <div key={index} className="sale-item">
+                <div className="sale-info">
+                  <span className="sale-name">{person.fullname}</span>
+                  <span className="sale-email">{person.email}</span>
                 </div>
-              )
-            )}
+                <div className="sale-amount">💬</div>
+              </div>
+            )) || <div>No data available</div>}
           </div>
         </div>
       </div>
