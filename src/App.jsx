@@ -83,24 +83,24 @@ function App() {
           {/* <Route path='/debt' element={</>}/> */}
 
           {/* Protected routes */}
-          {/* {isLoggedIn && (
+          {isLoggedIn && (
             <>
               <Route path="/borrowers" element={<Borrowers />} />
               <Route path="/investors" element={<Investors />} />
               <Route path="/dashboard" element={<Dashboard />} />
            
             </>
-          )} */}
+          )}
 
           {/* Redirect to login if not authenticated */}
-          {/* {!isLoggedIn && (
+          {!isLoggedIn && (
             <>
               <Route path="/borrowers" element={<Navigate to="/login" />} />
               <Route path="/investors" element={<Navigate to="/login" />} />
               <Route path="/dashboard" element={<Navigate to="/login" />} />
               
             </>
-          )} */}
+          )}
           {/* <Route path="/signup/borrower" element={<SignupBorrower />} />
           <Route path="/signup/lender" element={<SignupLender />} /> */}
         </Routes>
