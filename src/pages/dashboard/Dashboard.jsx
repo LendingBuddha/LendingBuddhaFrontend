@@ -1,6 +1,7 @@
 import React from 'react';
 import OverviewChart from '../overviewChart/overviewChart.jsx';
 import './dashboard.css';
+import ChatBox from '../../components/ChatRoom.jsx';
 
 const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
   if (!lenderData || !lenderData.dashboardOverview) {

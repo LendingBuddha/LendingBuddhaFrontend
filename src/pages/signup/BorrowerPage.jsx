@@ -234,7 +234,7 @@ const BorrowerSignupPage = () => {
             />
           </div>
           <div className="flex items-center justify-center">
-            <Button type="submit">Signup</Button>
+           <Button className="w-full px-6 py-2 m-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600">Singup</Button>
           </div>
           <Separator />
 

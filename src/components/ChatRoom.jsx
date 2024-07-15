@@ -3,7 +3,7 @@ import io from "socket.io-client";
 import "../styles/index.css";
 
 // const socket = io("http://localhost:3000");
-const socket = io("https://vigilant-space-meme-x9xgp66j7492vx56-3000.app.github.dev/");
+const socket = io("https://backendlb-1et8.onrender.com");
 
 const ChatRoom = () => {
   const [message, setMessage] = useState("");

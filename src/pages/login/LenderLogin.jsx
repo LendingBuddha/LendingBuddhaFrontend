@@ -7,7 +7,7 @@ import useLogin from "../../hooks/useLogin";
 
 const LenderLogin = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const { loading, login } = useLogin();
+  const { loading, handleLogin } = useLogin("lender");
 
   const [Inputs, setInputs] = useState({
     email: "",
@@ -19,7 +19,7 @@ const LenderLogin = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(Inputs);
-    login(Inputs,"lender");
+    handleLogin(Inputs);
   };
 
   const togglePasswordVisibility = () => {

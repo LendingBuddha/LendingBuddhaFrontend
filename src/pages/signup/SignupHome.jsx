@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '../../components/ui/button';
 
 const SignUpHome = () => {
   return (
@@ -14,14 +15,14 @@ const SignUpHome = () => {
         </p>
         <div className="flex justify-center space-x-4">
           <Link to="/signup/borrower">
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <Button className="bg-blue-600 text-white w-full px-6 py-2 m-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600">
               Borrower Signup
-            </button>
+            </Button>
           </Link>
           <Link to="/signup/lender">
-            <button className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600">
+            <Button className="bg-green-600 text-white w-full px-6 py-2 m-2 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600">
               Lender Signup
-            </button>
+            </Button>
           </Link>
         </div>
       </div>
