@@ -46,6 +46,8 @@ function App() {
     setIsLoggedIn(false);
   };
 
+  const { authUser } = useAuthContext();
+
   return (
     <Router>
       <div>

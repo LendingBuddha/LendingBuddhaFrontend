@@ -32,6 +32,7 @@ const Login = () => {
     try {
       const response = await axios.post(
         `http://localhost:3000/api/auth/login/${role}`,
+        `/api/auth/login/${role}`,
         credentials,
         { withCredentials: true }
       );
