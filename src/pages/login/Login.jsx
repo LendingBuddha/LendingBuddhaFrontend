@@ -28,8 +28,21 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(credentials, role, dispatch);
-    navigate("/");
+    dispatch(loginStart());
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/api/auth/login/${role}`,
+        credentials,
+        { withCredentials: true }
+      );
+      const user = { ...response.data, role };
+      console.log(response.data)
+      localStorage.setItem("user", JSON.stringify(user));
+      dispatch(loginSuccess(user));
+      navigate("/");
+    } catch (error) {
+      dispatch(loginFailure());
+    }
   };
 
   return (

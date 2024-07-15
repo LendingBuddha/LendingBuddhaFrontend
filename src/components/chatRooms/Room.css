@@ -1,32 +1,34 @@
-.message {
+.room {
     padding: 10px;
     border-radius: 8px;
     margin-bottom: 10px;
-    max-width: max-content;
+    max-width: 75%;
     position: relative;
-    display: flex;
-    flex-direction: row;
+
     
   }
   
-  .message.user {
+  .room.user {
     background-color: #007bff;
     color: #ffffff;
     align-self: flex-end !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
-  .message.receiver {
+  .room.receiver {
     background-color: #f1f1f1;
     color: #333333;
     align-self: flex-start;
   }
   
-  .message .text {
+  .room .text {
     margin: 0;
     padding: 0;
   }
   
-  .message-info {
+  .room-info {
     display: flex;
     justify-content: flex-end;
     font-size: 12px;
@@ -40,21 +42,25 @@
     margin-left: 10px;
   }
   
-  .message::after {
+  .room::after {
     content: "";
     position: absolute;
     border: 10px solid transparent;
   }
   
-  .message.user::after {
+  .room.user::after {
     border-left: 10px solid #007bff;
     bottom: 0;
     right: -10px;
   }
   
-  .message.receiver::after {
+  .room.receiver::after {
     border-right: 10px solid #f1f1f1;
     bottom: 0;
     left: -10px;
   }
-  
+  button{
+    width: 10%;
+    background-color: transparent;
+    border:none;
+  }
