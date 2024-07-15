@@ -2,7 +2,7 @@
 import React from 'react';
 import OverviewChart from '../overviewChart/overviewChart.jsx';
 import './dashboard.css';
-import ChatBox from '../../components/chatbox/ChatBox.jsx';
+
 
 const Dashboard = ({ lenderData }) => {
   if (!lenderData || !lenderData.dashboardOverview) {
