@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { AuthContext } from '../../authContext/AuthContext';
+import { AuthContext } from "../../authContext/AuthContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
