@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import * as z from "zod";
@@ -11,7 +11,7 @@ const loginSchema = z.object({
 });
 
 const useLogin = (role) => {
-  const { login } = useAuthContext();
+  const {login} = useAuthContext();
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (credentials) => {
@@ -29,10 +29,10 @@ const useLogin = (role) => {
         loginEndpoint = "/api/auth/login/borrower";
       }
 
-      const response = await axios.post(loginEndpoint, credentials);
+      const response = await axios.post(loginEndpoint, credentials, { withCredentials: true });
       const userData = response.data;
 
-      login(userData); // Set authenticated user data in context
+      login(response.data); // Set authenticated state in context
 
       toast.success("Login successful!");
     } catch (error) {

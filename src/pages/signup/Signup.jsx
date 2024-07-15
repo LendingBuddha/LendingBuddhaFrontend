@@ -68,6 +68,8 @@ const Signup = () => {
       console.log(response.data);
       setShowSuccess(true);
       navigate("/");
+    }catch(error){
+      
     }
   };
 

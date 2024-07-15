@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import * as z from "zod";
+import { useAuthContext } from "../context/AuthContextUpdated";
 
 // Define Zod schema for validation
 const baseSignUpSchema = z.object({
@@ -41,7 +42,6 @@ const borrowerSignUpSchema = baseSignUpSchema.extend({
 
 const useSignUp = () => {
   const [loading, setLoading] = useState(false);
-
   const signup = async (input, role) => {
     setLoading(true);
 
@@ -81,7 +81,6 @@ const useSignUp = () => {
       toast.success(response.data.message)
       console.log(response);
       // Handle successful signup (e.g., redirect or display a success message)
-      await setAuthUser(response.data);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.log("Error in Signup", error);

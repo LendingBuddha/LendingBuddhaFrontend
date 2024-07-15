@@ -9,7 +9,7 @@ export default defineConfig({
     proxy: {
       "/api": {
         target:
-          "https://vigilant-space-meme-x9xgp66j7492vx56-3000.app.github.dev/",
+          "https://backendlb-1et8.onrender.com/",
           changeOrigin: true,
           
       },

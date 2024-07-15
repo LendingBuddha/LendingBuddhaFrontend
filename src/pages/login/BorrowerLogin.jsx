@@ -7,19 +7,29 @@ import useLogin from "../../hooks/useLogin";
 
 const BorrowerLogin = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const { loading, login } = useLogin();
+  const { loading, handleLogin } = useLogin("borrower");
 
   const [Inputs, setInputs] = useState({
     email: "",
     password: "",
   });
-  const onChange = (e) => {
-    setInputs({ ...Inputs, [e.target.name]: e.target.value });
+  const onEmailChange = (e) => {
+    setInputs({ ...Inputs, email: e.target.value });
+  };
+  
+  const onPasswordChange = (e) => {
+    setInputs({ ...Inputs, password: e.target.value });
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(Inputs);
-    login(Inputs,"borrwer");
+    
+    // Basic email validation
+    if (!Inputs.email || !Inputs.email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    
+    handleLogin(Inputs);
   };
 
   const togglePasswordVisibility = () => {
@@ -38,11 +48,11 @@ const BorrowerLogin = () => {
             >
               Email
             </Label>
-            <Input
-              id="email"
+            <input
+              
               type="email"
               value={Inputs.email}
-              onChange={onChange}
+              onChange={onEmailChange}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
               placeholder="Enter Your Email"
             />
@@ -55,10 +65,10 @@ const BorrowerLogin = () => {
               Password
             </Label>
             <Input
-              id="password"
+             
               type={passwordVisible ? "text" : "password"}
               value={Inputs.password}
-              onChange={onChange}
+              onChange={onPasswordChange}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
               placeholder="Enter Your Password"
             />

@@ -8,6 +8,8 @@ import ChatBoxBorrower from "../../components/chatbox/ChatBoxBorrower";
 import ChatBoxLender from "../../components/chatbox/ChatBoxLender";
 import axios from "axios";
 import ChatRooms from "../../components/chatRooms/ChatRooms";
+import EmiCalculator from "./EMIcalculator";
+import { Button } from "../../components/ui/button";
 // const roomData = {
 //   _id: "668e356407edda33a7dda4c6",
 //   participants: [
@@ -25,9 +27,9 @@ import ChatRooms from "../../components/chatRooms/ChatRooms";
 // };
 const lender = { uid: "aQjnqjiBAEd0ZgZSAciaZpIlRGz1", name: "John Doe" };
 function Home() {
-  const [p, setValue4] = useState(25000);
-  let [r, setValue5] = useState(12);
-  const [n, setValue6] = useState(6);
+  // const [p, setValue4] = useState(25000);
+  // let [r, setValue5] = useState(12);
+  // const [n, setValue6] = useState(6);
   const { user } = useContext(AuthContext);
   const [chatPopUp, setChatPopUp] = useState(false);
   const [showChatRooms, setShowChatRooms] = useState(false);
@@ -49,73 +51,73 @@ function Home() {
   const onGetRooms = async (userId) => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/api/chatrooms/${userId}`
+        `/api/chatrooms/${userId}`
       );
       setChatRooms(res.data);
     } catch (error) {
       console.log({ "get rooms error": error });
     }
   };
-  const handleChange = (event) => {
-    switch (event.target.name) {
-      case "amt":
-        document.getElementById("amtText").value = event.target.value;
-        document.getElementById("monthly_emi").innerHTML =
-          "&#8377;" + monthly_amt;
-        document.getElementById("total_interest").innerHTML =
-          "&#8377;" + interest;
-        document.getElementById("total_amt").innerHTML = "&#8377;" + total;
-        setValue4(event.target.value);
-        break;
-      case "roi":
-        document.getElementById("roiText").value = event.target.value;
-        document.getElementById("monthly_emi").innerHTML =
-          "&#8377;" + monthly_amt;
-        document.getElementById("total_interest").innerHTML =
-          "&#8377;" + interest;
-        document.getElementById("total_amt").innerHTML = "&#8377;" + total;
-        setValue5(event.target.value);
-        break;
-      case "tenure":
-        document.getElementById("tenureText").value = event.target.value;
-        document.getElementById("monthly_emi").innerHTML =
-          "&#8377;" + monthly_amt;
-        document.getElementById("total_interest").innerHTML =
-          "&#8377;" + interest;
-        document.getElementById("total_amt").innerHTML = "&#8377;" + total;
-        setValue6(event.target.value);
-        break;
-      case "amtText":
-        document.getElementById("monthly_emi").innerHTML =
-          "&#8377;" + monthly_amt;
-        document.getElementById("total_interest").innerHTML =
-          "&#8377;" + interest;
-        document.getElementById("total_amt").innerHTML = "&#8377;" + total;
-        setValue4(event.target.value);
-        break;
-      case "roiText":
-        document.getElementById("monthly_emi").innerHTML =
-          "&#8377;" + monthly_amt;
-        document.getElementById("total_interest").innerHTML =
-          "&#8377;" + interest;
-        document.getElementById("total_amt").innerHTML = "&#8377;" + total;
-        setValue5(event.target.value);
-        break;
-      case "tenureText":
-        document.getElementById("monthly_emi").innerHTML =
-          "&#8377;" + monthly_amt;
-        document.getElementById("total_interest").innerHTML =
-          "&#8377;" + interest;
-        document.getElementById("total_amt").innerHTML = "&#8377;" + total;
-        setValue6(event.target.value);
-        break;
-    }
-  };
+  // const handleChange = (event) => {
+  //   switch (event.target.name) {
+  //     case "amt":
+  //       document.getElementById("amtText").value = event.target.value;
+  //       document.getElementById("monthly_emi").innerHTML =
+  //         "&#8377;" + monthly_amt;
+  //       document.getElementById("total_interest").innerHTML =
+  //         "&#8377;" + interest;
+  //       document.getElementById("total_amt").innerHTML = "&#8377;" + total;
+  //       setValue4(event.target.value);
+  //       break;
+  //     case "roi":
+  //       document.getElementById("roiText").value = event.target.value;
+  //       document.getElementById("monthly_emi").innerHTML =
+  //         "&#8377;" + monthly_amt;
+  //       document.getElementById("total_interest").innerHTML =
+  //         "&#8377;" + interest;
+  //       document.getElementById("total_amt").innerHTML = "&#8377;" + total;
+  //       setValue5(event.target.value);
+  //       break;
+  //     case "tenure":
+  //       document.getElementById("tenureText").value = event.target.value;
+  //       document.getElementById("monthly_emi").innerHTML =
+  //         "&#8377;" + monthly_amt;
+  //       document.getElementById("total_interest").innerHTML =
+  //         "&#8377;" + interest;
+  //       document.getElementById("total_amt").innerHTML = "&#8377;" + total;
+  //       setValue6(event.target.value);
+  //       break;
+  //     case "amtText":
+  //       document.getElementById("monthly_emi").innerHTML =
+  //         "&#8377;" + monthly_amt;
+  //       document.getElementById("total_interest").innerHTML =
+  //         "&#8377;" + interest;
+  //       document.getElementById("total_amt").innerHTML = "&#8377;" + total;
+  //       setValue4(event.target.value);
+  //       break;
+  //     case "roiText":
+  //       document.getElementById("monthly_emi").innerHTML =
+  //         "&#8377;" + monthly_amt;
+  //       document.getElementById("total_interest").innerHTML =
+  //         "&#8377;" + interest;
+  //       document.getElementById("total_amt").innerHTML = "&#8377;" + total;
+  //       setValue5(event.target.value);
+  //       break;
+  //     case "tenureText":
+  //       document.getElementById("monthly_emi").innerHTML =
+  //         "&#8377;" + monthly_amt;
+  //       document.getElementById("total_interest").innerHTML =
+  //         "&#8377;" + interest;
+  //       document.getElementById("total_amt").innerHTML = "&#8377;" + total;
+  //       setValue6(event.target.value);
+  //       break;
+  //   }
+  // };
 
-  r = r / 12 / 100;
-  const monthly_amt = Math.floor((p * r * (1 + r) ** n) / ((1 + r) ** n - 1));
-  const total = monthly_amt * n;
-  const interest = total - p;
+  // r = r / 12 / 100;
+  // const monthly_amt = Math.floor((p * r * (1 + r) ** n) / ((1 + r) ** n - 1));
+  // const total = monthly_amt * n;
+  // const interest = total - p;
  
   useEffect(() => {
     if (roomData) {
@@ -146,14 +148,14 @@ function Home() {
             borrower in need of funds or a lender looking to invest, our
             platform makes it easy to achieve your financial goals.
           </p>
-          <div className="btns">
-            <button className="btn">Borrow</button>
-            <button className="btn">Lend</button>
+          <div className="flex justify-between h-full m-5">
+            <Button >Borrow</Button>
+            <Button >Lend</Button>
           </div>
           <a href="#">Contact Us</a>
         </div>
 
-        <div id="emi">
+        {/* <div id="emi">
           <h2>EMI Calculator</h2>
           <div className="input">
             <div id="amt" className="elementWrapper">
@@ -233,7 +235,8 @@ function Home() {
               </span>
             </div>
           </div>
-        </div>
+        </div> */}
+        <EmiCalculator/>
 
         <section id="help_you">
           <p className="heading">How can Lending Buddha Help You?</p>
@@ -340,7 +343,7 @@ function Home() {
             Lending Buddha - Making meaningful connections for all your
             borrowing and investing needs
           </p>
-          <button>Register as Lender</button>
+          <Button>Register as Lender</Button>
         </div>
 
         <section className="section" id="proven_process">
@@ -425,7 +428,7 @@ function Home() {
 
         <section className="section" id="press">
           <p className="heading">Have press inquires?</p>
-          <Link to={"/"}>Get in touch</Link>
+          <Link className=" font-extrabold text-lg " to={"/"}>Get in touch</Link>
           <p className="body">
             Lending Buddha operates as a marketplace connecting lenders with
             borrowers, and it does not facitilates the exchange of capital
@@ -455,7 +458,9 @@ function Home() {
           </p>
         </section>
         <section>
+          <div className="flex justify-center items-center m-5">
           <CustomerReview />
+          </div>
         </section>
 
         <div id="image_link">
