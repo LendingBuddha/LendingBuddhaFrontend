@@ -12,6 +12,7 @@ const Login = () => {
     password: "",
   });
   const [role, setRole] = useState("lender");
+  const [showSuccess, setShowSuccess] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
