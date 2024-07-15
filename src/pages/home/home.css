@@ -416,3 +416,27 @@
     color: #209797;
     margin-bottom: 0.5rem;
 }
+.chat-pop-up{
+    position: fixed;
+    margin: 20px;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    width: 10%;
+    background-color: #000000;
+    border-width: 1;
+    border-radius: 10px;
+}
+.chat-pop-up button{
+    background-color: transparent;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+cursor: pointer;
+
+    justify-content: space-between;
+
+}
