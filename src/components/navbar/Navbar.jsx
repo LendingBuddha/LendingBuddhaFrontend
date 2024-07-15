@@ -1,107 +1,72 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { AuthContext } from "../../authContext/AuthContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [profileCardOpen, setProfileCardOpen] = useState(false);
+  const { user, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const handleLinkClick = () => {
-    setMenuOpen(false);
+  const toggleProfileCard = () => {
+    setProfileCardOpen(!profileCardOpen);
+  };
+
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate('/');
+  };
+
+  const navigateToDashboard = () => {
+    navigate('/dashboard'); // Adjust the path based on your routing
   };
 
   return (
-    <nav className="flex items-center justify-between p-4 bg-white shadow-md">
-      <Link to="/" className="text-2xl font-bold text-gray-800">
-        Lending Buddha
-      </Link>
-      <div
-        className="md:hidden bg-black p-2 rounded-lg text-white"
-        onClick={toggleMenu}
-      >
+    <nav className="navbar">
+      <Link to="/" className="navbar-logo">Lending Buddha</Link>
+      <div className="menu-icon" onClick={toggleMenu}>
         {menuOpen ? <CloseIcon /> : <MenuIcon />}
       </div>
-      <ul
-        className={`md:flex md:items-center md:space-x-6 absolute md:static bg-white w-full left-0 md:w-auto md:bg-transparent transition-transform transform ${
-          menuOpen ? "top-16 opacity-100" : "top-[-490px] opacity-0"
-        }`}
-      >
-        <li className="my-2 md:my-0">
-          <Link
-            to="/"
-            className="block px-4 py-2 text-gray-800 hover:text-black"
-            onClick={handleLinkClick}
-          >
-            Home
-          </Link>
-        </li>
-        <li className="my-2 md:my-0">
-          <Link
-            to="/HowItWorks"
-            className="block px-4 py-2 text-gray-800 hover:text-black"
-            onClick={handleLinkClick}
-          >
-            How it works
-          </Link>
-        </li>
-        <li className="my-2 md:my-0">
-          <Link
-            to="/Investors"
-            className="block px-4 py-2 text-gray-800 hover:text-black"
-            onClick={handleLinkClick}
-          >
-            Investors
-          </Link>
-        </li>
-        <li className="my-2 md:my-0">
-          <Link
-            to="/Borrowers"
-            className="block px-4 py-2 text-gray-800 hover:text-black"
-            onClick={handleLinkClick}
-          >
-            Borrowers
-          </Link>
-        </li>
-        <li className="my-2 md:my-0">
-          <Link
-            to="/Blogs"
-            className="block px-4 py-2 text-gray-800 hover:text-black"
-            onClick={handleLinkClick}
-          >
-            Blog
-          </Link>
-        </li>
-        <li className="my-2 md:my-0">
-          <Link
-            to="/AboutUs"
-            className="block px-4 py-2 text-gray-800 hover:text-black"
-            onClick={handleLinkClick}
-          >
-            About us
-          </Link>
-        </li>
-        <li className="my-2 md:my-0">
-          <Link
-            to="/Login"
-            className="block px-4 py-2 text-gray-800 hover:text-black"
-            onClick={handleLinkClick}
-          >
-            Login
-          </Link>
-        </li>
-        <li className="my-2 md:my-0">
-          <Link
-            to="/Signup"
-            className="block px-4 py-2 text-gray-800 hover:text-black"
-            onClick={handleLinkClick}
-          >
-            Signup
-          </Link>
-        </li>
+      <ul className={menuOpen ? "navbar-links active" : "navbar-links"}>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/HowItWorks">How it works</Link></li>
+        <li><Link to="/Investors">Investors</Link></li>
+        <li><Link to="/Borrowers">Borrowers</Link></li>
+        <li><Link to="/Blogs">Blog</Link></li>
+        <li><Link to="/AboutUs">About us</Link></li>
+        {user ? (
+          <>
+            {user.role === 'borrower' && (
+              <li><Link to="/FindLenders">Find Lenders</Link></li>
+            )}
+            <li className="profile-icon" onClick={toggleProfileCard}>
+              <AccountCircleIcon />
+              <div className={profileCardOpen ? "profile-card show" : "profile-card"}>
+                <div className="profile-info">
+                  <p>Name: {user.data.displayName}</p>
+                  <p>Role: {user.role}</p>
+                  <p>Email: {user.data.email}</p>
+                </div>
+                <button className="logout-button" onClick={navigateToDashboard}>
+                  Go to Dashboard
+                </button>
+                <button className="logout-button" onClick={handleLogout}>Logout</button>
+              </div>
+            </li>
+          </>
+        ) : (
+          <>
+            <li><Link to="/Login">Login</Link></li>
+            <li><Link to="/Signup">Signup</Link></li>
+          </>
+        )}
       </ul>
     </nav>
   );
