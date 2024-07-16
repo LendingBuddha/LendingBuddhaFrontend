@@ -44,6 +44,7 @@ import BorrowerSignupPage from "./pages/signup/BorrowerPage";
 import LenderSingupPage from "./pages/signup/LenderPage";
 import { Toaster } from "react-hot-toast";
 import { useAuthContext } from "./context/AuthContextUpdated";
+import Layout from "./pages/layout/Layout.jsx"
 
 // const Footer = lazy(() => import(`./components/footer/Footer`));
 function App() {
@@ -106,7 +107,7 @@ function App() {
             <>
               <Route path="/borrowers" element={<Borrowers />} />
               <Route path="/investors" element={<Investors />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Layout />} />
             </>
           )}
 

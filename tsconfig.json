@@ -20,7 +20,7 @@
         "@/*": ["./src/*"]
       }
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx", "src/pages/login/Borrower_login.jsx"],
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/pages/login/Borrowerlogin.jsx"],
     "exclude": ["node_modules", "dist"]
   }
   
