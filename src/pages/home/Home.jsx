@@ -27,9 +27,9 @@ import { Button } from "../../components/ui/button";
 // };
 const lender = { uid: "aQjnqjiBAEd0ZgZSAciaZpIlRGz1", name: "John Doe" };
 function Home() {
-  // const [p, setValue4] = useState(25000);
-  // let [r, setValue5] = useState(12);
-  // const [n, setValue6] = useState(6);
+  const [p, setValue4] = useState(25000);
+  let [r, setValue5] = useState(12);
+  const [n, setValue6] = useState(6);
   const { user } = useContext(AuthContext);
   const [chatPopUp, setChatPopUp] = useState(false);
   const [showChatRooms, setShowChatRooms] = useState(false);
