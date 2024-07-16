@@ -18,7 +18,7 @@ const Layout = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/lender/data');
+        const response = await axios.get('https://backendlb-1et8.onrender.com/api/lender/data');
        setLenderData(response.data);
         // console.log(response.data)
       } catch (error) {
@@ -34,7 +34,7 @@ const Layout = () => {
       const fetchBorrowersData = async () => {
         if (user && user.role === 'lender' && user.refreshToken) {
           try {
-            const response = await axios.get("http://localhost:3000/api/auth/borrower/users", {
+            const response = await axios.get("https://backendlb-1et8.onrender.com/api/auth/borrower/users", {
               headers: {
                 Authorization: `Bearer ${user.refreshToken}`,
               },
@@ -55,7 +55,7 @@ const Layout = () => {
     const fetchLendersData = async () => {
       if (user && user.role === 'borrower' && user.refreshToken) {
         try {
-          const response = await axios.get("http://localhost:3000/api/auth/lender/users", {
+          const response = await axios.get("https://backendlb-1et8.onrender.com/api/auth/lender/users", {
             headers: {
               Authorization: `Bearer ${user.refreshToken}`,
             },

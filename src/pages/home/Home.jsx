@@ -51,7 +51,7 @@ function Home() {
   const onGetRooms = async (userId) => {
     try {
       const res = await axios.get(
-        `/api/chatrooms/${userId}`
+        `https://backendlb-1et8.onrender.com/api/chatrooms/${userId}`
       );
       setChatRooms(res.data);
     } catch (error) {

@@ -54,8 +54,8 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:3000/api/auth/signup/${formData.role}`, 
-        `/api/auth/signup/${formData.role}`, 
+        `https://backendlb-1et8.onrender.com/api/auth/signup/${formData.role}`, 
+        `https://backendlb-1et8.onrender.com/api/auth/signup/${formData.role}`, 
         signupFormData,
         {
           headers: {
@@ -68,10 +68,12 @@ const Signup = () => {
       console.log(response.data);
       setShowSuccess(true);
       navigate("/");
-    }catch(error){
-      
-    }
-  };
+    
+  }catch(err){
+     
+       console.log(err);
+  }
+}
 
   return (
     <>

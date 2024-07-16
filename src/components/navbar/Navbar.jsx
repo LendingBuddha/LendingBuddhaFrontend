@@ -5,6 +5,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { AuthContext } from "../../authContext/AuthContext";
 
+
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileCardOpen, setProfileCardOpen] = useState(false);
