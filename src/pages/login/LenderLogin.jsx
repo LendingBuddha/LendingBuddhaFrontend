@@ -9,17 +9,19 @@ const LenderLogin = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const { loading, handleLogin } = useLogin("lender");
 
-  const [Inputs, setInputs] = useState({
+  const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
+
   const onChange = (e) => {
-    setInputs({ ...Inputs, [e.target.name]: e.target.value });
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
-  const onSubmit = (e) => {
+
+  const onSubmit = async(e) => {
     e.preventDefault();
-    console.log(Inputs);
-    handleLogin(Inputs);
+    console.log(inputs);
+    await handleLogin(inputs);
   };
 
   const togglePasswordVisibility = () => {
@@ -40,8 +42,9 @@ const LenderLogin = () => {
             </Label>
             <Input
               id="email"
+              name="email"
               type="email"
-              value={Inputs.email}
+              value={inputs.email}
               onChange={onChange}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
               placeholder="Enter Your Email"
@@ -56,7 +59,8 @@ const LenderLogin = () => {
             </Label>
             <Input
               id="password"
-              value={Inputs.password}
+              name="password"
+              value={inputs.password}
               onChange={onChange}
               type={passwordVisible ? "text" : "password"}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -92,4 +96,5 @@ const LenderLogin = () => {
     </div>
   );
 };
+
 export default LenderLogin;

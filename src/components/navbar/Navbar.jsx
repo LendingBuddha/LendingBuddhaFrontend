@@ -4,10 +4,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { AuthContext } from "../../authContext/AuthContext";
+import useLogout from "../../hooks/useLogout";
 
 
 
-const Navbar = () => {
+
+const Navbar = ({authUser}) => {
+  const {loading,logout}=useLogout()
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileCardOpen, setProfileCardOpen] = useState(false);
   const { user, dispatch } = useContext(AuthContext);
@@ -43,23 +46,23 @@ const Navbar = () => {
         <li><Link to="/Borrowers">Borrowers</Link></li>
         <li><Link to="/Blogs">Blog</Link></li>
         <li><Link to="/AboutUs">About us</Link></li>
-        {user ? (
+        {authUser ? (
           <>
-            {user.role === 'borrower' && (
+            {authUser.role === 'borrower' && (
               <li><Link to="/FindLenders">Find Lenders</Link></li>
             )}
             <li className="profile-icon" onClick={toggleProfileCard}>
               <AccountCircleIcon />
               <div className={profileCardOpen ? "profile-card show" : "profile-card"}>
                 <div className="profile-info">
-                  <p>Name: {user.data.displayName}</p>
-                  <p>Role: {user.role}</p>
-                  <p>Email: {user.data.email}</p>
+                  <p>Name: {authUser.data.displayName}</p>
+                  <p>Role: {authUser.role}</p>
+                  <p>Email: {authUser.data.email}</p>
                 </div>
                 <button className="logout-button" onClick={navigateToDashboard}>
                   Go to Dashboard
                 </button>
-                <button className="logout-button" onClick={handleLogout}>Logout</button>
+                <button className="logout-button" onClick={logout}>Logout</button>
               </div>
             </li>
           </>
