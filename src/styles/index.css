@@ -1,5 +1,5 @@
 :root {
-  --home-color:#2ab4be ;
+  --home-color:#3d969a ;
   --primary-color: #ffffff; 
   --secondary-color: #055e64;
   --third-color: #444444;
@@ -11,8 +11,8 @@
 }
 
 body, html {
-  min-width: 320px;
-  min-height: 100vh;
+  /* min-width: 320px;
+  min-height: 100vh; */
   overflow-x: hidden;
   overflow-y: auto;
 }
