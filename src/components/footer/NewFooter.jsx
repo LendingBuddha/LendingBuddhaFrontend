@@ -379,7 +379,7 @@ const NewFooter = () => {
                   />
                 </li>
                 <li className="mb-1 mt-2">
-                  <Button className="hover:bg-blue-600"> Subscribe Now</Button>
+                  <Button className="hover:bg-blue-600 w-full"> Subscribe Now</Button>
                 </li>
               </ul>
             </div>

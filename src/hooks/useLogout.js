@@ -5,29 +5,33 @@ import toast from "react-hot-toast";
 
 const useLogout = () => {
   const [loading, setLoading] = useState(false);
-  const { setAuthUser } = useAuthContext();
+  const { logout } = useAuthContext();
 
-  const logout = async () => {
+  const logouts = async () => {
     setLoading(true);
     try {
       let accessToken = localStorage.getItem("accessToken");
       if (accessToken) {
         accessToken = accessToken.replace(/^"(.*)"$/, "$1");
       }
+      console.log("accessToken",accessToken);
 
       const headers = {
         Authorization: `Bearer ${accessToken}`,
       };
-
+    console.log(headers);
       const Link = "https://backendlb-1et8.onrender.com/api/auth/logout";
+      const logoutLink = "/api/auth/logout"
 
-      const response = await axios.post(Link,{}, { headers });
+
+      const response = await axios.post(logoutLink, {}, { headers });
 
       if (response.status === 200) {
-        setAuthUser(null);
+        
         localStorage.removeItem("accessToken");
         localStorage.removeItem("authUser");
         toast.success("Logout successful");
+        logout();
       } else {
         throw new Error(response.data.error);
       }
@@ -35,7 +39,7 @@ const useLogout = () => {
       if (axios.isAxiosError(error)) {
         console.error("Logout Error", error);
         toast.error(
-          error.response?.data.error || "Logout failed. Please try again."
+          error.response?.data.message || "Logout failed. Please try again."
         );
       } else {
         console.error("Logout Error", error);
@@ -46,7 +50,7 @@ const useLogout = () => {
     }
   };
 
-  return { logout, loading };
+  return { logouts, loading };
 };
 
 export default useLogout;

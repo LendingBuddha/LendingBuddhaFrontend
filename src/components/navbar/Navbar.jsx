@@ -10,7 +10,7 @@ import useLogout from "../../hooks/useLogout";
 
 
 const Navbar =  ({authUser}) => {
-  const {loading,logout}=useLogout()
+  const {loading,logouts}=useLogout()
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileCardOpen, setProfileCardOpen] = useState(false);
   const { user, dispatch } = useContext(AuthContext);
@@ -25,7 +25,7 @@ const Navbar =  ({authUser}) => {
   };
 
   const handleLogout = async() => {
-    await logout()
+    await logouts()
   };
 
   const navigateToDashboard = () => {
