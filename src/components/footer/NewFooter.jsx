@@ -39,7 +39,7 @@ const NewFooter = () => {
 
   return (
     <>
-      <footer className="bg-gray-800 text-white">
+      <footer className="bg-gray-600 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-wrap justify-between items-start">
             <div className="w-full sm:w-1/2 md:w-1/5 mb-8 sm:mb-0">
@@ -73,7 +73,7 @@ const NewFooter = () => {
                     href="#"
                     className="text-blue-300 text-lg hover:text-white"
                   >
-                    How It's Works
+                    How It&apos;s Works
                   </a>
                 </li>
                 <li className="mb-1">
@@ -150,7 +150,7 @@ const NewFooter = () => {
                     href="#"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    How It's Works
+                    How It&apos;s Works
                   </a>
                 </li>
                 <li className="mb-1">
@@ -226,7 +226,7 @@ const NewFooter = () => {
                     href="#"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    How It's Works
+                    How It&apos;s Works
                   </a>
                 </li>
                 <li className="mb-1">
@@ -302,7 +302,7 @@ const NewFooter = () => {
                     href="#"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    How It's Works
+                    How It&apos;s Works
                   </a>
                 </li>
                 <li className="mb-1">
