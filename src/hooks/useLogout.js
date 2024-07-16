@@ -19,10 +19,9 @@ const useLogout = () => {
         Authorization: `Bearer ${accessToken}`,
       };
 
-      const response = await axios.get(
-        "https://backendlb-1et8.onrender.com/api/auth/logout",
-        { headers }
-      );
+      const Link = "https://backendlb-1et8.onrender.com/api/auth/logout";
+
+      const response = await axios.post(Link,{}, { headers });
 
       if (response.status === 200) {
         setAuthUser(null);

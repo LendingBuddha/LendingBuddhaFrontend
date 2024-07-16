@@ -9,7 +9,7 @@ import useLogout from "../../hooks/useLogout";
 
 
 
-const Navbar = ({authUser}) => {
+const Navbar =  ({authUser}) => {
   const {loading,logout}=useLogout()
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileCardOpen, setProfileCardOpen] = useState(false);
@@ -24,9 +24,8 @@ const Navbar = ({authUser}) => {
     setProfileCardOpen(!profileCardOpen);
   };
 
-  const handleLogout = () => {
-    dispatch({ type: "LOGOUT" });
-    navigate('/');
+  const handleLogout = async() => {
+    await logout()
   };
 
   const navigateToDashboard = () => {
@@ -62,7 +61,7 @@ const Navbar = ({authUser}) => {
                 <button className="logout-button" onClick={navigateToDashboard}>
                   Go to Dashboard
                 </button>
-                <button className="logout-button" onClick={logout}>Logout</button>
+                <button className="logout-button" onClick={handleLogout}>Logout</button>
               </div>
             </li>
           </>
