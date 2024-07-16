@@ -1,10 +1,12 @@
-// src/components/dashboard/Dashboard.js
-import React from 'react';
-import OverviewChart from '../overviewChart/overviewChart.jsx';
-import './dashboard.css';
-import ChatBox from '../../components/chatbox/ChatBox.jsx';
-
-const Dashboard = ({ lenderData }) => {
+import React, { useState, useContext } from "react";
+import OverviewChart from "../overviewChart/overviewChart.jsx";
+import "./dashboard.css";
+import ChatBoxBorrower from "../../components/chatbox/ChatBoxBorrower.jsx";
+import ChatBoxLender from "../../components/chatbox/ChatBoxLender.jsx";
+import axios from "axios";
+const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
+  const [chatPopUp, setChatPopUp] = useState(false);
+  const [roomData, setRoomData] = useState();
   if (!lenderData || !lenderData.dashboardOverview) {
     return <div>Loading...</div>;
   }
@@ -16,13 +18,34 @@ const Dashboard = ({ lenderData }) => {
     totalActiveLoans,
   } = lenderData.dashboardOverview;
 
-  const loanIssuanceData = lenderData.dashboardOverview.graphicalInsights.loanIssuanceTrends.monthly;
-  const paymentCollectionData = lenderData.dashboardOverview.graphicalInsights.paymentCollectionTrends.monthly;
+  const loanIssuanceData =
+    lenderData.dashboardOverview.graphicalInsights.loanIssuanceTrends.monthly;
+  const paymentCollectionData =
+    lenderData.dashboardOverview.graphicalInsights.paymentCollectionTrends
+      .monthly;
 
+  const onBeginChat = async (userToChat) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:3000/chatroom/create/${userToChat.uid}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.refreshToken}`,
+          },
+          withCredentials: true,
+        }
+      );
+      setRoomData(res.data);
+      setChatPopUp(!chatPopUp);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="dashboard">
       <div className="dashboard-header">
         <h1>Dashboard</h1>
+
         <div className="tabs">
           <div className="tab active">Overview</div>
           <div className="tab">Analytics</div>
@@ -57,25 +80,42 @@ const Dashboard = ({ lenderData }) => {
           loanIssuanceData={loanIssuanceData}
           paymentCollectionData={paymentCollectionData}
         />
-        {/* <ChatBox/> */}
         <div className="recent-sales">
-          <h2>Total Borrowers</h2>
+          <h2>
+            {user.role === "lender" ? "Total Borrowers" : "Total Lenders"}
+          </h2>
           <div className="sales-list">
-            {/* Render list of recent borrowers */}
-            {lenderData.dashboardOverview.recentActivity.recentBorrowerRegistrations.map(
-              (borrower, index) => (
+            {/* Render list of recent borrowers or lenders */}
+            {(user.role === "lender" ? borrowersData : lendersData)?.map(
+              (person, index) => (
                 <div key={index} className="sale-item">
                   <div className="sale-info">
-                    <span className="sale-name">{borrower.name}</span>
-                    <span className="sale-email">{borrower.date}</span>
+                    <span className="sale-name">{person.fullname}</span>
+                    <span className="sale-email">{person.email}</span>
                   </div>
-                  <div className="sale-amount">💬</div>
+                  <button
+                    className="sale-amount"
+                    onClick={() => {
+                      onBeginChat(person);
+                    }}
+                  >
+                    💬
+                  </button>
                 </div>
               )
-            )}
+            ) || <div>No data available</div>}
           </div>
         </div>
       </div>
+      {chatPopUp ? (
+        user.role === "borrower" ? (
+          <>
+            <ChatBoxBorrower setChatPopUp={setChatPopUp} roomData={roomData} />
+          </>
+        ) : (
+          <ChatBoxLender setChatPopUp={setChatPopUp} roomData={roomData} />
+        )
+      ) : null}
     </div>
   );
 };

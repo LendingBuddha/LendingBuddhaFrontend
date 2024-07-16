@@ -94,30 +94,81 @@ button:focus-visible {
 
 @media (max-width: 768px) {
   .navbar-links {
-      flex-direction: column;
-      align-items: center;
-      position: absolute;
-      top: 80px;
-      right: 0;
-      width: 100%;
-      height: calc(100vh - 80px);
-      background-color: var(--primary-color);
-      justify-content: space-around;
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-color: var(--primary-color);
+    justify-content: space-around;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
   }
 
   .navbar-links.active {
-      transform: translateX(0);
+    transform: translateX(0);
   }
 
   .navbar-links li {
-      margin: 0.5rem 0;
+    margin: 0.5rem 0;
   }
 
   .menu-icon {
-      display: block;
+    display: block;
+    color: black;
   }
-
 }
+
+/* Profile Card Styles */
+.profile-icon {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.profile-card {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 200px;
+  padding: 1rem;
+  background-color: #000000;
+  color: #efe6e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2000;
+}
+
+.profile-card.show {
+  display: block;
+}
+
+.profile-card .profile-info {
+  margin-bottom: 1rem;
+}
+
+.profile-card .profile-info p {
+  margin: 0.5rem 0;
+}
+
+.profile-card .logout-button {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 50%;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.profile-card .logout-button:hover {
+  background-color: var(--accent-color);
+}
+
 }

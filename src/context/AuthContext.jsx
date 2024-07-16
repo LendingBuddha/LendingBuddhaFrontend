@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
     // Checking if user is authenticated by making a request to the backend
     const checkAuthStatus = async () => {
       try {
-        const response = await axios.get('/api/check-auth', { withCredentials: true });
+        const response = await axios.get('https://backendlb-1et8.onrender.com/api/check-auth', { withCredentials: true });
         setIsAuthenticated(response.data.isAuthenticated);
       } catch (error) {
         setIsAuthenticated(false);

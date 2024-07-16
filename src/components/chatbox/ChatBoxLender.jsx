@@ -3,7 +3,7 @@ import { FiSend } from 'react-icons/fi';
 import './ChatBox.css';
 import io from "socket.io-client";
 import axios from "axios";
-const socket = io("http://localhost:3000");
+const socket = io("https://backendlb-1et8.onrender.com");
 
 import Message from './Message';
 import { AuthContext } from '../../authContext/AuthContext';
@@ -40,7 +40,7 @@ useEffect(()=>{
   const sendMessagesToDb = async (roomData, message) => {
     try {
       const res = await axios.post(
-        `http://localhost:3000/chatroom/message/send/${roomData._id}`,
+        `https://backendlb-1et8.onrender.com/chatroom/message/send/${roomData._id}`,
         { message },
         {
           headers: {
@@ -68,7 +68,7 @@ useEffect(()=>{
   const onGetMessages = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/chatroom/message/${roomData._id}`
+        `https://backendlb-1et8.onrender.com/chatroom/message/${roomData._id}`
       );
       res.data.map((message) =>
         setMessages((prevMessages) => [...prevMessages, message])
