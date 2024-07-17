@@ -33,7 +33,7 @@ const Layout = () => {
     const fetchBorrowersData = async () => {
       if (authUser && authUser.data.role === 'lender' && authUser.refreshToken) {
         try {
-          const response = await axios.get("https://backendlb-1et8.onrender.com/api/auth/borrower/users", {
+          const response = await axios.get("https://lendingbuddhabackend.onrender.com/api/auth/borrower/users", {
             headers: {
               Authorization: `Bearer ${authUser.refreshToken}`,
             },
@@ -54,7 +54,7 @@ const Layout = () => {
     const fetchLendersData = async () => {
       if (authUser && authUser.data.role === 'borrower' && authUser.refreshToken) {
         try {
-          const response = await axios.get("https://backendlb-1et8.onrender.com/api/auth/lender/users", {
+          const response = await axios.get("https://lendingbuddhabackend.onrender.com/api/auth/lender/users", {
             headers: {
               Authorization: `Bearer ${authUser.refreshToken}`,
             },

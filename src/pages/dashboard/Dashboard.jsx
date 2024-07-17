@@ -27,7 +27,7 @@ const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
   const onBeginChat = async (userToChat) => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/chatroom/create/${userToChat.uid}`,
+        `https://lendingbuddhabackend.onrender.com/chatroom/create/${userToChat.uid}`,
         {
           headers: {
             Authorization: `Bearer ${user.refreshToken}`,
