@@ -8,7 +8,7 @@ import {
 export const login = async (user, role, dispatch) => {
   dispatch(loginStart());
   try {
-    const res = await axios.post(`ec2-13-233-102-129.ap-south-1.compute.amazonaws.com/api/auth/login/${role}`, user);
+    const res = await axios.post(`https://lendingbuddhabackend.onrender.com/api/auth/login/${role}`, user);
     const userData = { ...res.data, role }; // Add role to user data
     localStorage.setItem("user", JSON.stringify(userData)); // Store user data in localStorage
     dispatch(loginSuccess(userData));
@@ -28,7 +28,7 @@ export const signup = async (formData, dispatch) => {
       }
     }
 
-    const res = await axios.post(`ec2-13-233-102-129.ap-south-1.compute.amazonaws.com/api/auth/signup/${formData.role}`, signupFormData, {
+    const res = await axios.post(`https://lendingbuddhabackend.onrender.com/api/auth/signup/${formData.role}`, signupFormData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

@@ -9,7 +9,7 @@ export default defineConfig({
     proxy: {
       "/api": {
         target:
-          "ec2-13-233-102-129.ap-south-1.compute.amazonaws.com/",
+          "https://lendingbuddhabackend.onrender.com/",
           changeOrigin: true,
           
       },
