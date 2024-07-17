@@ -5,7 +5,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { AuthContext } from "../../authContext/AuthContext";
 import useLogout from "../../hooks/useLogout";
-import "../../styles/index.css";
+import "../../styles/index.css"
+
 
 
 
@@ -55,8 +56,8 @@ const Navbar =  ({authUser}) => {
               <AccountCircleIcon />
               <div className={profileCardOpen ? "profile-card show" : "profile-card"}>
                 <div className="profile-info">
-                  <p>Name: {authUser.data.displayName}</p>
-                  <p>Role: {authUser.role}</p>
+                  <p>Name: {authUser.data.fullname}</p>
+                  <p>Role: {authUser.data.role}</p>
                   <p>Email: {authUser.data.email}</p>
                 </div>
                 <button className="logout-button" onClick={navigateToDashboard}>
