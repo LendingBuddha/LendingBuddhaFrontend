@@ -33,7 +33,7 @@ const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
   const sendMessagesToDb = async (roomData, message) => {
     try {
       const res = await axios.post(
-        `https://backendlb-1et8.onrender.com/chatroom/message/send/${roomData._id}`,
+        `https://lendingbuddhabackend.onrender.com/chatroom/message/send/${roomData._id}`,
         { message },
         {
           headers: {
@@ -61,7 +61,7 @@ const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
   const onGetMessages = async () => {
     try {
       const res = await axios.get(
-        `https://backendlb-1et8.onrender.com/chatroom/message/${roomData._id}`
+        `https://lendingbuddhabackend.onrender.com/chatroom/message/${roomData._id}`
       );
       
       res.data.map((message) =>
