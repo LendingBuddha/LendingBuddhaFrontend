@@ -29,9 +29,9 @@ const useLogin = (role) => {
 
       // Determine login endpoint based on role
       if (role === "lender") {
-        loginEndpoint = "/api/auth/login/lender";
+        loginEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/login/lender";
       } else if (role === "borrower") {
-        loginEndpoint = "/api/auth/login/borrower";
+        loginEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/login/borrower";
       }
 
       const response = await axios.post(loginEndpoint, credentials, {

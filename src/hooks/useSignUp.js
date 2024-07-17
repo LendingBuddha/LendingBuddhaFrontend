@@ -63,9 +63,9 @@ const useSignUp = () => {
 
     // Determine signup endpoint based on role
     if (role === "borrower") {
-      signupEndpoint = "https://backendlb-1et8.onrender.com/api/auth/signup/borrower";
+      signupEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/signup/borrower";
     } else if (role === "lender") {
-      signupEndpoint = "https://backendlb-1et8.onrender.com/api/auth/signup/lender";
+      signupEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/signup/lender";
     }
 
     try {
