@@ -5,12 +5,12 @@ import toast from "react-hot-toast";
 
 const useLogout = () => {
   const [loading, setLoading] = useState(false);
-  const { logout } = useAuthContext();
+  const { logout, authUser } = useAuthContext();
 
   const logouts = async () => {
     setLoading(true);
     try {
-      let accessToken = localStorage.getItem("accessToken");
+      let accessToken = authUser.refreshToken;
       if (accessToken) {
         accessToken = accessToken.replace(/^"(.*)"$/, "$1");
       }

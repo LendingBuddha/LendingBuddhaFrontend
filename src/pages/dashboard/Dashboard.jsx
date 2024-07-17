@@ -6,7 +6,7 @@ import ChatBoxBorrower from "../../components/chatbox/ChatBoxBorrower.jsx";
 import ChatBoxLender from "../../components/chatbox/ChatBoxLender.jsx";
 import axios from "axios";
 const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
-  const {authUser} = useAuthContext;
+  const {authUser} = useAuthContext();
   const [chatPopUp, setChatPopUp] = useState(false);
   const [roomData, setRoomData] = useState();
   if (!lenderData || !lenderData.dashboardOverview) {
@@ -25,7 +25,7 @@ const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
   const paymentCollectionData =
     lenderData.dashboardOverview.graphicalInsights.paymentCollectionTrends
       .monthly;
-
+      console.log(authUser);
   const onBeginChat = async (userToChat) => {
     try {
       const res = await axios.get(
@@ -33,10 +33,11 @@ const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
         {
           headers: {
             Authorization: `Bearer ${authUser.refreshToken}`,
-          },
+          },    
           withCredentials: true,
         }
       );
+      
       setRoomData(res.data);
       setChatPopUp(!chatPopUp);
     } catch (error) {
