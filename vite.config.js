@@ -9,7 +9,7 @@ export default defineConfig({
     proxy: {
       "/api": {
         target:
-          "https://backendlb-1et8.onrender.com/",
+          "ec2-13-233-102-129.ap-south-1.compute.amazonaws.com/",
           changeOrigin: true,
           
       },

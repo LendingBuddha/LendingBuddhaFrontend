@@ -58,70 +58,8 @@ function Home() {
       console.log({ "get rooms error": error });
     }
   };
-  // const handleChange = (event) => {
-  //   switch (event.target.name) {
-  //     case "amt":
-  //       document.getElementById("amtText").value = event.target.value;
-  //       document.getElementById("monthly_emi").innerHTML =
-  //         "&#8377;" + monthly_amt;
-  //       document.getElementById("total_interest").innerHTML =
-  //         "&#8377;" + interest;
-  //       document.getElementById("total_amt").innerHTML = "&#8377;" + total;
-  //       setValue4(event.target.value);
-  //       break;
-  //     case "roi":
-  //       document.getElementById("roiText").value = event.target.value;
-  //       document.getElementById("monthly_emi").innerHTML =
-  //         "&#8377;" + monthly_amt;
-  //       document.getElementById("total_interest").innerHTML =
-  //         "&#8377;" + interest;
-  //       document.getElementById("total_amt").innerHTML = "&#8377;" + total;
-  //       setValue5(event.target.value);
-  //       break;
-  //     case "tenure":
-  //       document.getElementById("tenureText").value = event.target.value;
-  //       document.getElementById("monthly_emi").innerHTML =
-  //         "&#8377;" + monthly_amt;
-  //       document.getElementById("total_interest").innerHTML =
-  //         "&#8377;" + interest;
-  //       document.getElementById("total_amt").innerHTML = "&#8377;" + total;
-  //       setValue6(event.target.value);
-  //       break;
-  //     case "amtText":
-  //       document.getElementById("monthly_emi").innerHTML =
-  //         "&#8377;" + monthly_amt;
-  //       document.getElementById("total_interest").innerHTML =
-  //         "&#8377;" + interest;
-  //       document.getElementById("total_amt").innerHTML = "&#8377;" + total;
-  //       setValue4(event.target.value);
-  //       break;
-  //     case "roiText":
-  //       document.getElementById("monthly_emi").innerHTML =
-  //         "&#8377;" + monthly_amt;
-  //       document.getElementById("total_interest").innerHTML =
-  //         "&#8377;" + interest;
-  //       document.getElementById("total_amt").innerHTML = "&#8377;" + total;
-  //       setValue5(event.target.value);
-  //       break;
-  //     case "tenureText":
-  //       document.getElementById("monthly_emi").innerHTML =
-  //         "&#8377;" + monthly_amt;
-  //       document.getElementById("total_interest").innerHTML =
-  //         "&#8377;" + interest;
-  //       document.getElementById("total_amt").innerHTML = "&#8377;" + total;
-  //       setValue6(event.target.value);
-  //       break;
-  //   }
-  // };
 
-  // r = r / 12 / 100;
-  // const monthly_amt = Math.floor((p * r * (1 + r) ** n) / ((1 + r) ** n - 1));
-  // const total = monthly_amt * n;
-  // const interest = total - p;
   
-
-  //Updating the comment
- 
   useEffect(() => {
     if (roomData) {
       roomData.participants.map((participant) =>
@@ -129,6 +67,16 @@ function Home() {
       );
     }
   }, [roomData]);
+
+
+
+  const handleBorrowClick = () => {
+    navigate('/signup/borrower');
+  };
+
+  const handleLendClick = () => {
+    navigate('/signup/lender');
+  };
   return (
     <>
       <div className="root">
@@ -152,8 +100,8 @@ function Home() {
             platform makes it easy to achieve your financial goals.
           </p>
           <div className="flex justify-between h-full m-5">
-            <Button>Borrow</Button>
-            <Button >Lend</Button>
+            <Button onClick={handleBorrowClick}>Borrow</Button>
+            <Button onClick={handleLendClick}>Lend</Button>
           </div>
           <a href="/AboutUs">Contact Us</a>
         </div>
@@ -184,7 +132,7 @@ function Home() {
                 </li>
                 <li>Earn monthly returns and without any hidden charges</li>
               </ul>
-              <button href="/Signup" className="btn">
+              <button href="/signup/borrower" className="btn">
                 Invest Now
               </button>
               <a href="/AboutUs">Learn More</a>
@@ -206,7 +154,7 @@ function Home() {
                   charges
                 </li>
               </ul>
-              <button href="#" className="btn">
+              <button href="/signup" className="btn">
                 Register as Borrower
               </button>
               <a href="/Signup">Learn More</a>
@@ -327,15 +275,13 @@ function Home() {
                 Lending Buddha introduces a groundbreaking concept in the Indian
                 lending landscape: a dynamic peer-to-peer lending marketplace
                 powered by advanced AI algorithms.
-              </p>
-              <br />
-              <p className="body">
                 At Lending Buddha, we leverage the latest in AI technology to
                 facilitate seamless matchmaking between borrowers and lenders.
                 Our AI algorithms analyze borrower profiles and lender
                 preferences to create optimal matches, ensuring that each party
                 finds the perfect lending or investment opportunity.
               </p>
+            
               {/* <div className="cards" id='customer'>
                 <img src="https://getlendingbuddha.online/static/images/people/profile-s-4.png" alt="" />
                 <p>
