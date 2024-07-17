@@ -3,7 +3,7 @@ import { FiSend } from 'react-icons/fi';
 import './ChatBox.css';
 import io from "socket.io-client";
 import axios from "axios";
-const socket = io("https://backendlb-1et8.onrender.com");
+const socket = io("https://lendingbuddhabackend.onrender.com");
 
 import Message from './Message';
 import { AuthContext } from '../../authContext/AuthContext';
