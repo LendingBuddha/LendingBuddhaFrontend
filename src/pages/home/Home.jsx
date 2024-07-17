@@ -105,7 +105,10 @@ function Home() {
           </div>
           <a href="/AboutUs">Contact Us</a>
         </div>
+        <div className="emi-comp">
         <EmiCalculator/>
+        </div>
+        
 
         <section id="help_you">
           <p className="heading">How can Lending Buddha Help You?</p>
@@ -132,7 +135,7 @@ function Home() {
                 </li>
                 <li>Earn monthly returns and without any hidden charges</li>
               </ul>
-              <button href="/signup/borrower" className="btn">
+              <button onClick={handleLendClick} className="btn">
                 Invest Now
               </button>
               <a href="/AboutUs">Learn More</a>
@@ -154,7 +157,7 @@ function Home() {
                   charges
                 </li>
               </ul>
-              <button href="/signup" className="btn">
+              <button onClick={handleBorrowClick} className="btn">
                 Register as Borrower
               </button>
               <a href="/Signup">Learn More</a>
@@ -212,7 +215,7 @@ function Home() {
             Lending Buddha - Making meaningful connections for all your
             borrowing and investing needs
           </p>
-          <Button>Register as Lender</Button>
+          <Button onClick = {handleLendClick}>Register as Lender</Button>
         </div>
 
         <section className="section" id="proven_process">
@@ -335,7 +338,7 @@ function Home() {
             More than <span>50,000</span> people are actively using Lending
             Buddha
           </p>
-          <button>Register as Borrower</button>
+          <button onClick={handleBorrowClick}>Register as Borrower</button>
         </div>
 
         <section className="section" id="quick_links">

@@ -228,7 +228,7 @@ const LenderSingupPage = () => {
               to="/login/lender"
               className="text-blue-500 hover:underline"
             >
-              login to the chat app
+              login to LendingBuddha.
             </Link>
             .
           </span>
