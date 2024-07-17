@@ -1,3 +1,4 @@
+import { useAuthContext } from "../../context/AuthContextUpdated.jsx";
 import React, { useState, useContext } from "react";
 import OverviewChart from "../overviewChart/overviewChart.jsx";
 import "./dashboard.css";
@@ -5,6 +6,7 @@ import ChatBoxBorrower from "../../components/chatbox/ChatBoxBorrower.jsx";
 import ChatBoxLender from "../../components/chatbox/ChatBoxLender.jsx";
 import axios from "axios";
 const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
+  const {authUser} = useAuthContext;
   const [chatPopUp, setChatPopUp] = useState(false);
   const [roomData, setRoomData] = useState();
   if (!lenderData || !lenderData.dashboardOverview) {
@@ -30,7 +32,7 @@ const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
         `https://lendingbuddhabackend.onrender.com/chatroom/create/${userToChat.uid}`,
         {
           headers: {
-            Authorization: `Bearer ${user.refreshToken}`,
+            Authorization: `Bearer ${authUser.refreshToken}`,
           },
           withCredentials: true,
         }
