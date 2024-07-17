@@ -7,11 +7,12 @@ const socket = io("https://lendingbuddhabackend.onrender.com");
 
 import Message from "./Message";
 import { AuthContext } from "../../authContext/AuthContext";
-
+import { useAuthContext } from "../../context/AuthContextUpdated";
 const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const { user } = useContext(AuthContext);
+  const {authUser} = useAuthContext();
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
   };
@@ -37,7 +38,7 @@ const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
         { message },
         {
           headers: {
-            Authorization: `Bearer ${user.refreshToken}`,
+            Authorization: `Bearer ${authUser.refreshToken}`,
             "Content-Type": "application/json",
           },
           withCredentials: true,

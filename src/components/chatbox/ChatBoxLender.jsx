@@ -1,5 +1,6 @@
 import React, { useState,useEffect,useContext } from 'react';
 import { FiSend } from 'react-icons/fi';
+import { useAuthContext } from '../../context/AuthContextUpdated';
 import './ChatBox.css';
 import io from "socket.io-client";
 import axios from "axios";
@@ -10,6 +11,7 @@ import { AuthContext } from '../../authContext/AuthContext';
 
 
 const ChatBoxLender = ({ setChatPopUp,roomData }) => {
+  const {authUser} = useAuthContext();
   const [message, setMessage] = useState("");
   const [senderType, setSenderType] = useState();
   const [messages, setMessages] = useState([]);
@@ -44,7 +46,7 @@ useEffect(()=>{
         { message },
         {
           headers: {
-            Authorization: `Bearer ${user.refreshToken}`,
+            Authorization: `Bearer ${authUser.refreshToken}`,
             "Content-Type": "application/json",
           },
           withCredentials: true,
