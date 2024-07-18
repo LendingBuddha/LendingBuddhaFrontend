@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Dashboard from '../dashboard/Dashboard';
 import Appbar from '../appbar/Appbar';
-import './layout.css';
+
 import axios from 'axios';
 import { useAuthContext } from '../../context/AuthContextUpdated';
 
