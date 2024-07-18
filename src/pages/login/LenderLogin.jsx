@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Button } from "../../components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
 
 const LenderLogin = () => {
+  const navigate = Navigate()
   const [passwordVisible, setPasswordVisible] = useState(false);
   const { loading, handleLogin } = useLogin("lender");
 
@@ -22,6 +23,7 @@ const LenderLogin = () => {
     e.preventDefault();
     console.log(inputs);
     await handleLogin(inputs);
+    navigate("/")
   };
 
   const togglePasswordVisibility = () => {

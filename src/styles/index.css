@@ -1,37 +1,32 @@
 :root {
-  --home-color:#3d969a ;
+  --home-color: #3d969a;
   --primary-color: #ffffff; 
   --secondary-color: #055e64;
   --third-color: #444444;
   --text-color: #000000;
-  --dashText-color : #ffffff;
+  --dashText-color: #ffffff;
   --button-color: #8e2cb2;
   --accent-color: #bbbbbb;
   --footer-color: #252e3f;
-  --textlink : #6bb6ca;
-  
+  --textlink: #6bb6ca;
 }
 
 body, html {
-  /* min-width: 320px;
-  min-height: 100vh; */
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-:root {
-  line-height: 1.5;
-  font-weight: 100;
-  color-scheme: light dark;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
 
 a {
   font-weight: 200;
   color: var(--text-color);
   text-decoration: inherit;
 }
+
 a:hover {
   color: var(--secondary-color);
 }
@@ -46,8 +41,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* navar css */
-
+/* Navbar CSS */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -55,10 +49,11 @@ button:focus-visible {
   background-color: var(--primary-color);
   padding: 1rem;
   color: var(--text-color);
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-color: var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
 }
 
 .navbar-logo {
@@ -169,6 +164,4 @@ button:focus-visible {
 
 .profile-card .logout-button:hover {
   background-color: var(--accent-color);
-}
-
 }
