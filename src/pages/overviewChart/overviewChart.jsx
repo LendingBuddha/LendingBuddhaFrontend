@@ -1,9 +1,6 @@
-// src/components/overviewChart/OverviewChart.js
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import './overviewChart.css';
-
 
 ChartJS.register(
   CategoryScale,
@@ -48,7 +45,7 @@ const OverviewChart = ({ loanIssuanceData, paymentCollectionData }) => {
   };
 
   return (
-    <div className="overview-chart-container">
+    <div className="w-full lg:w-[47%] mb-5 p-3 max-h-80 bg-gray-800 border-white rounded-lg">
       <Bar data={data} options={options} />
     </div>
   );
