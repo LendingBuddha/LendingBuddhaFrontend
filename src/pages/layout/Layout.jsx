@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Dashboard from '../dashboard/Dashboard';
 import Appbar from '../appbar/Appbar';
-import './layout.css';
 import axios from 'axios';
 import { useAuthContext } from '../../context/AuthContextUpdated';
 
@@ -10,8 +9,6 @@ const Layout = () => {
   const [lenderData, setLenderData] = useState(null);
   const [lendersData, setLendersData] = useState(null);
   const [borrowersData, setBorrowersData] = useState(null);
-
-  
 
   // Fetch common data
   useEffect(() => {
