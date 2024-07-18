@@ -4,18 +4,15 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { useState, Suspense, lazy } from "react"; // Import useState hook for managing authentication state
+import { Suspense } from "react"; // Import useState hook for managing authentication state
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
 import HowItWorks from "./pages/howItWorks/HowItWorks";
 import Borrowers from "./pages/borrowers/Borrowers";
 import Blogs from "./pages/blogs/Blogs";
 import Investors from "./pages/investors/Investors";
-import Login from "./pages/login/Login";
-import Signup from "./pages/signup/Signup";
 import AboutUs from "./pages/aboutUs/AboutUs";
 import "./App.css";
-import Dashboard from "./pages/dashboard/Dashboard";
 import LoadingIndicator from "./components/Loading/LoadingIndicator";
 import FindLender from "./pages/findLenders/FindLender";
 import PersonalLoan from "./pages/PersonalLoan/PersonalLoan";
