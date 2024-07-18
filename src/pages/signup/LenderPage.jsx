@@ -1,4 +1,4 @@
-import React, { useState, useNavigate } from "react";
+import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Input } from "../../components/ui/input";
@@ -24,7 +24,7 @@ const LenderSingupPage = () => {
   });
 
   const { loading, signup } = useSignUp();
-  const navigate = useNavigate();
+
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleChange = (e) => {
@@ -53,15 +53,8 @@ const LenderSingupPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
-    try {
-      await signup(inputs, "lender");
-  // Navigate to /lender after successful signup
-      navigate('/investors'); 
-    } catch (error) {
-      console.error("Signup failed:", error);
-      
-    }
+    console.log(inputs); // For debugging, logs the form data
+    await signup(inputs, "lender"); // Calls signup function from useSignUp hook
   };
 
   const togglePasswordVisibility = () => {
