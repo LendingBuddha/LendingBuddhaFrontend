@@ -33,6 +33,7 @@ const Layout = () => {
     const fetchBorrowersData = async () => {
       if (authUser && authUser.data.role === 'lender' && authUser.refreshToken) {
         try {
+          // change url before next commit
           const response = await axios.get("https://lendingbuddhabackend.onrender.com/api/auth/borrower/users", {
             headers: {
               Authorization: `Bearer ${authUser.refreshToken}`,
@@ -54,6 +55,7 @@ const Layout = () => {
     const fetchLendersData = async () => {
       if (authUser && authUser.data.role === 'borrower' && authUser.refreshToken) {
         try {
+          // change url before next commit
           const response = await axios.get("https://lendingbuddhabackend.onrender.com/api/auth/lender/users", {
             headers: {
               Authorization: `Bearer ${authUser.refreshToken}`,
@@ -71,7 +73,7 @@ const Layout = () => {
   }, [authUser]);
 
   return (
-    <div className="layout">
+    <div className=" p-2 bg-black">
       <Appbar lenderName={lenderData?.dashboardOverview?.lendorsName} />
       <Dashboard 
         lenderData={lenderData}
