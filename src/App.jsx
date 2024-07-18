@@ -105,8 +105,8 @@ function App() {
           {/* Protected routes */}
           {authUser && (
             <>
-              <Route path="/borrowers" element={<Borrowers />} />
-              <Route path="/investors" element={<Investors />} />
+              <Route path="/Borrowers" element={<Borrowers />} />
+              <Route path="/Investors" element={<Investors />} />
               <Route path="/dashboard" element={<Layout />} />
             </>
           )}
@@ -114,8 +114,8 @@ function App() {
           {/* Redirect to login if not authenticated */}
           {!authUser && (
             <>
-              <Route path="/borrowers" element={<Navigate to="/login" />} />
-              <Route path="/investors" element={<Navigate to="/login" />} />
+              <Route path="/Borrowers" element={<Navigate to="/login" />} />
+              <Route path="/Investors" element={<Navigate to="/login" />} />
               <Route path="/dashboard" element={<Navigate to="/login" />} />
             </>
           )}
