@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,  useNavigate } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Input } from "../../components/ui/input";
@@ -23,6 +23,7 @@ const BorrowerSignupPage = () => {
     profilePic: null, // Initialize profilePic as null for file input
   });
 
+  const navigate = useNavigate();
   const { loading, signup } = useSignUp();
 
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -51,10 +52,17 @@ const BorrowerSignupPage = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs); // For debugging, logs the form data
-    await signup(inputs, "borrower"); // Calls signup function from useSignUp hook
+    console.log(inputs);
+    try {
+      await signup(inputs, "borrower");
+  // Navigate to /lender after successful signup
+      navigate('/borrowers'); 
+    } catch (error) {
+      console.error("Signup failed:", error);
+      
+    }
   };
 
   const togglePasswordVisibility = () => {
