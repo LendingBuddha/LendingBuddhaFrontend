@@ -5,6 +5,7 @@ import ChatBoxLender from "../../components/chatbox/ChatBoxLender.jsx";
 import axios from "axios";
 
 const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
+  const {authUser} = useAuthContext();
   const [chatPopUp, setChatPopUp] = useState(false);
   const [roomData, setRoomData] = useState();
   
@@ -24,18 +25,19 @@ const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
   const paymentCollectionData =
     lenderData.dashboardOverview.graphicalInsights.paymentCollectionTrends
       .monthly;
-
+      console.log(authUser);
   const onBeginChat = async (userToChat) => {
     try {
       const res = await axios.get(
         `https://lendingbuddhabackend.onrender.com/chatroom/create/${userToChat.uid}`,
         {
           headers: {
-            Authorization: `Bearer ${user.refreshToken}`,
-          },
+            Authorization: `Bearer ${authUser.refreshToken}`,
+          },    
           withCredentials: true,
         }
       );
+      
       setRoomData(res.data);
       setChatPopUp(!chatPopUp);
     } catch (error) {

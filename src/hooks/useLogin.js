@@ -25,15 +25,15 @@ const useLogin = (role) => {
     try {
       loginSchema.parse(credentials); // Validate input using Zod schema
 
-      let loginEndpoint; // Default login endpoint
+      let loginEndpoint = "/api/auth/login"; // Default login endpoint
 
       // Determine login endpoint based on role
       if (role === "lender") {
-        loginEndpoint = "/api/auth/login/lender";
+        loginEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/login/lender";
       } else if (role === "borrower") {
-        loginEndpoint = "/api/auth/login/borrower";
+        loginEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/login/borrower";
       }
-
+     console.log(loginEndpoint)
       const response = await axios.post(loginEndpoint, credentials, {
         cancelToken: source.token,
       });

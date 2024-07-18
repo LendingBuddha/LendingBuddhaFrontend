@@ -5,12 +5,12 @@ import toast from "react-hot-toast";
 
 const useLogout = () => {
   const [loading, setLoading] = useState(false);
-  const { logout } = useAuthContext();
+  const { logout, authUser } = useAuthContext();
 
   const logouts = async () => {
     setLoading(true);
     try {
-      let accessToken = localStorage.getItem("accessToken");
+      let accessToken = authUser.refreshToken;
       if (accessToken) {
         accessToken = accessToken.replace(/^"(.*)"$/, "$1");
       }
@@ -20,8 +20,8 @@ const useLogout = () => {
         Authorization: `Bearer ${accessToken}`,
       };
     console.log(headers);
-      const Link = "https://backendlb-1et8.onrender.com/api/auth/logout";
-      const logoutLink = "/api/auth/logout"
+      const Link = "https://lendingbuddhabackend.onrender.com/api/auth/logout";
+      const logoutLink = "https://lendingbuddhabackend.onrender.com/api/auth/logout"
 
 
       const response = await axios.post(logoutLink, {}, { headers });
