@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import * as z from "zod";
 import { useAuthContext } from "../context/AuthContextUpdated";
+import { useNavigate } from "react-router-dom";
 
 // Define Zod schema for validation
 const loginSchema = z.object({
@@ -13,7 +14,8 @@ const loginSchema = z.object({
 });
 
 const useLogin = (role) => {
-  const { login } = useAuthContext();
+  const history = useNavigate()
+  const { login,authUser } = useAuthContext();
   const [loading, setLoading] = useState(false);
 
   // Create a cancel token for axios
@@ -25,7 +27,7 @@ const useLogin = (role) => {
     try {
       loginSchema.parse(credentials); // Validate input using Zod schema
 
-      let loginEndpoint = "/api/auth/login"; // Default login endpoint
+      let loginEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/login"; // Default login endpoint
 
       // Determine login endpoint based on role
       if (role === "lender") {
@@ -34,9 +36,7 @@ const useLogin = (role) => {
         loginEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/login/borrower";
       }
      console.log(loginEndpoint)
-      const response = await axios.post(loginEndpoint, credentials, {
-        cancelToken: source.token,
-      });
+      const response = await axios.post(loginEndpoint, credentials, );
 
       const bearerToken = response.headers["authorization"]
         ?.replace("Bearer ", "")
@@ -46,7 +46,9 @@ const useLogin = (role) => {
       localStorage.setItem("accessToken", bearerToken);
 
       login(response.data); // Set authenticated state in context
+      localStorage.setItem("refreshToken",authUser.refreshToken)
       toast.success("Login successful!");
+      history("/")
     } catch (error) {
       if (axios.isCancel(error)) {
         console.log("Request canceled:", error.message);
@@ -62,7 +64,7 @@ const useLogin = (role) => {
         );
       } else {
         // Something else happened while setting up the request
-        console.error("Login Error:", error.message);
+        console.error("Login Error:", error);
         toast.error("Login failed. Please try again.");
       }
     } finally {

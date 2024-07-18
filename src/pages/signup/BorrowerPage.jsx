@@ -4,14 +4,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Button } from "../../components/ui/button";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Separator } from "../../components/ui/separator";
 import useSignUp from "../../hooks/useSignUp";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityoffIcon from '@mui/icons-material/VisibilityOff';
 
 const BorrowerSignupPage = () => {
-  const navigate= Navigate()
+  // const navigate= useNavigate()
   const [inputs, setInputs] = useState({
     fullname: "",
     email: "",
@@ -56,7 +56,7 @@ const BorrowerSignupPage = () => {
     e.preventDefault();
     console.log(inputs); // For debugging, logs the form data
     await signup(inputs, "borrower"); // Calls signup function from useSignUp hook
-    navigate("/login/borrower")
+    // navigate("/login/borrower")
   };
 
   const togglePasswordVisibility = () => {

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Button } from "../../components/ui/button";
 import useLogin from "../../hooks/useLogin";
 
 const BorrowerLogin = () => {
-  const navigate = Navigate()
+  // const navigate = useNavigate()
   const [passwordVisible, setPasswordVisible] = useState(false);
   const { loading, handleLogin } = useLogin("borrower");
 
@@ -31,7 +31,7 @@ const BorrowerLogin = () => {
     }
     
     await handleLogin(Inputs);
-    navigate("/")
+    // navigate("/")
   };
 
   const togglePasswordVisibility = () => {
