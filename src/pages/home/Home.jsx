@@ -65,7 +65,7 @@ function Home() {
             Discover a smarter way to Borrow and Lend with our platform
           </h2>
           <p className="mb-4 text-lg">
-            Gone are the days of complex and cumbersome lending processes. At Lending Buddha, we've streamlined the entire experience to make borrowing and lending as simple as possible. Our user-friendly interface guides you through each step of the process, ensuring a seamless experience from start to finish. Whether you're a borrower in need of funds or a lender looking to invest, our platform makes it easy to achieve your financial goals.
+            Gone are the days of complex and cumbersome lending processes. At Lending Buddha, we&apos;ve streamlined the entire experience to make borrowing and lending as simple as possible. Our user-friendly interface guides you through each step of the process, ensuring a seamless experience from start to finish. Whether you&apos;re a borrower in need of funds or a lender looking to invest, our platform makes it easy to achieve your financial goals.
           </p>
           <div className="flex justify-evenly mb-5 mt-5">
             <Button className="bg-blue-800 w-auto hover:bg-blue-400" onClick={handleBorrowClick}>Borrow</Button>
@@ -81,7 +81,7 @@ function Home() {
         <section className=" flex flex-col my-10 bg-slate-50 p-2 rounded-2xl">
           <h3 className="text-3xl font-semibold mb-2 text-center ">How can Lending Buddha Help You?</h3>
           <p className="mb-4">
-            Lending Buddha, India's leading peer to peer Lending Marketplace, is trusted by doctors, engineers, businessmen and many more for their investing and financing needs.
+            Lending Buddha, India&apos;s leading peer to peer Lending Marketplace, is trusted by doctors, engineers, businessmen and many more for their investing and financing needs.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="card p-5 border rounded shadow">
