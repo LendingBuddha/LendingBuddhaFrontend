@@ -1,6 +1,4 @@
-// src/components/appbar.js
 import React, { useState } from 'react';
-import './appbar.css';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Appbar = ({ lenderName }) => {
@@ -11,20 +9,26 @@ const Appbar = ({ lenderName }) => {
   };
 
   return (
-    <div className="appbar">
-      <div className="appbar-left">
-        <span className="user-name">{lenderName}</span>
+    <div className="flex justify-between items-center p-4 bg-gray-900 border border-white rounded-lg mt-2 ">
+      <div className="flex items-center">
+        <span className="ml-2 text-white font-bold">{lenderName}</span>
       </div>
-      <div className="appbar-center"></div>
-      <div className="appbar-right">
-        <input type="text" placeholder="Search..." />
-        {/* <AccountCircleIcon onClick={handleIconClick} /> */}
+      <div className="flex justify-between text-white flex-grow mx-4"></div>
+      <div className="flex items-center">
+        <input 
+          type="text" 
+          placeholder="Search..." 
+          className="bg-gray-900 border border-white p-2 text-white rounded mr-4"
+        />
+        {/* <AccountCircleIcon onClick={handleIconClick} className="text-white cursor-pointer" /> */}
         {showCard && (
-          <div className="user-card">
+          <div className="absolute top-16 right-2 w-48 p-4 bg-black text-white rounded-lg border border-gray-400 shadow-lg z-50">
             <div className="user-info">
               <p>Name: {lenderName}</p>
               <p>Mobile: 123-456-7890</p>
-              <button className="logout-button">Logout</button>
+              <button className="flex w-full p-2 bg-white text-black rounded mt-2 justify-center hover:bg-red-700">
+                Logout
+              </button>
             </div>
           </div>
         )}
@@ -34,5 +38,3 @@ const Appbar = ({ lenderName }) => {
 };
 
 export default Appbar;
-
-

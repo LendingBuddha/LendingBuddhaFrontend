@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { FacebookRounded, Instagram, Twitter } from "@mui/icons-material";
+import { FacebookRounded, Instagram, Twitter, YouTube } from "@mui/icons-material";
 import { Label } from "../ui/label";
 
 const NewFooter = () => {
@@ -39,7 +39,7 @@ const NewFooter = () => {
 
   return (
     <>
-      <footer className="bg-gray-800 text-white">
+      <footer className="bg-gray-600 text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-wrap justify-between items-start">
             <div className="w-full sm:w-1/2 md:w-1/5 mb-8 sm:mb-0">
@@ -62,7 +62,7 @@ const NewFooter = () => {
               >
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="/"
                     className="text-gray-300  text-lg hover:text-white"
                   >
                     Home
@@ -70,15 +70,15 @@ const NewFooter = () => {
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="/HowItWorks"
                     className="text-blue-300 text-lg hover:text-white"
                   >
-                    How It's Works
+                    How It&apos;s Works
                   </a>
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="/AboutUs"
                     className="text-gray-300 text-lg hover:text-white"
                   >
                     About Us
@@ -86,7 +86,7 @@ const NewFooter = () => {
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#team"
                     className="text-gray-300 text-lg hover:text-white"
                   >
                     Team
@@ -94,7 +94,7 @@ const NewFooter = () => {
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#advisory"
                     className="text-gray-300 text-lg hover:text-white"
                   >
                     Advisory
@@ -102,7 +102,7 @@ const NewFooter = () => {
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#calculate-emi"
                     className="text-gray-300 text-lg hover:text-white"
                   >
                     Loan Calculator
@@ -110,7 +110,7 @@ const NewFooter = () => {
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#blogs"
                     className="text-gray-300 text-lg hover:text-white"
                   >
                     Blog
@@ -142,7 +142,15 @@ const NewFooter = () => {
                     href="#"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    Home
+                    why invest?
+                  </a>
+                </li>
+                <li className="mb-1">
+                  <a
+                    href="/HowItWorks"
+                    className="text-gray-300 text-lg hover:text-white"
+                  >
+                    Investor&apos;s eligibility
                   </a>
                 </li>
                 <li className="mb-1">
@@ -150,7 +158,7 @@ const NewFooter = () => {
                     href="#"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    How It's Works
+                    How to invest?
                   </a>
                 </li>
                 <li className="mb-1">
@@ -158,39 +166,31 @@ const NewFooter = () => {
                     href="#"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    About Us
+                   Returns and fees
                   </a>
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#advisory"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    Team
+                   Investor&apos;s code of conduct
                   </a>
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="/AboutUs"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    Advisory
+                    Investors FAQ
                   </a>
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#calculate-emi"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    Loan Calculator
-                  </a>
-                </li>
-                <li className="mb-1">
-                  <a
-                    href="#"
-                    className="text-gray-300 text-lg hover:text-white"
-                  >
-                    Blog
+                    Tutorial for Investors
                   </a>
                 </li>
               </ul>
@@ -215,58 +215,58 @@ const NewFooter = () => {
               >
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#home"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    Home
+                   Why borrow?
                   </a>
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#how-it-works"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    How It's Works
+                   Borrowers eligibility
                   </a>
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#about-us"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    About Us
+                    How to create effective listing
                   </a>
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#team"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    Team
+                    Purpose of loan
                   </a>
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#advisory"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    Advisory
+                    Repayment and interest rates
                   </a>
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#blogs"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    Loan Calculator
+                    Borrowers FAQ
                   </a>
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#calculate-emi"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    Blog
+                    Tutorial for borrowers
                   </a>
                 </li>
               </ul>
@@ -291,60 +291,29 @@ const NewFooter = () => {
               >
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#home"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    Home
+                    Terms of use
                   </a>
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#how-it-works"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    How It's Works
+                   Privay policy
                   </a>
                 </li>
                 <li className="mb-1">
                   <a
-                    href="#"
+                    href="#about-us"
                     className="text-gray-300 text-lg hover:text-white"
                   >
-                    About Us
+                    Refund and Cancellation
                   </a>
                 </li>
-                <li className="mb-1">
-                  <a
-                    href="#"
-                    className="text-gray-300 text-lg hover:text-white"
-                  >
-                    Team
-                  </a>
-                </li>
-                <li className="mb-1">
-                  <a
-                    href="#"
-                    className="text-gray-300 text-lg hover:text-white"
-                  >
-                    Advisory
-                  </a>
-                </li>
-                <li className="mb-1">
-                  <a
-                    href="#"
-                    className="text-gray-300 text-lg hover:text-white"
-                  >
-                    Loan Calculator
-                  </a>
-                </li>
-                <li className="mb-1">
-                  <a
-                    href="#"
-                    className="text-gray-300 text-lg hover:text-white"
-                  >
-                    Blog
-                  </a>
-                </li>
+                
               </ul>
             </div>
             <div className="w-full sm:w-1/2 md:w-1/5 mb-8 sm:mb-0">
@@ -352,7 +321,7 @@ const NewFooter = () => {
               <ul className="text-sm">
                 <li className="mb-1 flex justify-around">
                   <a
-                    href="#"
+                    href="https://www.facebook.com/lending.buddha.finance"
                     className="text-gray-300 text-lg hover:text-white"
                   >
                     <FacebookRounded />
@@ -364,10 +333,16 @@ const NewFooter = () => {
                     <Twitter />
                   </a>
                   <a
-                    href="#"
+                    href="https://www.instagram.com/lendingbuddha"
                     className="text-gray-300 text-lg hover:text-white"
                   >
                     <Instagram />
+                  </a>
+                  <a
+                    href="https://www.youtube.com/channel/UCSQ8T9yCJ7HfPR7a1EXVrFw"
+                    className="text-gray-300 text-lg hover:text-white"
+                  >
+                    <YouTube />
                   </a>
                 </li>
                 <li className="mb-1">
@@ -379,16 +354,19 @@ const NewFooter = () => {
                   />
                 </li>
                 <li className="mb-1 mt-2">
-                  <Button className="hover:bg-blue-600"> Subscribe Now</Button>
+                  <Button className="hover:bg-blue-600 w-full">
+                    {" "}
+                    Subscribe Now
+                  </Button>
                 </li>
               </ul>
             </div>
           </div>
           <div className="mt-4 text-center">
-            <p className="text-sm text-gray-300 mb-1">contactus@gmail.com</p>
-            <p className="text-sm text-gray-300 mb-1">+91 - 34567890</p>
+            <p className="text-sm text-gray-300 mb-1">contactus@getlendingbuddha.online</p>
+            <p className="text-sm text-gray-300 mb-1">+91-7060372107</p>
             <p className="text-sm text-gray-300">
-              Address: Lending Buddha, H-183, Sector 63 Noida, 201301
+            Address: Lending Buddha, C/O We Work H-183 , Sector 63 Noida, 201301
             </p>
           </div>
         </div>

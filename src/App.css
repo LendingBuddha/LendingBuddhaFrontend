@@ -67,3 +67,27 @@
     @apply bg-background text-foreground;
   }
 }
+
+body{
+  /* background: linear-gradient(rgb(0,0,0,0.2),rgb(0,0,0,0.2)),url("./assets/introspectivedsgn-6159732.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+::-webkit-scrollbar{
+  /* width: 8px; */
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track{
+  /* cursor: pointer; */
+  background: #555;
+}
+::-webkit-scrollbar-thumb{
+  cursor: pointer;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: #242424;
+}

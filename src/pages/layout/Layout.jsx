@@ -1,26 +1,22 @@
-// src/pages/Layout.js
-import React, {useState,useEffect, useContext} from 'react';
-// import appbar from '../appbar/Appbar.jsx';
+import React, { useState, useEffect } from 'react';
 import Dashboard from '../dashboard/Dashboard';
 import Appbar from '../appbar/Appbar';
-import './layout.css';
-import axios from 'axios'
-import { AuthContext } from '../../authContext/AuthContext';
+import axios from 'axios';
+import { useAuthContext } from '../../context/AuthContextUpdated';
 
 const Layout = () => {
-  const {user} = useContext(AuthContext);
+  const { authUser } = useAuthContext();
   const [lenderData, setLenderData] = useState(null);
   const [lendersData, setLendersData] = useState(null);
   const [borrowersData, setBorrowersData] = useState(null);
 
-
-  // fetching common data
+  // Fetch common data
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://backendlb-1et8.onrender.com/api/lender/data');
-       setLenderData(response.data);
-        // console.log(response.data)
+        setLenderData(response.data);
+        // console.log("Lenders data:", response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -28,36 +24,38 @@ const Layout = () => {
 
     fetchData();
   }, []);
- 
-    // Fetch borrower data if logged in as lender
-    useEffect(() => {
-      const fetchBorrowersData = async () => {
-        if (user && user.role === 'lender' && user.refreshToken) {
-          try {
-            const response = await axios.get("https://backendlb-1et8.onrender.com/api/auth/borrower/users", {
-              headers: {
-                Authorization: `Bearer ${user.refreshToken}`,
-              },
-            });
-            setBorrowersData(response.data);
-            console.log("Borrowers list:", response.data);
-          } catch (error) {
-            console.log("Error fetching borrowers:", error);
-          }
+
+  // Fetch borrower data if logged in as lender
+  useEffect(() => {
+    const fetchBorrowersData = async () => {
+      if (authUser && authUser.data.role === 'lender' && authUser.refreshToken) {
+        try {
+          // change url before next commit
+          const response = await axios.get("https://lendingbuddhabackend.onrender.com/api/auth/borrower/users", {
+            headers: {
+              Authorization: `Bearer ${authUser.refreshToken}`,
+            },
+          });
+          setBorrowersData(response.data);
+          console.log("Borrowers list:", response.data);
+        } catch (error) {
+          console.log("Error fetching borrowers:", error);
         }
-      };
-  
-      fetchBorrowersData();
-    }, [user]);
+      }
+    };
+
+    fetchBorrowersData();
+  }, [authUser]);
 
   // Fetch lenders data if logged in as borrower
   useEffect(() => {
     const fetchLendersData = async () => {
-      if (user && user.role === 'borrower' && user.refreshToken) {
+      if (authUser && authUser.data.role === 'borrower' && authUser.refreshToken) {
         try {
-          const response = await axios.get("https://backendlb-1et8.onrender.com/api/auth/lender/users", {
+          // change url before next commit
+          const response = await axios.get("https://lendingbuddhabackend.onrender.com/api/auth/lender/users", {
             headers: {
-              Authorization: `Bearer ${user.refreshToken}`,
+              Authorization: `Bearer ${authUser.refreshToken}`,
             },
           });
           setLendersData(response.data);
@@ -69,16 +67,17 @@ const Layout = () => {
     };
 
     fetchLendersData();
-  }, [user]);
-
+  }, [authUser]);
 
   return (
-    <div className="layout">
+    <div className=" p-2 bg-black">
       <Appbar lenderName={lenderData?.dashboardOverview?.lendorsName} />
-      {/* <Sidebar /> */}
-      <Dashboard lenderData={lenderData}
-       borrowersData={borrowersData} 
-       lendersData={lendersData} user ={user} />
+      <Dashboard 
+        lenderData={lenderData}
+        borrowersData={borrowersData}
+        lendersData={lendersData}
+         user={authUser.data} 
+      />
     </div>
   );
 };

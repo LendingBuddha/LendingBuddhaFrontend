@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Button } from "../../components/ui/button";
 import useLogin from "../../hooks/useLogin";
 
 const BorrowerLogin = () => {
+  // const navigate = useNavigate()
   const [passwordVisible, setPasswordVisible] = useState(false);
   const { loading, handleLogin } = useLogin("borrower");
 
@@ -20,7 +21,7 @@ const BorrowerLogin = () => {
   const onPasswordChange = (e) => {
     setInputs({ ...Inputs, password: e.target.value });
   };
-  const onSubmit = (e) => {
+  const onSubmit = async(e) => {
     e.preventDefault();
     
     // Basic email validation
@@ -29,7 +30,8 @@ const BorrowerLogin = () => {
       return;
     }
     
-    handleLogin(Inputs);
+    await handleLogin(Inputs);
+    // navigate("/")
   };
 
   const togglePasswordVisibility = () => {

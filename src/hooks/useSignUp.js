@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import * as z from "zod";
 import { useAuthContext } from "../context/AuthContextUpdated";
+import { useNavigate } from "react-router-dom";
 
 // Define Zod schema for validation
 const baseSignUpSchema = z.object({
@@ -41,6 +42,7 @@ const borrowerSignUpSchema = baseSignUpSchema.extend({
 });
 
 const useSignUp = () => {
+  const history = useNavigate()
   const [loading, setLoading] = useState(false);
   const signup = async (input, role) => {
     setLoading(true);
@@ -63,11 +65,11 @@ const useSignUp = () => {
 
     // Determine signup endpoint based on role
     if (role === "borrower") {
-      signupEndpoint = "https://backendlb-1et8.onrender.com/api/auth/signup/borrower";
+      signupEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/signup/borrower";
     } else if (role === "lender") {
-      signupEndpoint = "https://backendlb-1et8.onrender.com/api/auth/signup/lender";
+      signupEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/signup/lender";
     }
-
+    console.log(signupEndpoint);
     try {
       if (role === "lender") {
         delete input.cibilscore;
@@ -80,6 +82,7 @@ const useSignUp = () => {
       toast.success("Signup successful!");
       toast.success(response.data.message)
       console.log(response);
+      history(`/login${role}`)
       // Handle successful signup (e.g., redirect or display a success message)
     } catch (error) {
       if (axios.isAxiosError(error)) {

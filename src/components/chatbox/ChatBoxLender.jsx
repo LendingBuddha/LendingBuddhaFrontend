@@ -1,15 +1,17 @@
 import React, { useState,useEffect,useContext } from 'react';
 import { FiSend } from 'react-icons/fi';
+import { useAuthContext } from '../../context/AuthContextUpdated';
 import './ChatBox.css';
 import io from "socket.io-client";
 import axios from "axios";
-const socket = io("https://backendlb-1et8.onrender.com");
+const socket = io("https://lendingbuddhabackend.onrender.com");
 
 import Message from './Message';
 import { AuthContext } from '../../authContext/AuthContext';
 
 
 const ChatBoxLender = ({ setChatPopUp,roomData }) => {
+  const {authUser} = useAuthContext();
   const [message, setMessage] = useState("");
   const [senderType, setSenderType] = useState();
   const [messages, setMessages] = useState([]);
@@ -40,11 +42,11 @@ useEffect(()=>{
   const sendMessagesToDb = async (roomData, message) => {
     try {
       const res = await axios.post(
-        `https://backendlb-1et8.onrender.com/chatroom/message/send/${roomData._id}`,
+        `https://lendingbuddhabackend.onrender.com/chatroom/message/send/${roomData._id}`,
         { message },
         {
           headers: {
-            Authorization: `Bearer ${user.refreshToken}`,
+            Authorization: `Bearer ${authUser.refreshToken}`,
             "Content-Type": "application/json",
           },
           withCredentials: true,
@@ -68,7 +70,7 @@ useEffect(()=>{
   const onGetMessages = async () => {
     try {
       const res = await axios.get(
-        `https://backendlb-1et8.onrender.com/chatroom/message/${roomData._id}`
+        `https://lendingbuddhabackend.onrender.com/chatroom/message/${roomData._id}`
       );
       res.data.map((message) =>
         setMessages((prevMessages) => [...prevMessages, message])

@@ -3,15 +3,16 @@ import { FiSend } from "react-icons/fi";
 import "./ChatBox.css";
 import io from "socket.io-client";
 import axios from "axios";
-const socket = io("https://backendlb-1et8.onrender.com");
+const socket = io("https://lendingbuddhabackend.onrender.com");
 
 import Message from "./Message";
 import { AuthContext } from "../../authContext/AuthContext";
-
+import { useAuthContext } from "../../context/AuthContextUpdated";
 const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const { user } = useContext(AuthContext);
+  const {authUser} = useAuthContext();
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
   };
@@ -33,11 +34,11 @@ const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
   const sendMessagesToDb = async (roomData, message) => {
     try {
       const res = await axios.post(
-        `https://backendlb-1et8.onrender.com/chatroom/message/send/${roomData._id}`,
+        `https://lendingbuddhabackend.onrender.com/chatroom/message/send/${roomData._id}`,
         { message },
         {
           headers: {
-            Authorization: `Bearer ${user.refreshToken}`,
+            Authorization: `Bearer ${authUser.refreshToken}`,
             "Content-Type": "application/json",
           },
           withCredentials: true,
@@ -61,7 +62,7 @@ const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
   const onGetMessages = async () => {
     try {
       const res = await axios.get(
-        `https://backendlb-1et8.onrender.com/chatroom/message/${roomData._id}`
+        `https://lendingbuddhabackend.onrender.com/chatroom/message/${roomData._id}`
       );
       
       res.data.map((message) =>

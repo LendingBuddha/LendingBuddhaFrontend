@@ -4,18 +4,15 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { useState, Suspense, lazy } from "react"; // Import useState hook for managing authentication state
+import { Suspense } from "react"; // Import useState hook for managing authentication state
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
 import HowItWorks from "./pages/howItWorks/HowItWorks";
 import Borrowers from "./pages/borrowers/Borrowers";
 import Blogs from "./pages/blogs/Blogs";
 import Investors from "./pages/investors/Investors";
-import Login from "./pages/login/Login";
-import Signup from "./pages/signup/Signup";
 import AboutUs from "./pages/aboutUs/AboutUs";
 import "./App.css";
-import Dashboard from "./pages/dashboard/Dashboard";
 import LoadingIndicator from "./components/Loading/LoadingIndicator";
 import FindLender from "./pages/findLenders/FindLender";
 import PersonalLoan from "./pages/PersonalLoan/PersonalLoan";
@@ -44,39 +41,45 @@ import BorrowerSignupPage from "./pages/signup/BorrowerPage";
 import LenderSingupPage from "./pages/signup/LenderPage";
 import NotFound from "./pages/NotFound/NotFound";
 import { Toaster } from "react-hot-toast";
-
+import { useAuthContext } from "./context/AuthContextUpdated";
+import Layout from "./pages/layout/Layout.jsx"
 
 // const Footer = lazy(() => import(`./components/footer/Footer`));
 function App() {
-  // Example state to manage authentication
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // Function to simulate login
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  // Function to simulate logout
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
-
- 
+  const { authUser } = useAuthContext();
 
   return (
     <Router>
       <div>
-        <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+        <Navbar  authUser={authUser}/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/HowItWorks" element={<HowItWorks />} />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path="/login" element={<LoginHome />} />
-          <Route path="/login/lender" element={<LenderLogin />} />
-          <Route path="/login/borrower" element={<BorrowerLogin />} />
-          <Route path="/signup" element={<SignUpHome />} />
-          <Route path="/signup/lender" element={<LenderSingupPage />} />
-          <Route path="/signup/borrower" element={<BorrowerSignupPage />} />
+          <Route
+            path="/login"
+            element={authUser ? <Navigate to="/" /> : <LoginHome />}
+          />
+          <Route
+            path="/login/lender"
+            element={authUser ? <Navigate to="/" /> : <LenderLogin />}
+          />
+          <Route
+            path="/login/borrower"
+            element={authUser ? <Navigate to="/" /> : <BorrowerLogin />}
+          />
+          <Route
+            path="/signup"
+            element={authUser ? <Navigate to="/" /> : <SignUpHome />}
+          />
+          <Route
+            path="/signup/lender"
+            element={authUser ? <Navigate to="/" /> : <LenderSingupPage />}
+          />
+          <Route
+            path="/signup/borrower"
+            element={authUser ? <Navigate to="/" /> : <BorrowerSignupPage />}
+          />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/FindLenders" element={<FindLender />} />
           <Route path="/personal-loan" element={<PersonalLoan />} />
@@ -98,37 +101,31 @@ function App() {
           <Route path="/loan-ahmedabad" element={<PersonalLoanAhamadabad />} />
           <Route path='/not-found' element={<NotFound/>}/>
 
-          {/* <Route path='/debt' element={</>}/> */}
-
           {/* Protected routes */}
-          {isLoggedIn && (
+          {authUser && (
             <>
-              <Route path="/borrowers" element={<Borrowers />} />
-              <Route path="/investors" element={<Investors />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-           
+              <Route path="/Borrowers" element={<Borrowers />} />
+              <Route path="/Investors" element={<Investors />} />
+              <Route path="/dashboard" element={<Layout />} />
+             {/*  */}
             </>
           )}
 
           {/* Redirect to login if not authenticated */}
-          {!isLoggedIn && (
+          {!authUser && (
             <>
-              <Route path="/borrowers" element={<Navigate to="/login" />} />
-              <Route path="/investors" element={<Navigate to="/login" />} />
+              <Route path="/Borrowers" element={<Navigate to="/login" />} />
+              <Route path="/Investors" element={<Navigate to="/login" />} />
               <Route path="/dashboard" element={<Navigate to="/login" />} />
-              
             </>
           )}
-          {/* <Route path="/signup/borrower" element={<SignupBorrower />} />
-          <Route path="/signup/lender" element={<SignupLender />} /> */}
         </Routes>
-        <Toaster/>
+        <Toaster />
         <Suspense fallback={<LoadingIndicator />}>
           <NewFooter />
         </Suspense>
       </div>
     </Router>
-    // <Layout/>
   );
 }
 

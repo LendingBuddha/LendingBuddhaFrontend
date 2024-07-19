@@ -2,24 +2,28 @@ import React, { useState } from "react";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Button } from "../../components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
 
 const LenderLogin = () => {
+  // const navigate = useNavigate()
   const [passwordVisible, setPasswordVisible] = useState(false);
   const { loading, handleLogin } = useLogin("lender");
 
-  const [Inputs, setInputs] = useState({
+  const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
+
   const onChange = (e) => {
-    setInputs({ ...Inputs, [e.target.name]: e.target.value });
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
-  const onSubmit = (e) => {
+
+  const onSubmit = async(e) => {
     e.preventDefault();
-    console.log(Inputs);
-    handleLogin(Inputs);
+    console.log(inputs);
+    await handleLogin(inputs);
+    // navigate("/")
   };
 
   const togglePasswordVisibility = () => {
@@ -40,8 +44,9 @@ const LenderLogin = () => {
             </Label>
             <Input
               id="email"
+              name="email"
               type="email"
-              value={Inputs.email}
+              value={inputs.email}
               onChange={onChange}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
               placeholder="Enter Your Email"
@@ -56,7 +61,8 @@ const LenderLogin = () => {
             </Label>
             <Input
               id="password"
-              value={Inputs.password}
+              name="password"
+              value={inputs.password}
               onChange={onChange}
               type={passwordVisible ? "text" : "password"}
               className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -92,4 +98,5 @@ const LenderLogin = () => {
     </div>
   );
 };
+
 export default LenderLogin;

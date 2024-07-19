@@ -4,13 +4,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
 import { Button } from "../../components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Separator } from "../../components/ui/separator";
 import useSignUp from "../../hooks/useSignUp";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityoffIcon from '@mui/icons-material/VisibilityOff';
 
 const LenderSingupPage = () => {
+  // const navigate= useNavigate()
   const [inputs, setInputs] = useState({
     fullname: "",
     email: "",
@@ -55,6 +56,7 @@ const LenderSingupPage = () => {
     e.preventDefault();
     console.log(inputs); // For debugging, logs the form data
     await signup(inputs, "lender"); // Calls signup function from useSignUp hook
+    // navigate("/login/lender")
   };
 
   const togglePasswordVisibility = () => {
@@ -228,7 +230,7 @@ const LenderSingupPage = () => {
               to="/login/lender"
               className="text-blue-500 hover:underline"
             >
-              login to the chat app
+              login to LendingBuddha.
             </Link>
             .
           </span>
