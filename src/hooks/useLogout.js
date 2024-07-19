@@ -7,9 +7,9 @@ import { useNavigate } from "react-router-dom";
 const useLogout = () => {
   const [loading, setLoading] = useState(false);
   const { logout, authUser } = useAuthContext();
+  const history = useNavigate();
 
   const logouts = async () => {
-    const history = useNavigate();
     setLoading(true);
     try {
       let accessToken = localStorage.getItem("refreshToken");
@@ -22,20 +22,25 @@ const useLogout = () => {
         Authorization: `Bearer ${accessToken}`,
       };
       console.log(headers);
-      const logoutLink =
-        "https://lendingbuddhabackend.onrender.com/api/auth/logout";
-      const response = await axios.post(logoutLink, {}, { headers });
-
-      if (response.status === 200) {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        localStorage.removeItem("authUser");
-        toast.success("Logout successful");
-        logout();
-        history("/");
-      } else {
-        throw new Error(response.data.error);
-      }
+      // const logoutLink =
+      //   "https://lendingbuddhabackend.onrender.com/api/auth/logout";
+      // const response = await axios.post(logoutLink, {}, { headers });
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+      localStorage.removeItem("authUser");
+      toast.success("Logout successful");
+      logout();
+      history("/");
+      // if (response.status === 200) {
+      //   localStorage.removeItem("accessToken");
+      //   localStorage.removeItem("refreshToken");
+      //   localStorage.removeItem("authUser");
+      //   toast.success("Logout successful");
+      //   logout();
+      //   history("/");
+      // } else {
+      //   throw new Error(response.data.error);
+      // }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Logout Error", error);
