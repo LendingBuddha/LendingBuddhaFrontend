@@ -151,13 +151,16 @@ button:focus-visible {
 }
 
 .profile-card .logout-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--primary-color);
   color: var(--text-color);
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  width: 50%;
+  width: 100%;
   text-align: center;
   margin-bottom: 4px;
 }
