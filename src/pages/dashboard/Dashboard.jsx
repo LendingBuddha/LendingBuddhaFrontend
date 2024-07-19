@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuthContext } from "../../context/AuthContextUpdated.jsx";
 import OverviewChart from "../overviewChart/overviewChart.jsx";
 import ChatBoxBorrower from "../../components/chatbox/ChatBoxBorrower.jsx";
 import ChatBoxLender from "../../components/chatbox/ChatBoxLender.jsx";
