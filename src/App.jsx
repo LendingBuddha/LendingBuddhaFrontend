@@ -42,6 +42,7 @@ import BorrowerLogin from "./pages/login/BorrowerLogin";
 import SignUpHome from "./pages/signup/SignupHome";
 import BorrowerSignupPage from "./pages/signup/BorrowerPage";
 import LenderSingupPage from "./pages/signup/LenderPage";
+import NotFound from "./pages/NotFound/NotFound";
 import { Toaster } from "react-hot-toast";
 
 
@@ -95,6 +96,7 @@ function App() {
           <Route path="/loan-hydrabad" element={<PersonalLoanHydrabad />} />
           <Route path="/loan-bangalore" element={<PersonalLoanBangalore />} />
           <Route path="/loan-ahmedabad" element={<PersonalLoanAhamadabad />} />
+          <Route path='/not-found' element={<NotFound/>}/>
 
           {/* <Route path='/debt' element={</>}/> */}
 

@@ -20,7 +20,7 @@ const useLogin = (role) => {
     try {
       loginSchema.parse(credentials); // Validate input using Zod schema
 
-      let loginEndpoint = "https://backendlb-1et8.onrender.com/api/auth/login"; // Default login endpoint
+      let loginEndpoint = "/api/auth/login"; // Default login endpoint
 
       // Determine login endpoint based on role
       if (role === "lender") {
