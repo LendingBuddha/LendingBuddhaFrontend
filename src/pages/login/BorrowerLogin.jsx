@@ -6,7 +6,7 @@ import { Button } from "../../components/ui/button";
 import useLogin from "../../hooks/useLogin";
 
 const BorrowerLogin = () => {
-  // const navigate = useNavigate()
+  const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const { loading, handleLogin } = useLogin("borrower");
 
@@ -31,7 +31,7 @@ const BorrowerLogin = () => {
     }
     
     await handleLogin(Inputs);
-    // navigate("/")
+    navigate("/dashboard")
   };
 
   const togglePasswordVisibility = () => {

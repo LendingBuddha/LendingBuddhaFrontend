@@ -12,7 +12,6 @@ const loginSchema = z.object({
     .string()
     .min(6, { message: "Password must be at least 6 characters long" }),
 });
-
 const useLogin = (role) => {
   const history = useNavigate()
   const { login,authUser } = useAuthContext();
@@ -50,23 +49,24 @@ const useLogin = (role) => {
       toast.success("Login successful!");
       history("/")
     } catch (error) {
-      if (axios.isCancel(error)) {
-        console.log("Request canceled:", error.message);
-      } else if (error instanceof z.ZodError) {
-        error.errors.forEach((err) => {
-          toast.error(err.message);
-        });
-      } else if (error.response) {
-        // Server responded with a status other than 2xx
-        console.error("Login Error:", error.response.data);
-        toast.error(
-          error.response.data.message || "Login failed. Please try again."
-        );
-      } else {
-        // Something else happened while setting up the request
-        console.error("Login Error:", error);
-        toast.error("Login failed. Please try again.");
-      }
+      // if (axios.isCancel(error)) {
+      //   console.log("Request canceled:", error.message);
+      // } else if (error instanceof z.ZodError) {
+      //   error.errors.forEach((err) => {
+      //     toast.error(err.message);
+      //   });
+      // } else if (error.response) {
+      //   // Server responded with a status other than 2xx
+      //   console.error("Login Error:", error.response.data);
+      //   toast.error(
+      //     error.response.data.message || "Login failed. Please try again."
+      //   );
+      // } else {
+      //   // Something else happened while setting up the request
+      //   console.error("Login Error:", error);
+      //   toast.error("Login failed. Please try again.");
+      // }
+      console.log(error);
     } finally {
       setLoading(false);
     }

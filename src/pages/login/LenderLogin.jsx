@@ -6,7 +6,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import useLogin from "../../hooks/useLogin";
 
 const LenderLogin = () => {
-  // const navigate = useNavigate()
+  const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const { loading, handleLogin } = useLogin("lender");
 
@@ -23,7 +23,7 @@ const LenderLogin = () => {
     e.preventDefault();
     console.log(inputs);
     await handleLogin(inputs);
-    // navigate("/")
+    navigate("/dashboard")
   };
 
   const togglePasswordVisibility = () => {
