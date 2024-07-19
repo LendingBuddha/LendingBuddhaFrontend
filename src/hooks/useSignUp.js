@@ -42,6 +42,7 @@ const borrowerSignUpSchema = baseSignUpSchema.extend({
 });
 
 const useSignUp = () => {
+  const {login} = useAuthContext();
   const history = useNavigate()
   const [loading, setLoading] = useState(false);
   const signup = async (input, role) => {
@@ -79,22 +80,13 @@ const useSignUp = () => {
           "Content-Type": "multipart/form-data", // Set content type for file upload
         },
       });
+      login(response.data);
       toast.success("Signup successful!");
       toast.success(response.data.message)
       console.log(response);
-      history(`/login${role}`)
       // Handle successful signup (e.g., redirect or display a success message)
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log("Error in Signup", error);
-        // Handle Axios-specific errors
-        toast.error(
-          error.response?.data.error || "Signup failed. Please try again."
-        );
-      } else {
-        console.log(error);
-        toast.error("An unexpected error occurred");
-      }
+    } catch (error) {    
+        console.log(error);     
     } finally {
       setLoading(false);
     }

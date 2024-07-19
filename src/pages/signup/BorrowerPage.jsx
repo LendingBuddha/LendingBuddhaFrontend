@@ -11,7 +11,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityoffIcon from '@mui/icons-material/VisibilityOff';
 
 const BorrowerSignupPage = () => {
-  // const navigate= useNavigate()
+  const navigate= useNavigate()
   const [inputs, setInputs] = useState({
     fullname: "",
     email: "",
@@ -56,7 +56,7 @@ const BorrowerSignupPage = () => {
     e.preventDefault();
     console.log(inputs); // For debugging, logs the form data
     await signup(inputs, "borrower"); // Calls signup function from useSignUp hook
-    // navigate("/login/borrower")
+    navigate("/dashboard")
   };
 
   const togglePasswordVisibility = () => {
