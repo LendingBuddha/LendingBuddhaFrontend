@@ -39,10 +39,11 @@ const Navbar = ({ authUser }) => {
       <ul className={menuOpen ? "navbar-links active" : "navbar-links"} onClick={toggleMenu}>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/HowItWorks">How it works</Link></li>
-        <li><Link to="/Investors">Investors</Link></li>
-        <li><Link to="/Borrowers">Borrowers</Link></li>
-        <li><Link to="/Blogs">Blog</Link></li>
+        {/* <li><Link to="/Investors">Investors</Link></li>
+        <li><Link to="/Borrowers">Borrowers</Link></li> */}
         <li><Link to="/AboutUs">About us</Link></li>
+        <li><Link to="/dashboard">Dashboard</Link></li>
+        <li><Link to="/Blogs">Blog</Link></li>
         {authUser ? (
           <>
             {authUser.role === 'borrower' && (
@@ -56,9 +57,9 @@ const Navbar = ({ authUser }) => {
                   <p>Role: {authUser.data.role}</p>
                   <p>Email: {authUser.data.email}</p>
                 </div>
-                <button className="logout-button" onClick={navigateToDashboard}>
+                {/* <button className="logout-button" onClick={navigateToDashboard}>
                   Go to Dashboard
-                </button>
+                </button> */}
                 <button className="logout-button" onClick={handleLogout}>Logout</button>
               </div>
             </li>
