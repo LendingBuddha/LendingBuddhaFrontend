@@ -4,12 +4,12 @@ import OverviewChart from "../overviewChart/overviewChart.jsx";
 import ChatBoxBorrower from "../../components/chatbox/ChatBoxBorrower.jsx";
 import ChatBoxLender from "../../components/chatbox/ChatBoxLender.jsx";
 import axios from "axios";
-
+let url=import.meta.env.VITE_APP_API_URL;
 const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
   const {authUser} = useAuthContext();
   const [chatPopUp, setChatPopUp] = useState(false);
   const [roomData, setRoomData] = useState();
-  
+  console.log(user)
   if (!lenderData || !lenderData.dashboardOverview) {
     return <div>Loading...</div>;
   }
@@ -30,7 +30,7 @@ const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
   const onBeginChat = async (userToChat) => {
     try {
       const res = await axios.get(
-        `https://lendingbuddhabackend.onrender.com/chatroom/create/${userToChat.uid}`,
+        `${url}/chatroom/create/${userToChat.uid}`,
         {
           headers: {
             Authorization: `Bearer ${authUser.refreshToken}`,
