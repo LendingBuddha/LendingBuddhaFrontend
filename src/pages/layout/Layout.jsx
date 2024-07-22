@@ -11,13 +11,14 @@ const Layout = () => {
   const [lendersData, setLendersData] = useState(null);
   const [borrowersData, setBorrowersData] = useState(null);
 
+let url = import.meta.env.VITE_APP_API_URL;
   
 
   // Fetch common data
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://backendlb-1et8.onrender.com/api/lender/data');
+        const response = await axios.get(`${url}/api/lender/data`);
         setLenderData(response.data);
         // console.log("Lenders data:", response.data);
       } catch (error) {
@@ -33,7 +34,7 @@ const Layout = () => {
     const fetchBorrowersData = async () => {
       if (authUser && authUser.data.role === 'lender' && authUser.refreshToken) {
         try {
-          const response = await axios.get("https://lendingbuddhabackend.onrender.com/api/auth/borrower/users", {
+          const response = await axios.get(`${url}/api/auth/borrower/users`, {
             headers: {
               Authorization: `Bearer ${authUser.refreshToken}`,
             },
@@ -54,7 +55,7 @@ const Layout = () => {
     const fetchLendersData = async () => {
       if (authUser && authUser.data.role === 'borrower' && authUser.refreshToken) {
         try {
-          const response = await axios.get("https://lendingbuddhabackend.onrender.com/api/auth/lender/users", {
+          const response = await axios.get(`${url}/api/auth/lender/users`, {
             headers: {
               Authorization: `Bearer ${authUser.refreshToken}`,
             },

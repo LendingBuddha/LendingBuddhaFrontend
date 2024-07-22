@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuthContext } from "../context/AuthContextUpdated";
 import axios from "axios";
 import toast from "react-hot-toast";
+let url = import.meta.env.VITE_APP_API_URL;
 
 const useLogout = () => {
   const [loading, setLoading] = useState(false);
@@ -20,8 +21,8 @@ const useLogout = () => {
         Authorization: `Bearer ${accessToken}`,
       };
     console.log(headers);
-      const Link = "https://lendingbuddhabackend.onrender.com/api/auth/logout";
-      const logoutLink = "https://lendingbuddhabackend.onrender.com/api/auth/logout"
+      const Link = `${url}/api/auth/logout`;
+      const logoutLink = `${url}/api/auth/logout`;
 
 
       const response = await axios.post(logoutLink, {}, { headers });
