@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import * as z from "zod";
 import { useAuthContext } from "../context/AuthContextUpdated";
-import { useNavigate } from "react-router-dom";
+let url = import.meta.env.VITE_APP_API_URL;
 
 // Define Zod schema for validation
 const baseSignUpSchema = z.object({
@@ -66,9 +66,9 @@ const useSignUp = () => {
 
     // Determine signup endpoint based on role
     if (role === "borrower") {
-      signupEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/signup/borrower";
+      signupEndpoint = `${url}/api/auth/signup/borrower`;
     } else if (role === "lender") {
-      signupEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/signup/lender";
+      signupEndpoint = `${url}/api/auth/signup/lender`;
     }
     console.log(signupEndpoint);
     try {

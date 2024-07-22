@@ -3,8 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import * as z from "zod";
 import { useAuthContext } from "../context/AuthContextUpdated";
-import { useNavigate } from "react-router-dom";
-
+let url = import.meta.env.VITE_APP_API_URL;
 // Define Zod schema for validation
 const loginSchema = z.object({
   email: z.string().email({ message: "Invalid email format" }),
@@ -30,9 +29,9 @@ const useLogin = (role) => {
 
       // Determine login endpoint based on role
       if (role === "lender") {
-        loginEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/login/lender";
+        loginEndpoint = `${url}/api/auth/login/lender`;
       } else if (role === "borrower") {
-        loginEndpoint = "https://lendingbuddhabackend.onrender.com/api/auth/login/borrower";
+        loginEndpoint = `${url}/api/auth/login/borrower`;
       }
      console.log(loginEndpoint)
       const response = await axios.post(loginEndpoint, credentials, );

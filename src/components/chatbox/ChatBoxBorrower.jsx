@@ -3,7 +3,9 @@ import { FiSend } from "react-icons/fi";
 import "./ChatBox.css";
 import io from "socket.io-client";
 import axios from "axios";
-const socket = io("https://lendingbuddhabackend.onrender.com");
+let url = import.meta.env.VITE_APP_API_URL;
+
+const socket = io(url);
 
 import Message from "./Message";
 import { AuthContext } from "../../authContext/AuthContext";
@@ -34,7 +36,7 @@ const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
   const sendMessagesToDb = async (roomData, message) => {
     try {
       const res = await axios.post(
-        `https://lendingbuddhabackend.onrender.com/chatroom/message/send/${roomData._id}`,
+        `${url}/chatroom/message/send/${roomData._id}`,
         { message },
         {
           headers: {
@@ -62,7 +64,7 @@ const ChatBoxBorrower = ({ setChatPopUp, lender, roomData }) => {
   const onGetMessages = async () => {
     try {
       const res = await axios.get(
-        `https://lendingbuddhabackend.onrender.com/chatroom/message/${roomData._id}`
+        `${url}/chatroom/message/${roomData._id}`
       );
       
       res.data.map((message) =>

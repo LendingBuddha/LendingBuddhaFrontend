@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuthContext } from "../context/AuthContextUpdated";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+let url = import.meta.env.VITE_APP_API_URL;
 
 const useLogout = () => {
   const [loading, setLoading] = useState(false);
@@ -21,26 +21,22 @@ const useLogout = () => {
       const headers = {
         Authorization: `Bearer ${accessToken}`,
       };
-      console.log(headers);
-      // const logoutLink =
-      //   "https://lendingbuddhabackend.onrender.com/api/auth/logout";
-      // const response = await axios.post(logoutLink, {}, { headers });
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      localStorage.removeItem("authUser");
-      toast.success("Logout successful");
-      logout();
-      history("/");
-      // if (response.status === 200) {
-      //   localStorage.removeItem("accessToken");
-      //   localStorage.removeItem("refreshToken");
-      //   localStorage.removeItem("authUser");
-      //   toast.success("Logout successful");
-      //   logout();
-      //   history("/");
-      // } else {
-      //   throw new Error(response.data.error);
-      // }
+    console.log(headers);
+      const Link = `${url}/api/auth/logout`;
+      const logoutLink = `${url}/api/auth/logout`;
+
+
+      const response = await axios.post(logoutLink, {}, { headers });
+
+      if (response.status === 200) {
+        
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("authUser");
+        toast.success("Logout successful");
+        logout();
+      } else {
+        throw new Error(response.data.error);
+      }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Logout Error", error);
