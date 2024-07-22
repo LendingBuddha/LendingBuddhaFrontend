@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import * as z from "zod";
 import { useAuthContext } from "../context/AuthContextUpdated";
 let url = import.meta.env.VITE_APP_API_URL;
+import { useNavigate } from "react-router-dom";
 
 // Define Zod schema for validation
 const baseSignUpSchema = z.object({
@@ -13,38 +14,18 @@ const baseSignUpSchema = z.object({
     .string()
     .min(6, { message: "Password must be at least 6 characters long" }),
   phonenumber: z.string().min(1, { message: "Phone number is required" }),
-  aadharcard: z.string().min(1, { message: "Aadhar Card is required" }),
-  pancard: z.string().min(1, { message: "PAN Card is required" }),
-  dob: z.date().refine(
-    (value) => {
-      const dob = new Date(value);
-      const currentDate = new Date();
-      const minAge = 18;
-
-      // Check if value is a valid date and age requirement is met
-      return (
-        !isNaN(dob.getTime()) &&
-        dob < currentDate &&
-        dob >=
-          new Date(
-            currentDate.getFullYear() - minAge,
-            currentDate.getMonth(),
-            currentDate.getDate()
-          )
-      );
-    },
-    { message: "Invalid date of birth or age must be at least 18 years old" }
-  ),
+  // Removed fields
 });
 
 const borrowerSignUpSchema = baseSignUpSchema.extend({
-  cibilscore: z.string().min(1, { message: "CIBIL Score is required" }),
+  // Removed CIBIL Score field
 });
 
 const useSignUp = () => {
-  const {login} = useAuthContext();
-  const history = useNavigate()
+  const { login } = useAuthContext();
+  const history = useNavigate();
   const [loading, setLoading] = useState(false);
+  
   const signup = async (input, role) => {
     setLoading(true);
 
@@ -71,22 +52,21 @@ const useSignUp = () => {
       signupEndpoint = `${url}/api/auth/signup/lender`;
     }
     console.log(signupEndpoint);
+    
     try {
-      if (role === "lender") {
-        delete input.cibilscore;
-      }
       const response = await axios.post(signupEndpoint, input, {
         headers: {
-          "Content-Type": "multipart/form-data", // Set content type for file upload
+          "Content-Type": "application/json", // Adjusted for JSON payload
         },
       });
       login(response.data);
       toast.success("Signup successful!");
-      toast.success(response.data.message)
+      toast.success(response.data.message);
       console.log(response);
       // Handle successful signup (e.g., redirect or display a success message)
-    } catch (error) {    
-        console.log(error);     
+    } catch (error) {
+      console.log(error);
+      toast.error("Signup failed. Please try again.");
     } finally {
       setLoading(false);
     }
