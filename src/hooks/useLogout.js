@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useAuthContext } from "../context/AuthContextUpdated";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 let url = import.meta.env.VITE_APP_API_URL;
+
 
 const useLogout = () => {
   const [loading, setLoading] = useState(false);
