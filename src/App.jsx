@@ -9,7 +9,6 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
 import HowItWorks from "./pages/howItWorks/HowItWorks";
 import Borrowers from "./pages/borrowers/Borrowers";
-import Blogs from "./pages/blogs/Blogs";
 import Investors from "./pages/investors/Investors";
 import AboutUs from "./pages/aboutUs/AboutUs";
 import "./App.css";
@@ -43,6 +42,9 @@ import NotFound from "./pages/NotFound/NotFound";
 import { Toaster } from "react-hot-toast";
 import { useAuthContext } from "./context/AuthContextUpdated";
 import Layout from "./pages/layout/Layout.jsx"
+import Blogs from "./pages/Blogs/Blogs.jsx"
+import BlogsDetails from "./pages/Blogs/BlogsDetails.jsx";
+import BlogsPost from "./pages/Blogs/BlogsPost.jsx";
 
 // const Footer = lazy(() => import(`./components/footer/Footer`));
 function App() {
@@ -55,7 +57,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/HowItWorks" element={<HowItWorks />} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/Blogs" element={<Blogs />} />
           <Route
             path="/login"
             element={authUser ? <Navigate to="/" /> : <LoginHome />}
@@ -99,7 +101,11 @@ function App() {
           <Route path="/loan-hydrabad" element={<PersonalLoanHydrabad />} />
           <Route path="/loan-bangalore" element={<PersonalLoanBangalore />} />
           <Route path="/loan-ahmedabad" element={<PersonalLoanAhamadabad />} />
+          <Route path='/blog-post' element={<BlogsPost/>}/>
+          <Route path='/blog/:id' element={<BlogsDetails/>}/>
           <Route path='/not-found' element={<NotFound/>}/>
+          
+
 
           {/* Protected routes */}
           {authUser && (
