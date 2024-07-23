@@ -58,7 +58,7 @@ const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
         </div>
       </div>
       <div className="flex flex-wrap justify-between mb-5">
-        <div className="bg-gray-800 p-5 rounded-lg w-full sm:w-[48%] lg:w-[23%] mb-5 sm:mb-0 border border-white text-white">
+        {/* <div className="bg-gray-800 p-5 rounded-lg w-full sm:w-[48%] lg:w-[23%] mb-5 sm:mb-0 border border-white text-white">
           <div className="text-lg mb-2">Total Amount Lent</div>
           <div className="text-2xl font-bold">${totalAmountLent.toFixed(2)}</div>
           <div className="mt-2 text-green-500">+20.1% from last month</div>
@@ -67,23 +67,23 @@ const Dashboard = ({ lenderData, borrowersData, lendersData, user }) => {
           <div className="text-lg mb-2">Total Interest Earned</div>
           <div className="text-2xl font-bold">${totalInterestEarned.toFixed(2)}</div>
           <div className="mt-2 text-green-500">+180.1% from last month</div>
-        </div>
+        </div> */}
         <div className="bg-gray-800 p-5 rounded-lg w-full sm:w-[48%] lg:w-[23%] mb-5 sm:mb-0 border border-white text-white">
           <div className="text-lg mb-2">Average Loan Amount</div>
           <div className="text-2xl font-bold">${averageLoanAmount.toFixed(2)}</div>
-          <div className="mt-2 text-green-500">+19% from last month</div>
+          <div className="mt-2 text-green-500"></div>
         </div>
-        <div className="bg-gray-800 p-5 rounded-lg w-full sm:w-[48%] lg:w-[23%] mb-5 sm:mb-0 border border-white text-white">
+        {/* <div className="bg-gray-800 p-5 rounded-lg w-full sm:w-[48%] lg:w-[23%] mb-5 sm:mb-0 border border-white text-white">
           <div className="text-lg mb-2">Total Active Loans</div>
           <div className="text-2xl font-bold">{totalActiveLoans}</div>
           <div className="mt-2 text-green-500">+201 since last hour</div>
-        </div>
+        </div> */}
       </div>
       <div className="flex flex-wrap justify-evenly">
-        <OverviewChart
+        {/* <OverviewChart
           loanIssuanceData={loanIssuanceData}
           paymentCollectionData={paymentCollectionData}
-        />
+        /> */}
         <div className="bg-gray-800 p-5 rounded-lg w-full lg:w-[48%] max-h-80 overflow-y-auto border border-white">
           <h2 className="text-2xl font-bold mb-3 text-white">
             {user.role === "lender" ? "Total Borrowers" : "Total Lenders"}

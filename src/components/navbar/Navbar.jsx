@@ -53,7 +53,7 @@ const Navbar = ({ authUser }) => {
               <AccountCircleIcon />
               <div className={profileCardOpen ? "profile-card show" : "profile-card"} aria-hidden={!profileCardOpen}>
                 <div className="profile-info">
-                  <p>Name: {authUser.data.fullname}</p>
+                  <p>Name: {authUser.data.name}</p>
                   <p>Role: {authUser.data.role}</p>
                   <p>Email: {authUser.data.email}</p>
                 </div>
